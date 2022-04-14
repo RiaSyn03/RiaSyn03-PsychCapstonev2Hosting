@@ -25,6 +25,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
         $this->validate($request,[
             'question' => 'required',
           ]);
@@ -45,6 +46,9 @@ class QuestionController extends Controller
         
 
         // return redirect()->back()->with('success','Question Added');
+=======
+        return view('admin/users/councilour/questions/create');
+>>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
     }
 
     /**
@@ -55,7 +59,25 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         //
+=======
+        $this->validate($request,[
+            'category_type' => 'required',
+            'question_type' => 'required',
+            'question'      => 'required',
+          ]);
+
+        $question = new Question;
+        $question->id = NULL;
+        $question->category_type=$request->input('category_type');
+        $question->type=$request->input('question_type');
+        $question->question=$request->input('question');
+        $question->save();
+
+
+        return redirect()->back()->with('success','Question Added');
+>>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
      
     }
 
@@ -67,7 +89,11 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
+<<<<<<< HEAD
        //
+=======
+        echo "Kyle gwapo".$id;
+>>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
     }
 
     /**
@@ -78,7 +104,11 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
+<<<<<<< HEAD
        //
+=======
+        echo "Kyle Handsome".$id;
+>>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
     }
 
     /**

@@ -11,3 +11,8 @@ class Listofappointment extends Model
         'time' ,
          ];
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b

@@ -11,7 +11,11 @@
     <!-- Scripts -->
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<<<<<<< HEAD
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
+=======
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+>>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
@@ -23,7 +27,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<<<<<<< HEAD
     
+=======
+>>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/mystyle.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -32,6 +39,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -43,7 +54,10 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<<<<<<< HEAD
                     
+=======
+>>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
                     <!-- Left Side Of Navbar -->
                     
                      @impersonate()

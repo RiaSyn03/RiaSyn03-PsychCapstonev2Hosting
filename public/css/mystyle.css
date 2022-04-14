@@ -6130,6 +6130,10 @@ text-align: center;
 content: '';
 width:50%;
 height: 100%;
+<<<<<<< HEAD
+=======
+position: absolute;
+>>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
 top: 0;
 left: 0;
 background: rgba(255,255,255,.2);

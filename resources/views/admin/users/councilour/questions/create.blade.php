@@ -64,6 +64,7 @@
                         margin-bottom: 30px;
                     }
                 </style>
+<<<<<<< HEAD
             </head> 
             <body>
             <div class="container">
@@ -114,14 +115,87 @@
                 <div class="content">
 
 
+=======
+            </head>
+            
+            <body>
+            <div class="container">
+            @include('admin.users.councilour.questions.message')
+        </div>
+                <div class="flex-center position-ref full-height">
+                    <!-- @if (Route::has('login'))
+                        <div class="top-right links">
+                            @auth
+                                <a href="{{ url('/home') }}">Home</a>
+                            @else
+                                <a href="{{ route('login') }}">Login</a>
+
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}">Register</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif -->
+
+                    <div class="content">
+
+                        <div class="title m-b-md">
+                            Welcome to Psychcare!
+                        </div>
+>>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
                         <div class="links">
                             <a href="{{route('questions.create')}}">Add Question?</a>
                             <a href="{{ route('questions.index')}}">List of Questions</a>
                             <a> Exam Tab</a>
                             <a>Appointment</a>
 
+<<<<<<< HEAD
                     
                     </div>
                 </div>
 
+=======
+                        </div>
+                    </div>
+                </div>
+
+<br>
+<H1>Create Question</H1>
+<form method="POST" action="/questions">
+@csrf
+  	<div class="form-group">
+	  <label for="category_type">Category Type</label>
+		<br>
+		<select name="category_type" id="category_type">
+                         <optgroup label="Select Exam">
+                         <option value="Psychological Exam">Psychological Exam</option>
+                         <option value="Kind of Learners">Kind Of Learners</option>
+                         <option value="Personality Exam">Computer Science(CS)</option>
+                         <option value="Stress Exam">Industrial Engineering(IE)</option>
+                         </optgroup>
+                       </select>
+	</div>
+	<div class="form-group">
+	  <label for="question_type">Question Type</label>
+		<br>
+		<select name="question_type" id="question_type">
+                         <optgroup label="Question Type">
+                         <option value="1">Agree-Slightly Agree-Slighly Disagree-Disagree</option>
+                         <option value="2">Yes-Maybe-No</option>
+                         <option value="3">Always-Sometimes-Rarely-Never</option>
+                         </optgroup>
+                       </select>
+	</div>
+	<div class="form-group">
+                    <label for="question">Question</label>
+                                <input id="question" type="text" name="question" placeholder="Add a Question">Question</input>
+								
+                           </div>
+						</div>
+							<input type="submit" value="Add Q"/>
+
+	</form>
+</body>
+</html>
+>>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
 @endsection

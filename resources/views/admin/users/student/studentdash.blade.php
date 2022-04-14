@@ -1,37 +1,7 @@
 @extends('layouts.app')
 @section('content')
-         @hasrole('admin')
-        <div class="container">
-        <div class="row justify-content-center">
-                <div class="card">
-                <div class="admincontainer">
-                <div class="adminbox">
-                <div class="card-body">
-                <div class="adminicon">01</div>
-                <div class="admincontent">
-                <h3>List of Users</h3>
-                 <div class="managebtn"><a href="{{ route('admin.users.index') }}">Manage Users</div></a>
-             </div>
-         </div>
-         </div>
-         <div class="adminbox">
-                <div class="card-body">
-                <div class="adminicon">02</div>
-                <div class="admincontent">
-                <h3>Add Users</h3>
-                 <div class="managebtn"><a href="{{ route('register') }}">Add User</div></a>
-                </div>
-                </div>
-                </div>
-                @endhasrole
-
-                @hasrole('student')
-                <div class=”wrapper”>
-<<<<<<< HEAD
-        <div class="sidebar"  data-color="red" >
-=======
+<div class=”wrapper”>
         <div class="sidebar" data-image="{{ asset('img/sidebar-5.jpg') }}" data-color="red" >
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
         <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="http://www.creative-tim.com" class="simple-text">
@@ -40,47 +10,29 @@
                 </div>
                 <ul class="nav">
                     <li class="nav-item active">
-<<<<<<< HEAD
-                        <a class="nav-link" href="{{ url('home') }}">
-=======
                         <a class="nav-link" href="{{ url('studentdash') }}">
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Home</p>
                         </a>
                     </li>
                     <li>
-<<<<<<< HEAD
-                        <a class="nav-link" href="{{ route('stdntquestionaire') }}">
-=======
-                        <a class="nav-link" href="{{ route('questionaire') }}">
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
+                        <a class="nav-link" href="{{ url('stdprofile') }}">
                             <i class="nc-icon nc-circle-09"></i>
                             <p>User Profile</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="{{ url('stdnttime') }}">
+                        <a class="nav-link" href="{{ url('stdntexamresult') }}">
                             <i class="nc-icon nc-notes"></i>
                             <p>Test Result</p>
                         </a>
                     </li>
                     <li>
-<<<<<<< HEAD
-=======
-                        <a class="nav-link" href="{{ url('questionaire') }}">
-                            <i class="nc-icon nc-paper-2"></i>
-                            <p>Take Exams</p>
-                        </a>
-                    </li>
-                    <li>
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
                         <a class="nav-link" href="{{ url('stdntappointment') }}">
                             <i class="nc-icon nc-paper-2"></i>
                             <p>Appointment</p>
                         </a>
                     </li>
-                    
                 </ul>
             </div>
         </div>
@@ -96,6 +48,9 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
                         <ul class="nav navbar-nav mr-auto">
+                            
+                            
+                        
                     </div>
                 </div>
             </nav>
@@ -131,11 +86,7 @@
                             <img src="{{ asset('img/stresslogo.png') }}">
                         </div>
                         <div class="details">
-<<<<<<< HEAD
-                                <div class="a"> <a href="{{ url('stdntquestionaire') }}">
-=======
                                 <div class="a"> <a href="{{ url('stdntquestion') }}">
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
                     <span></span>
                     <span></span>
                     <span></span>
@@ -179,84 +130,7 @@
                 </div>
             </div>
     </div>
-                
-                @endhasrole
-                @hasrole('user')
-                <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-                <div class="card">
-                <div class="card-header">Dashboard</div>
-                <div class="card-body">
-                    
-                    Wait for the admin to verify your accout.
-                @endhasrole
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-                @hasrole('councilour')
-                <div class=”wrapper”>
-        <div class="sidebar" data-image="{{ asset('img/sidebar-5.jpg') }}" data-color="red" >
-        <div class="sidebar-wrapper">
-                <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text">
-                        PSYCHCARE 2.0
-                    </a>
-                </div>
-                <ul class="nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url('studentdash') }}">
-                            <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>Home</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ url('create') }}">
-                            <i class="nc-icon nc-circle-09"></i>
-                            <p>Add Questions</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ url('viewtime') }}">
-                            <i class="nc-icon nc-notes"></i>
-                            <p>Test Result</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ url('listofstudent') }}">
-                            <i class="nc-icon nc-paper-2"></i>
-                            <p>Appointment</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="main-panel">
-            <!-- Navbar -->
-           
-                <div class="container-fluid">
-                    
-                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <ul class="nav navbar-nav mr-auto">
-                            
-                            
-                        
-                    </div>
-                </div>
-            </nav>
-            <!-- End Navbar -->
-            
-                   
 
-                @endhasrole
 @endsection
 <script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src="../assets/js/core/popper.min.js" type="text/javascript"></script>

@@ -72,7 +72,11 @@ class UsersTableSeeder extends Seeder
         $student->roles()->attach($studentRole);
         $user->roles()->attach($userRole);
 
+<<<<<<< HEAD
         // factory(App\User::class, 5)->create();
+=======
+        factory(App\User::class, 5)->create();
+>>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
     }
 
 
