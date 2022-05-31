@@ -8,7 +8,6 @@ class Question extends Model
 {
     protected $fillable = [
         'id' ,
-<<<<<<< HEAD
         'question_name' ,
          ];
 
@@ -20,10 +19,4 @@ public function hasAnyAnswers()
 {
     return null !== $this->answers()->whereIn('answer_name', $answers)->first();
 }
-=======
-        'category_type' ,
-        'type',
-        'question',
-         ];
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
 }

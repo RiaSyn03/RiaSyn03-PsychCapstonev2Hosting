@@ -2,7 +2,7 @@
 
 @section('content')
 <H1>Create Question</H1>
-<form class="insert-form" id="insert_form" method="POST" action="/questions">
+<form class="insert-form" id="insert_form" method="POST" action="/psychological">
 @csrf
 <div class="input-field">
     <table class="table table-bordered" id="table_field">

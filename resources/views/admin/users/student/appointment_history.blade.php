@@ -23,12 +23,11 @@
 </tr>
   </thead>
   <tbody id="dynamic-row">
-
   @foreach($timescheds as $history)
-  <tr>
-<form method="post" action="listofapprovedappointments" >
+<tr>
+<form method="post" action="appointment_history">
   @csrf
-<input type="hidden" class="btn_val_id" value="{{ $history->id }}">
+    <input type="hidden" class="btn_val_id" value="{{ $history->id }}">
 <td><input type="text" name="id" value="{{ $history->id }}" ></td>
 <td><input type="text" name="user_idnum" value="{{ $history->user_idnum }}" ></td>
 <td><input type="text" name="user_fname" value="{{ $history->user_fname }} "></td>
@@ -42,8 +41,8 @@
     </td> 
 </tr>
   @endforeach
-
   </tbody>
+
 </table>
 
                     </div>

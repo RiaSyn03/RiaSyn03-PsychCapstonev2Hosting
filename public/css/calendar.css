@@ -41,15 +41,9 @@
     box-sizing: border-box;
 }
 
-<<<<<<< HEAD
 html,
 body {
     height: 100vh;
-=======
-.calendarcontainer {
-    height: 100vh;
-    display: grid;
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
     place-items: center;
     font-family: var(--font-family);
     background-color: var(--bg-body);
@@ -330,18 +324,10 @@ body {
 #popup
 {
     position: fixed;
-<<<<<<< HEAD
     top: 40%;
     left: 50%; 
     transition: translate(-50%,-50%);
     width: 600px;
-=======
-    top: 10%;
-    left: 20%; 
-    transition: translate(-50%,-50%);
-    width: 1000px;
-    height: 1000px;
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
     padding: 50px;
     box-shadow: 0 5px 30px rgba(0,0,0, .30);
     background: #fff;
@@ -351,11 +337,7 @@ body {
 }
 #popup.active
 {
-<<<<<<< HEAD
     top: 50%;
-=======
-    top: 10%;
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
     visibility: visible;
     opacity: 1;
     transition: 0.5s;

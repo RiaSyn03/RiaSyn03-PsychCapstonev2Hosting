@@ -27,11 +27,7 @@
 
                 @hasrole('student')
                 <div class=”wrapper”>
-<<<<<<< HEAD
         <div class="sidebar"  data-color="red" >
-=======
-        <div class="sidebar" data-image="{{ asset('img/sidebar-5.jpg') }}" data-color="red" >
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
         <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="http://www.creative-tim.com" class="simple-text">
@@ -40,21 +36,13 @@
                 </div>
                 <ul class="nav">
                     <li class="nav-item active">
-<<<<<<< HEAD
                         <a class="nav-link" href="{{ url('home') }}">
-=======
-                        <a class="nav-link" href="{{ url('studentdash') }}">
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Home</p>
                         </a>
                     </li>
                     <li>
-<<<<<<< HEAD
                         <a class="nav-link" href="{{ route('stdntquestionaire') }}">
-=======
-                        <a class="nav-link" href="{{ route('questionaire') }}">
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
                             <i class="nc-icon nc-circle-09"></i>
                             <p>User Profile</p>
                         </a>
@@ -66,15 +54,6 @@
                         </a>
                     </li>
                     <li>
-<<<<<<< HEAD
-=======
-                        <a class="nav-link" href="{{ url('questionaire') }}">
-                            <i class="nc-icon nc-paper-2"></i>
-                            <p>Take Exams</p>
-                        </a>
-                    </li>
-                    <li>
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
                         <a class="nav-link" href="{{ url('stdntappointment') }}">
                             <i class="nc-icon nc-paper-2"></i>
                             <p>Appointment</p>
@@ -131,11 +110,7 @@
                             <img src="{{ asset('img/stresslogo.png') }}">
                         </div>
                         <div class="details">
-<<<<<<< HEAD
-                                <div class="a"> <a href="{{ url('stdntquestionaire') }}">
-=======
-                                <div class="a"> <a href="{{ url('stdntquestion') }}">
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
+                                <div class="a"> <a href="{{ url('stress_exam') }}">
                     <span></span>
                     <span></span>
                     <span></span>

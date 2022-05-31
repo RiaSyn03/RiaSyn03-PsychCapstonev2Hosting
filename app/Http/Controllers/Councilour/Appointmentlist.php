@@ -7,26 +7,13 @@ use App\Http\Controllers\Controller;
 use App\Timeslot;
 use App\User;
 use DB;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
-=======
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
 
 class Appointmentlist extends Controller
 {
     public function index()
     {
-<<<<<<< HEAD
         return view('admin.users.councilour.viewtime') ->with('timescheds', Timeslot::all());
-=======
-
-        $timescheds = DB::table('users')
-        ->join('timeslots', 'timeslots.user_id', '=', 'users.id')
-        ->select('timeslots.id','users.idnum', 'timeslots.time', 'timeslots.date')
-        ->get()->toArray();
-
-        return view('admin.users.councilour.viewtime')->with(['timescheds' => $timescheds]);
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
     }
 
 
@@ -53,16 +40,10 @@ class Appointmentlist extends Controller
             'date' => 'required',
           ]);
         $timeslot = new Timeslot;
-<<<<<<< HEAD
         $timeslot->user_fname = $request->user()->fname;
         $timeslot->user_idnum = $request->user()->idnum;
         $timeslot->time = $request->input('time');
         $timeslot->date = $request->input('date');
-=======
-        $timeslot->user_id = $request->user()->id;
-        $timeslot->time=$request->input('time');
-        $timeslot->date=$request->input('date');
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
         $timeslot->save();
 
         return redirect()->route('stdntappointment')->with('success','Time Added');
@@ -74,21 +55,13 @@ class Appointmentlist extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
     public function show()
     {
+        // $timescheds = DB::table('timeslots')->where('user_idnum','33333333' )->first();
+        // return view('admin.users.student.appointment_history' , ['timescheds' => $timescheds]);
+     
         return view('admin.users.student.appointment_history') ->with('timescheds', Timeslot::all());
-        // if(Auth::user()->idnum == $idnum){
-        //     return view('admin.users.councilour.appointment_history') ->with('timescheds', Timeslot::all());
-        // }
-        // else{
-        //     return view('No appointment to show');
-        // }
-=======
-    public function show($id)
-    {
-        //
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
+        
     }
 
     /**
@@ -122,8 +95,8 @@ class Appointmentlist extends Controller
      */
     public function destroy($id)
     {
-        $serv_cate = Timeslot::findorFail($id);
-        $serv_cate->delete();
+        $appointment_delete = Timeslot::findorFail($id);
+        $appointment_delete->delete();
         return response()->json(['status' => 'Delete Successful !']);
     }
 
@@ -134,9 +107,4 @@ class Appointmentlist extends Controller
         return view('admin.users.councilour.stdntappointment');
     }
 
-<<<<<<< HEAD
 }
-=======
-}
-
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b

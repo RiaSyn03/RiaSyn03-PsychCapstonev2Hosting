@@ -23,32 +23,22 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-<<<<<<< HEAD
         $this->validate($request,[
+            'question_num' => 'required',
             'question' => 'required',
+            'question_type' => 'required',
           ]);
 
         $question = new Question;
-        $question->id = NULL;
-        $question->question=$request->input('question_name');
+        $question->question_num = $request->input('question_num');
+        $question->question = $request->input('question');
+        $question->question_type = $request->input('question_type');
         $question->save();
-
-        if ($request->has('answer')){
-            $question->assignAnswer($request->answer['answer_name']);
-        }
-    
-        if ($request->has('permissions')){
-            $question->givePermissionTo(collect($request->permissions)->pluck('id')->toArray());
-        }
-        return response(['message'=>'Answer Created', 'answer'=>$question]);
         
 
-        // return redirect()->back()->with('success','Question Added');
-=======
-        return view('admin/users/councilour/questions/create');
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
+        return redirect()->route('viewquestions')->with('success','Question Added');
     }
 
     /**
@@ -59,25 +49,8 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
-        //
-=======
-        $this->validate($request,[
-            'category_type' => 'required',
-            'question_type' => 'required',
-            'question'      => 'required',
-          ]);
-
-        $question = new Question;
-        $question->id = NULL;
-        $question->category_type=$request->input('category_type');
-        $question->type=$request->input('question_type');
-        $question->question=$request->input('question');
-        $question->save();
-
-
-        return redirect()->back()->with('success','Question Added');
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
+        $stress = Question::where('question_type','stress')->get();
+        return view('admin.users.student.stress_exam', compact('stress'));
      
     }
 
@@ -89,11 +62,7 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-<<<<<<< HEAD
        //
-=======
-        echo "Kyle gwapo".$id;
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
     }
 
     /**
@@ -104,11 +73,7 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-<<<<<<< HEAD
        //
-=======
-        echo "Kyle Handsome".$id;
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
     }
 
     /**
@@ -131,14 +96,17 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-       $question = Question::find($id);
-       if($question){
-        //    $question->roles()->detach();
-           $question->delete();
-           return redirect()->route('admin.users.councilour.questions.viewquestions')->with('success', 'Question has been deleted');
-       }
-       return redirect()->route('admin.users.councilour.questions.viewquestions')->with('warning', 'This user cannot be deleted');
+        $question_delete = Question::findorFail($id);
+        $question_delete->delete();
+        return response()->json(['status' => 'Delete Successful !']);
     }
-}
+
+    // public function calculate(Request $request)
+    // {
+    //     for(a=1; a<=maxquestion; a++) {
+    //     $answer = $request->input('choice');
+    //     }
+    // }
+    }
 
 

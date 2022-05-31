@@ -53,6 +53,10 @@ Route::get('/questionaire', function () {
     return view('admin.users.student.questionaire');
 });
 
+Route::get('/stress_exam', function () {
+    return view('admin.users.student.stress_exam');
+});
+
 Route::get('/listofstudent', function () {
     return view('admin.users.councilour.listofstudent');
 });
@@ -63,54 +67,41 @@ Route::get('/councilourdash', function () {
 Route::get('/create', function () {
     return view('admin.users.councilour.questions.create');
 });
-Route::get('/addquestion', function () {
-    return view('admin.users.councilour.questions.addquestion');
+Route::get('/viewquestions', function () {
+    return view('admin.users.councilour.questions.viewquestions');
+});
+Route::get('/editquestionaire', function () {
+    return view('admin.users.councilour.questions.editquestion');
 });
 
 Route::get('/viewtime', function () {
     return view('admin.users.councilour.viewtime');
 });
 
-<<<<<<< HEAD
 Route::get('/listofapprovedappointments', function () {
     return view('admin.users.councilour.listofapprovedappointments');
-});
-
-Route::get('/appointment_history', function () {
-    return view('admin.users.student.appointment_history');
-=======
-Route::get('/listofappointments', function () {
-    return view('admin.users.councilour.listofappointments');
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
 });
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-<<<<<<< HEAD
-Route::get('/stdntquestionaire')->name('stdntquestionaire');
-=======
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
 Route::get('/account/activate/{token}', 'AccountController@activate');
 Route::resource('/questions','Councilour\QuestionController', ['except' => ['show', 'edit', 'update']]);
 Route::resource('/listofstudent', 'Councilour\ListofStudents', ['except' => ['show', 'create', 'store']]);
 Route::get('/viewtime', 'Councilour\Appointmentlist@index')->name('viewtime');
-<<<<<<< HEAD
-Route::resource('/listofapprovedappointments','Myapprovedappointments', ['except' => ['edit', 'update']]);
+Route::resource('/listofapprovedappointments','Myapprovedappointments', ['except' => ['show', 'edit', 'update']]);
 Route::get('/listofapprovedappointments', 'Myapprovedappointments@index')->name('listofapprovedappointments');
-=======
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
-Route::post('/stdntappointment', 'Councilour\Appointmentlist@store')->name('stdntappointment');
+Route::post('/stdntappointment', 'Councilour\Appointmentlist@store')->name('stdntquestionaire');
+Route::get('/appointment_history', 'Councilour\Appointmentlist@show')->name('appointment_history');
+Route::get('/viewquestions', 'Councilour\QuestionController@index')->name('viewquestions');
+Route::get('/stress_exam', 'Councilour\QuestionController@store')->name('stress_exam');
+Route::post('/viewquestions', 'Councilour\QuestionController@create')->name('viewquestions');
 
 
 
 Route::post('/stdnttime', 'Councilour\Appointmentlist@store',['except'=>['show','create','store']])->name('stdnttime');
 Route::get('/admin/users/student/questionaire', 'StudentquestionaireController@index')->name('questionaire');
-<<<<<<< HEAD
-Route::get('/appointment_history', 'Councilour\Appointmentlist@show')->name('appointment_history');
-=======
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
 
 
 
@@ -126,16 +117,11 @@ Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'sto
 Route::get('/impersonate/user/{id}', 'ImpersonateController@index')->name('impersonate');
 
 });
-Route::delete('/service-cate-delete/{id}', 'Councilour\Appointmentlist@destroy');
+Route::delete('/appointment-delete/{id}', 'Councilour\Appointmentlist@destroy');
+Route::delete('/question-delete/{id}', 'Councilour\QuestionController@destroy');
 
 Route::get('/admin/impersonate/destroy', 'Admin\ImpersonateController@destroy')->name('admin.impersonate.destroy');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b

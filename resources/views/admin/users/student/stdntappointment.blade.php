@@ -3,17 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
   `  <link href="{{ asset('css/calendar.css') }}" rel="stylesheet">`
-=======
-    <link href="{{ asset('css/calendar.css') }}" rel="stylesheet">
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
     <title>
         Calendar
     </title>
 </head>
 <body class="light">
-<<<<<<< HEAD
 <div class=”wrapper”>
         <div class="sidebar"  data-color="red" >
         <div class="sidebar-wrapper">
@@ -58,8 +53,6 @@
         </div>
      
     <center>
-=======
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
 <div class="calendarcontainer">
     <div class="calendar" id="blur">
         <div class="calendar-header">
@@ -107,11 +100,7 @@
         <form method="post" action="stdntappointment">
         @csrf
         <label>Date</label>
-<<<<<<< HEAD
         <input type="text" name="date" id="appointdate">
-=======
-        <input type="date" name="date">
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
         <p>Please select Time: <p>
         <select name="time">
         <!-- <optgroup>Morning</optgroup> -->

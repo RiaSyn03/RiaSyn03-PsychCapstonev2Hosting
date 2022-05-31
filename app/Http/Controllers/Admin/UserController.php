@@ -18,14 +18,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index') ->with('users', User::all());
+        $users = User::all();
+        $numusers = User::count();
+        $userid = User::sum('year');
+        $ave = User::avg('year');
+        return view('admin.users.index', compact('users', 'numusers', 'userid', 'ave'));
     
 }
 
     public function create(Request $request)
     {
     $request->validate([
-<<<<<<< HEAD
         'idnum'=>'required',
         'fname'=>'required',
         'mname'=>'required',
@@ -43,14 +46,6 @@ class UserController extends Controller
         'lname'=> $request->lname,
         'course'=> $request->course,
         'year'=> $request->year,
-=======
-        'name'=>'required',
-        'email'=>'required|email',
-        'password'=>'required', 
-    ]);
-    $user = User::create([
-        'name'=> $request->name,
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
         'email'=> $request->email,
         'password'=>bcrypt($request->password)
 

@@ -45,11 +45,8 @@ generateCalendar = (month, year) => {
     }
 }
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
 let month_list = calendar.querySelector('.month-list')
 
 month_names.forEach((e, index) => {
@@ -96,25 +93,12 @@ dark_mode_toggle.onclick = () => {
 }
 
 function toggle(idd){
-<<<<<<< HEAD
     if(idd != null){
         var s = idd
         var tr = curr_month.value + 1
         var appointmentdate = document.getElementById("appointmentDate").innerHTML =  tr + "/" + s + "/" + curr_year.value ;
         document.getElementById('appointdate').value = appointmentdate;
     }
-=======
-  
-    if(idd != null){
-        var s = idd
-        var tr = curr_month.value + 1
-        document.getElementById("appointmentDate").innerHTML =  tr + "/" + s + "/" + curr_year.value ;
-    }
-
-// dayClick:function(date){
-// $('#start').val(date);
-// }
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
     
     var blur = document.getElementById('blur');
      blur.classList.toggle('active');
@@ -122,7 +106,6 @@ function toggle(idd){
     popup.classList.toggle('active');
     
 }
-<<<<<<< HEAD
 
 
 
@@ -167,46 +150,3 @@ selector.addEventListener('mousedown', e => {
     });
   }
 });
-=======
-  
-  const selector = document.querySelector('.custom-select');
-  
-  selector.addEventListener('change', e => {
-    console.log('changed', e.target.value)
-  })
-  
-  selector.addEventListener('mousedown', e => {
-    if(window.innerWidth >= 420) {// override look for non mobile
-      e.preventDefault();
-      
-      const select = selector.children[0];
-      const dropDown = document.createElement('ul');
-      dropDown.className = "selector-options";
-      
-      [...select.children].forEach(option => {
-        const dropDownOption = document.createElement('li');
-        dropDownOption.textContent = option.textContent;
-        
-        dropDownOption.addEventListener('mousedown', (e) => {
-          e.stopPropagation();
-          select.value = option.value;
-          selector.value = option.value;
-          select.dispatchEvent(new Event('change'));
-          selector.dispatchEvent(new Event('change'));
-          dropDown.remove();
-        });
-  
-        dropDown.appendChild(dropDownOption);   
-      });
-  
-      selector.appendChild(dropDown);
-      
-      // handle click out
-      document.addEventListener('click', (e) => {
-        if(!selector.contains(e.target)) {
-          dropDown.remove();
-        }
-      });
-    }
-  });
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
