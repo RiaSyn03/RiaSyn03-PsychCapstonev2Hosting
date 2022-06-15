@@ -15,7 +15,9 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return view('admin.users.councilour.questions.viewquestions')->with ('questions',Question::all());
+        $questions = Question::all(); 
+        
+        return view('admin.users.councilour.questions.viewquestions', compact('questions'));
     }
 
     /**
@@ -49,8 +51,19 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        $stress = Question::where('question_type','stress')->get();
-        return view('admin.users.student.stress_exam', compact('stress'));
+        
+        $questioncount = Question::where('question_type','stress')->get()->count(); 
+        $stress = Question::where('question_type','stress')->get();       
+        return view('admin.users.student.stress_exam', compact('stress', 'questioncount'));
+
+        $this->validate($request,[
+            'result_name' => 'required',
+          ]);
+
+        $result = new Result;
+        $result->question_num = $request->input('result_name);
+        $result->save();
+     
      
     }
 
@@ -100,13 +113,22 @@ class QuestionController extends Controller
         $question_delete->delete();
         return response()->json(['status' => 'Delete Successful !']);
     }
+    
+    public function personality(Request $request)
+    {
+        $questioncount = Question::where('question_type','personality')->get()->count(); 
+        $personality = Question::where('question_type','personality')->get();
+        return view('admin.users.student.personality_exam', compact('personality', 'questioncount'));
 
-    // public function calculate(Request $request)
-    // {
-    //     for(a=1; a<=maxquestion; a++) {
-    //     $answer = $request->input('choice');
-    //     }
-    // }
+        
     }
+    public function learner(Request $request)
+    {
+        $questioncount = Question::where('question_type','learners')->get()->count(); 
+        $learner = Question::where('question_type','learners')->get();
+        return view('admin.users.student.learner_exam', compact('learner', 'questioncount'));
+     
+    }
+}
 
 

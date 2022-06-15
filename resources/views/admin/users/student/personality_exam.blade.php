@@ -2,25 +2,29 @@
 @section('content')
 <link href="{{ asset('css/questions.css') }}" rel="stylesheet">
 <form name="stressquestion" id="stressquestion">
-@foreach ($stress as $question)
+@foreach ($personality as $question)
 <div class="wrapper">
   <div class="title">{{ $question->question_num }}. {{ $question->question}}</div>
   <div class="box">
       <input type="radio" name="select{{ $question->question_num }}" id="radio1{{ $question->question_num }}" value="0">
       <label for="radio1{{ $question->question_num }}">
-        Not at all
+      Strongly Disagree
       </label>
       <input type="radio" name="select{{ $question->question_num }}" id="radio2{{ $question->question_num }}" value="1" >
       <label for="radio2{{ $question->question_num }}">
-        Several days
+      Disagree
       </label>
       <input type="radio" name="select{{ $question->question_num }}" id="radio3{{ $question->question_num }}" value="2" >
       <label for="radio3{{ $question->question_num }}">
-        More than half the days
+      Neutral
       </label>
       <input type="radio" name="select{{ $question->question_num }}" id="radio4{{ $question->question_num }}" value="3">
       <label for="radio4{{ $question->question_num }}">
-        Nearly everyday
+      Agree
+      </label>
+      <input type="radio" name="select{{ $question->question_num }}" id="radio5{{ $question->question_num }}" value="4">
+      <label for="radio5{{ $question->question_num }}">
+      Strongly Agree
       </label>
     </div>
     </div>
@@ -35,7 +39,7 @@
 </p>
 
 <p>You are : <br>
-	<span id = "stresslvl" name="result_name"></span>
+	<span id = "stresslvl"></span>
 </p>
 
 
@@ -49,7 +53,7 @@ $(":radio")
 
     var total = 0;
     let noquestions = document.getElementById('noquestions').value;
-    var maxscore = 3*noquestions;
+    var maxscore = 4*noquestions;
     
     
     $(":radio:checked").each(function(){
@@ -61,19 +65,19 @@ $(":radio")
     var notstress = maxscore*0.25;
     var stress = maxscore*0.50;
     var superstress = maxscore*0.75;
-    $("#result").text(notstress);
+    $("#result").text(maxscore);
     
     if(total <= notstress )
     {
-      alert("You are not stress");
+      alert("You are Visual");
     }
     else if (total <= superstress)
     {
-      alert("You are stress");
+      alert("You are Auditory");
     }
     else if (total > superstress)
     {
-      alert("You are so stress");
+      alert("You are Kinesthetic");
     }
 
 

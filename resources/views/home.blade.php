@@ -125,7 +125,7 @@
                             <img src="{{ asset('img/learnerslogo.png') }}">
                         </div>
                         <div class="details">
-                                <div class="a"><a href="{{ url('stdntquestion') }}">
+                                <div class="a"><a href="{{ url('learner_exam') }}">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -139,7 +139,7 @@
                             <img src="{{ asset('img/personalitylogo.png') }}">
                         </div>
                         <div class="details">
-                                <div class="a"><a href="{{ url('stdntquestion') }}">
+                                <div class="a"><a href="{{ url('personality_exam') }}">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -189,7 +189,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="{{ url('create') }}">
+                        <a class="nav-link" href="{{ url('viewquestions') }}">
                             <i class="nc-icon nc-circle-09"></i>
                             <p>Add Questions</p>
                         </a>

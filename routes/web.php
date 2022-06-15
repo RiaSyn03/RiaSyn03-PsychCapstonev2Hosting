@@ -3,8 +3,11 @@
 Route::get('/', function () {
         return view('welcome');
     });
+Route::get('/adminregister', function () {
+        return view('admin.users.adminregister');
+    });
 
-    Route::get('/unregistered', function () {
+Route::get('/unregistered', function () {
         return view('admin.users.student.unregistered');
     });
 
@@ -19,10 +22,6 @@ Route::get('/councilourdash', function () {
 
 Route::get('/studentdash', function () {
     return view('admin.users.student.studentdash');
-});
-
-Route::get('/studentdash', function () {
-    return view('admin.users.student.wellness');
 });
 
 Route::get('/wellness', function () {
@@ -55,6 +54,12 @@ Route::get('/questionaire', function () {
 
 Route::get('/stress_exam', function () {
     return view('admin.users.student.stress_exam');
+});
+Route::get('/learner_exam', function () {
+    return view('admin.users.student.learner_exam');
+});
+Route::get('/personality_exam', function () {
+    return view('admin.users.student.personality_exam');
 });
 
 Route::get('/listofstudent', function () {
@@ -96,6 +101,8 @@ Route::post('/stdntappointment', 'Councilour\Appointmentlist@store')->name('stdn
 Route::get('/appointment_history', 'Councilour\Appointmentlist@show')->name('appointment_history');
 Route::get('/viewquestions', 'Councilour\QuestionController@index')->name('viewquestions');
 Route::get('/stress_exam', 'Councilour\QuestionController@store')->name('stress_exam');
+Route::get('/learner_exam', 'Councilour\QuestionController@learner')->name('learner_exam');
+Route::get('/personality_exam', 'Councilour\QuestionController@personality')->name('personality_exam');
 Route::post('/viewquestions', 'Councilour\QuestionController@create')->name('viewquestions');
 
 

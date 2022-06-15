@@ -6,7 +6,7 @@
 <form action="viewquestions" method="POST">
   @csrf
   <label>Number
-  <input id="question_num" type="number" class="form-control" name="question_num"></label>
+  <input id="question_num" class="form-control" name="question_num"></label>
   <br>
   <label>Question</label>
   <input id="question" type="text" class="form-control" name="question">
