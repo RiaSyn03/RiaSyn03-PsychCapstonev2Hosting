@@ -42,15 +42,9 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="{{ route('stdntquestionaire') }}">
-                            <i class="nc-icon nc-circle-09"></i>
-                            <p>User Profile</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ url('stdnttime') }}">
+                        <a class="nav-link" href="{{ url('exams_history') }}">
                             <i class="nc-icon nc-notes"></i>
-                            <p>Test Result</p>
+                            <p>Test Result History</p>
                         </a>
                     </li>
                     <li>
@@ -59,6 +53,12 @@
                             <p>Appointment</p>
                         </a>
                     </li>
+                    <a class="nav-link" href="{{ url('appointment_history') }}">
+                            <i class="nc-icon nc-paper-3"></i>
+                            <p>Appointment History</p>
+                        </a>
+                    </li>
+                    
                     
                 </ul>
             </div>

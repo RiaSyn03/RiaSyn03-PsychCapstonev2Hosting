@@ -67,10 +67,22 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt ('user')
         ]);
 
+        $kyle = User::create([
+            'idnum' => '15105515',
+            'fname' => 'Kyle Christian',
+            'mname' => 'Misa',
+            'lname' => 'Arches',
+            'course' => 'ICT',
+            'year' => '4',
+            'email' => 'kurumitokisaki0324@gmail.com',
+            'password' => bcrypt ('Kurumitokisaki')
+        ]);
+
         $admin -> roles() -> attach($adminRole);
         $councilour->roles()->attach($councilourRole);
         $student->roles()->attach($studentRole);
         $user->roles()->attach($userRole);
+        $kyle->roles()->attach($studentRole);
 
         // factory(App\User::class, 5)->create();
     }

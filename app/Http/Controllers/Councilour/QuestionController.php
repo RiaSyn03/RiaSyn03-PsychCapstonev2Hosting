@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Councilour;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Question;
+use App\Result;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
@@ -50,21 +52,17 @@ class QuestionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        
-        $questioncount = Question::where('question_type','stress')->get()->count(); 
-        $stress = Question::where('question_type','stress')->get();       
-        return view('admin.users.student.stress_exam', compact('stress', 'questioncount'));
-
+    {       
         $this->validate($request,[
             'result_name' => 'required',
           ]);
 
         $result = new Result;
-        $result->question_num = $request->input('result_name);
+        $result->user_id = $request->user()->id;
+        $result->result_name = $request->input('result_name');
         $result->save();
-     
-     
+
+        return redirect()->route('stress_exam')->with('success','Data Added');
     }
 
     /**
@@ -128,6 +126,21 @@ class QuestionController extends Controller
         $learner = Question::where('question_type','learners')->get();
         return view('admin.users.student.learner_exam', compact('learner', 'questioncount'));
      
+    }
+
+    public function stress(Request $request)
+    {
+        $questioncount = Question::where('question_type','stress')->get()->count(); 
+        $stress = Question::where('question_type','stress')->get();       
+        return view('admin.users.student.stress_exam', compact('stress', 'questioncount'));
+
+    }
+    public function showexam()
+    {
+        $id = auth()->user()->id;
+        $myexams = Result::where('user_id',$id)->get();
+        
+        return view('admin.users.student.exams_history', compact('myexams'));
     }
 }
 

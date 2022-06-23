@@ -7,36 +7,29 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Appointment History</div>
+                <div class="card-header">Exam History</div>
                 <div class="card-body"> 
                 <input type="text" id="search"class="form-control" placeholder="search" />
                 <table class="table table-striped">
    <thead>
    <div class="panel-body">
    <tr>
-<td>ID</td>
-<td>ID Number </td>
-<td> Name </td>
-<td>Date </td>
-<td>Time </td>
+<td>Exam Id</td>
+<td>User Id</td>
+<td>Exam Result </td>
+<td>Date</td>
 <td>Action </td>
 </tr>
   </thead>
   <tbody id="dynamic-row">
-  @foreach($mylist as $history)
+  @foreach($myexams as $examhistory)
 <tr>
-<form method="post" action="appointment_history">
-  @csrf
-    <input type="hidden" class="btn_val_id" value="{{ $history->id }}">
-<td><input type="text" name="id" value="{{ $history->id }}" ></td>
-<td><input type="text" name="user_idnum" value="{{ $history->user_idnum }}" ></td>
-<td><input type="text" name="user_fname" value="{{ $history->user_fname }} "></td>
-<td><input type="text" name="date" value="{{ $history->date }} "></td>
-<td><input type="text" name="time" value="{{ $history->time }} "></td>
+<td><input type="text" name="id" value="{{ $examhistory->id }}" ></td>
+<td><input type="text" name="user_id" value="{{ $examhistory->user_id }}" ></td>
+<td><input type="text" name="result_name" value="{{ $examhistory->result_name }} "></td>
+<td><input type="text" name="created_at" value="{{ $examhistory->created_at }} "></td>
 <td>
   <a href="" class="float-left">
-  <button type="submit" >Submit</i></button>
-</form>
   <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
     </td> 
 </tr>

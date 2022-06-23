@@ -57,11 +57,11 @@ class Appointmentlist extends Controller
      */
     public function show()
     {
-        // $timescheds = DB::table('timeslots')->where('user_idnum','33333333' )->first();
-        // return view('admin.users.student.appointment_history' , ['timescheds' => $timescheds]);
-     
-        return view('admin.users.student.appointment_history') ->with('timescheds', Timeslot::all());
-        
+        $id = Auth()->user()->idnum;
+        $mylist = Timeslot::where('user_idnum',$id)->get();
+        // $mylist = Timeslot::all();
+        return view('admin.users.student.appointment_history', compact('mylist'));
+
     }
 
     /**

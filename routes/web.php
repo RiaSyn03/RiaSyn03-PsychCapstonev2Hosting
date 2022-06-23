@@ -87,6 +87,10 @@ Route::get('/listofapprovedappointments', function () {
     return view('admin.users.councilour.listofapprovedappointments');
 });
 
+Route::get('/exams_history', function () {
+    return view('admin.users.councilour.exams_history');
+});
+
 
 Auth::routes();
 
@@ -97,13 +101,16 @@ Route::resource('/listofstudent', 'Councilour\ListofStudents', ['except' => ['sh
 Route::get('/viewtime', 'Councilour\Appointmentlist@index')->name('viewtime');
 Route::resource('/listofapprovedappointments','Myapprovedappointments', ['except' => ['show', 'edit', 'update']]);
 Route::get('/listofapprovedappointments', 'Myapprovedappointments@index')->name('listofapprovedappointments');
-Route::post('/stdntappointment', 'Councilour\Appointmentlist@store')->name('stdntquestionaire');
+Route::post('/stdntappointment', 'Councilour\Appointmentlist@store')->name('stdntappointment');
 Route::get('/appointment_history', 'Councilour\Appointmentlist@show')->name('appointment_history');
 Route::get('/viewquestions', 'Councilour\QuestionController@index')->name('viewquestions');
-Route::get('/stress_exam', 'Councilour\QuestionController@store')->name('stress_exam');
+Route::get('/stress_exam', 'Councilour\QuestionController@stress')->name('stress_exam');
+Route::get('/exams_history', 'Councilour\QuestionController@showexam')->name('exams_history');
+
 Route::get('/learner_exam', 'Councilour\QuestionController@learner')->name('learner_exam');
 Route::get('/personality_exam', 'Councilour\QuestionController@personality')->name('personality_exam');
 Route::post('/viewquestions', 'Councilour\QuestionController@create')->name('viewquestions');
+Route::post('/stress_exam', 'Councilour\QuestionController@store')->name('stress_exam');
 
 
 

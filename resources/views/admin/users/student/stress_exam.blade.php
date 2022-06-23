@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <link href="{{ asset('css/questions.css') }}" rel="stylesheet">
-<form name="stressquestion" id="stressquestion">
+<form method="POST" action="stress_exam" name="stressquestion" id="stressquestion">
+@csrf
 @foreach ($stress as $question)
 <div class="wrapper">
   <div class="title">{{ $question->question_num }}. {{ $question->question}}</div>
@@ -29,22 +30,17 @@
 <p>Total: £ <span id="total">0</span></p>
 <input type="button" onClick="calculate()"
 	Value="Calculate"/>
-  
+
 <p>The Result is : <br>
 	<span id = "result"></span>
 </p>
-
-<p>You are : <br>
-	<span id = "stresslvl" name="result_name"></span>
-</p>
-
-
-<!-- <input type="text" id="selvalue" name="score"/> -->
-<!-- <button type="button" id="selvalue">Total</button> -->
+	<input type="hidden" id="result_name" name="result_name" value=""></input>
+<button type="submit">Submit</button>
   </form>
   <input type="text" value="{{$questioncount}}" id="noquestions" name="noquestions">Question Count :{{$questioncount}}</input><br>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script>function calculate(){
+  <script>
+  function calculate(){
 $(":radio")
 
     var total = 0;
@@ -65,17 +61,23 @@ $(":radio")
     
     if(total <= notstress )
     {
-      alert("You are not stress");
+      alert("You are not stress")
+      $("#result_name").val("You are not stress");
+      
+      
     }
     else if (total <= superstress)
     {
-      alert("You are stress");
+      alert("You are stress")
+
+      $("#result_name").val("You are stress");
     }
     else if (total > superstress)
     {
-      alert("You are so stress");
+      alert("You are so stress")
+   
+      $("#result_name").val("You are so stress");
     }
-
 
 };
 
