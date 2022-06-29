@@ -11,7 +11,7 @@
     <!-- Scripts -->
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
@@ -24,14 +24,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+    <link href="{{ asset('css/appedited.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/mystyle.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     <link href="{{ asset('css/aos.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 </head>
 <body>
     <div id="app">
@@ -67,24 +67,9 @@
                                 </li>
                             @endif
                         @else
-                        <li><a href="#"></a></li>
-                        <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >                                 
-                                    <i class="fa fa-bell"></i> 
-                                    @if(auth()->user()->unreadNotifications->count())
-                                    <span class="badge badge-light">{{auth()->user()->unreadnotifications->count()}}</span>
-                                    @endif
-                                </a>
-                                <ul class="dropdown-menu">
-                                <a href="{{ route('markRead') }}"><li style="color:green">Mark all as Read</li></a>
-                                    @foreach (auth()->user()->unreadNotifications as $notification )
-                                    <a href="#" style="text-decoration:none"><li style="background-color: lightgray">{{$notification->data['data']}} has registered</li></a>
-                                     @endforeach
-                                    @foreach (auth()->user()->readNotifications as $notification )
-                                    <a href="#" style="text-decoration:none"><li>{{$notification->data['data']}}done</li></a>
-                                    @endforeach
-                                </ul>
-                            </li>
+                       
+                                <h4>Welcome</h4>
+                      
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->idnum }} <span class="caret"></span>

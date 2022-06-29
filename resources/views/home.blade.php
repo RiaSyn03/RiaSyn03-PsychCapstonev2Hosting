@@ -26,61 +26,18 @@
                 @endhasrole
 
                 @hasrole('student')
-                <div class=”wrapper”>
-        <div class="sidebar"  data-color="red" >
-        <div class="sidebar-wrapper">
-                <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text">
-                        PSYCHCARE 2.0
-                    </a>
-                </div>
-                <ul class="nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url('home') }}">
-                            <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>Home</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ url('exams_history') }}">
-                            <i class="nc-icon nc-notes"></i>
-                            <p>Test Result History</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ url('stdntappointment') }}">
-                            <i class="nc-icon nc-paper-2"></i>
-                            <p>Appointment</p>
-                        </a>
-                    </li>
-                    <a class="nav-link" href="{{ url('appointment_history') }}">
-                            <i class="nc-icon nc-paper-3"></i>
-                            <p>Appointment History</p>
-                        </a>
-                    </li>
-                    
-                    
-                </ul>
-            </div>
-        </div>
-        <div class="main-panel">
-            <!-- Navbar -->
-           
-                <div class="container-fluid">
-                    
-                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <ul class="nav navbar-nav mr-auto">
-                    </div>
-                </div>
-            </nav>
-            <!-- End Navbar -->
-            <div class="content">
-                  
+                <div class="studentbody">
+<section>
+     <header>
+         <a href="#" class="logo">Logo</a>
+         <ul>
+             <li><a href="{{ url('home') }}" class="active">Home</a></li>
+             <li><a href="{{ url('exam_history') }}">Exam History</a></li>
+             <li><a href="{{ url('stdntappointment') }}">Appointment</a></li>
+             <li><a href="{{ url('appointment_history') }}">Appointment History</a></li>
+         </ul>
+     </header>
+     <div class="content">
                     <div class="container-fluid">
                                 <div class="card">    
                                     <div class="card-body">  
@@ -99,12 +56,10 @@
                     </a></div>
             </div>
         </div>
-            </div>
-        </div>
-            </div>
-            <div class="card"> 
-                    <div class="card-body"> 
-                           <center><img src="{{ asset('img/exams.png') }}"></center>
+        <div class="cardcontainer">        
+        <div class="card-body"> 
+            <center><img src="{{ asset('img/exams.png') }}"></center>
+      
                 <div class="card2">
                         <div class="imgBox">
                             <img src="{{ asset('img/stresslogo.png') }}">
@@ -118,8 +73,7 @@
                     Take Test
                     </a></div>
                 </div>
-            </div>
-              
+            </div> 
                 <div class="card2">
                         <div class="imgBox">
                             <img src="{{ asset('img/learnerslogo.png') }}">
@@ -133,7 +87,8 @@
                         Take Test
                         </a>
                         </div></div>
-                    </div>
+                    </div> 
+                    <div class="container2">  
                         <div class="card2">
                         <div class="imgBox">
                             <img src="{{ asset('img/personalitylogo.png') }}">
@@ -150,10 +105,12 @@
                     </div>
          </div>
 </div> 
-                    </nav>
+
+                   
                 </div>
             </div>
-    </div>
+
+    </section>
                 
                 @endhasrole
                 @hasrole('user')

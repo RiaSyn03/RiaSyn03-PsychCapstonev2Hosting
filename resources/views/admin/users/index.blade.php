@@ -49,8 +49,6 @@
   </tbody>
 </table>
 <h3>Total : {{$numusers}} </h3><br>
-<h3>Sum : {{$userid}} </h3><br>
-<h3>Average : {{$ave}} </h3>
 
                     </div>
                 </div>

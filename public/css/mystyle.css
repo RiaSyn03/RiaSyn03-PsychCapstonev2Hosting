@@ -2767,13 +2767,19 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .card {
+    
+    position:absolute;
+    right:8%;
+    top:10%;
     border-radius: 20px;
-    background-color: #FFFFFF;
+    background: rgba(255, 255, 255,0.2);
     margin-bottom: 30px;
-    max-width: 1000px;
+    max-width: 2000px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    height: 1800px;
+    
 }
 
 .card-content {
@@ -5326,7 +5332,7 @@ License - nucleoapp.com/license/
 {
     position: relative;
     top:0;
-    left: 10%;
+    display:flex;
     float: left;
     padding: 0px;
     margin: 70px;
