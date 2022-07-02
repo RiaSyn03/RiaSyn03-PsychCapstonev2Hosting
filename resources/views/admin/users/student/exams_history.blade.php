@@ -1,15 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Exam History</div>
+<section>
+     <header>
+         <a href="#" class="logo">Logo</a>
+         <ul>
+             <li><a href="{{ url('home') }}">Home</a></li>
+             <li><a href="{{ url('exams_history') }}" class="active">Exam History</a></li>
+             <li><a href="{{ url('stdntappointment') }}">Appointment</a></li>
+             <li><a href="{{ url('appointment_history') }}">Appointment History</a></li>
+         </ul>
+     </header>
+     <div class="examscard">          
                 <div class="card-body"> 
-                <input type="text" id="search"class="form-control" placeholder="search" />
                 <table class="table table-striped">
    <thead>
    <div class="panel-body">
@@ -42,8 +45,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div>
 <a href="{{ url('home') }}"><button class="complete">Back to menu</button></a>
 </div>
 <script type="text/javascript">

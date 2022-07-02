@@ -195,10 +195,6 @@ h1 .subtitle {
 /*     General overwrite     */
 
 body,
-.wrapper {
-    min-height: 100vh;
-    position: relative;
-}
 
 a {
     color: #1DC7EA;
@@ -268,11 +264,7 @@ input:focus {
     margin-top: 50px;
 }
 
-.wrapper {
-    position: relative;
-    top: 0;
-    height: 100vh;
-}
+
 
 .page-header .page-header-image {
     background-position: center center;
@@ -2770,7 +2762,37 @@ Copyright (c) 2015 Daniel Eden
     
     position:absolute;
     right:8%;
-    top:10%;
+    top:30%;
+    border-radius: 20px;
+    background: rgba(255, 255, 255,0.2);
+    margin-bottom: 30px;
+    max-width: 2000px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    max-height: fit-content;
+    
+}
+.admincard {
+    
+    position:absolute;
+    right:25%;
+    top:30%;
+    border-radius: 20px;
+    background: rgba(255, 255, 255,0.2);
+    margin-bottom: 30px;
+    max-width: 2000px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    max-height: fit-content;
+    
+}
+.homecard {
+    
+    position:absolute;
+    right:8%;
+    top:30%;
     border-radius: 20px;
     background: rgba(255, 255, 255,0.2);
     margin-bottom: 30px;
@@ -2779,6 +2801,22 @@ Copyright (c) 2015 Daniel Eden
     flex-wrap: wrap;
     flex-direction: row;
     height: 1800px;
+    
+}
+
+.examscard {
+    
+    position:absolute;
+    left:20%;
+    top:30%;
+    border-radius: 20px;
+    background: rgba(255, 255, 255,0.2);
+    margin-bottom: 30px;
+    max-width: 2000px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    max-height: max-content;
     
 }
 

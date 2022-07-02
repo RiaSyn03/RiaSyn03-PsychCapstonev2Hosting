@@ -2724,7 +2724,8 @@ tbody.collapse.show{
 		-ms-flex-wrap:nowrap;
 		flex-wrap:nowrap;
 		-ms-flex-pack:start;
-		justify-content:flex-start
+		justify-content:flex-start;
+		
 }
 	.navbar-expand-md .navbar-nav{
 		-ms-flex-direction:row;

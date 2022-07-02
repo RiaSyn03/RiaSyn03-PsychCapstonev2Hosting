@@ -49,6 +49,14 @@ body {
     background-color: var(--bg-body);
 }
 
+.calendarcontainer
+{
+    position:absolute;
+    top:30%;
+    left:35%;
+    
+}
+
 .calendar {
     height: max-content;
     width: max-content;
@@ -59,7 +67,6 @@ body {
     overflow: hidden;
     /* transform: scale(1.25); */
 }
-
 
 .light .calendar {
     box-shadow: var(--shadow);
@@ -324,8 +331,8 @@ body {
 #popup
 {
     position: fixed;
-    top: 40%;
-    left: 50%; 
+    top: 20%;
+    left: 30%; 
     transition: translate(-50%,-50%);
     width: 600px;
     padding: 50px;
@@ -337,7 +344,7 @@ body {
 }
 #popup.active
 {
-    top: 50%;
+    top: 20%;
     visibility: visible;
     opacity: 1;
     transition: 0.5s;

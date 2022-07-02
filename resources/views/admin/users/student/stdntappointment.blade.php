@@ -1,51 +1,17 @@
 @extends('layouts.app')
 @section('content')
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  `  <link href="{{ asset('css/calendar.css') }}" rel="stylesheet">`
-    <title>
-        Calendar
-    </title>
-</head>
+<link href="{{ asset('css/calendar.css') }}" rel="stylesheet">`
+<section>
+     <header>
+         <a href="#" class="logo">Logo</a>
+         <ul>
+             <li><a href="{{ url('home') }}">Home</a></li>
+             <li><a href="{{ url('exams_history') }}">Exam History</a></li>
+             <li><a href="{{ url('stdntappointment') }}"class="active">Appointment</a></li>
+             <li><a href="{{ url('appointment_history') }}">Appointment History</a></li>
+         </ul>
+     </header>
 <body class="light">
-<div class=”wrapper”>
-        <div class="sidebar"  data-color="red" >
-        <div class="sidebar-wrapper">
-                <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text">
-                        PSYCHCARE 2.0
-                    </a>
-                </div>
-                <ul class="nav">
-                    <li>
-                        <a class="nav-link" href="{{ url('home') }}">
-                            <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>Home</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ url('stdnttime') }}">
-                            <i class="nc-icon nc-notes"></i>
-                            <p>Test Result</p>
-                        </a>
-                    </li>
-                    <li><li class="nav-link">
-                        <a class="nav-item active" href="{{ url('stdntappointment') }}">
-                            <i class="nc-icon nc-paper-2"></i>
-                            <p>Appointment</p>
-                        </a>
-                    </li>
-                    <a class="nav-link" href="{{ url('appointment_history') }}">
-                            <i class="nc-icon nc-paper-2"></i>
-                            <p>Appointment History</p>
-                        </a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </div>
-     
     <center>
 <div class="calendarcontainer">
     <div class="calendar" id="blur">
@@ -72,14 +38,6 @@
                 <div>Sat</div>
             </div>
             <div class="calendar-days"></div>
-        </div>
-        <div class="calendar-footer">
-            <div class="toggle">
-                <span>Dark Mode</span>
-                <div class="dark-mode-switch">
-                    <div class="dark-mode-switch-ident"></div>
-                </div>
-            </div>
         </div>
         <div class="month-list"></div>
         </div>

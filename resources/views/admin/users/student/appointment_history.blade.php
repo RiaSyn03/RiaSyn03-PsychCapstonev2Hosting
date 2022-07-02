@@ -1,20 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Appointment History</div>
+<section>
+     <header>
+         <a href="#" class="logo">Logo</a>
+         <ul>
+             <li><a href="{{ url('home') }}">Home</a></li>
+             <li><a href="{{ url('exams_history') }}">Exam History</a></li>
+             <li><a href="{{ url('stdntappointment') }}">Appointment</a></li>
+             <li><a href="{{ url('appointment_history') }}"class="active">Appointment History</a></li>
+         </ul>
+     </header>
+            <div class="examscard">          
                 <div class="card-body"> 
-                <input type="text" id="search"class="form-control" placeholder="search" />
                 <table class="table table-striped">
    <thead>
    <div class="panel-body">
    <tr>
-<td>ID</td>
 <td>ID Number </td>
 <td> Name </td>
 <td>Date </td>
@@ -28,31 +30,22 @@
 <form method="post" action="appointment_history">
   @csrf
     <input type="hidden" class="btn_val_id" value="{{ $history->id }}">
-<td><input type="text" name="id" value="{{ $history->id }}" ></td>
-<td><input type="text" name="user_idnum" value="{{ $history->user_idnum }}" ></td>
-<td><input type="text" name="user_fname" value="{{ $history->user_fname }} "></td>
-<td><input type="text" name="date" value="{{ $history->date }} "></td>
-<td><input type="text" name="time" value="{{ $history->time }} "></td>
+
+<td><input type="text" readonly="readonly" name="user_idnum" value="{{ $history->user_idnum }}" ></td>
+<td><input type="text" readonly="readonly" name="user_fname" value="{{ $history->user_fname }} "></td>
+<td><input type="text" readonly="readonly" name="date" value="{{ $history->date }} "></td>
+<td><input type="text" readonly="readonly" name="time" value="{{ $history->time }} "></td>
 <td>
   <a href="" class="float-left">
-  <button type="submit" >Submit</i></button>
 </form>
   <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
     </td> 
 </tr>
   @endforeach
   </tbody>
-
 </table>
-
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div>
-<a href="{{ url('home') }}"><button class="complete">Back to menu</button></a>
-</div>
 <script type="text/javascript">
 $('body').on('keyup', '#search', function(){
     var searchQuest = $(this).val();

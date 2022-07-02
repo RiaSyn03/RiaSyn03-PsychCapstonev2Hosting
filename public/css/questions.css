@@ -1,4 +1,6 @@
 .wrapper{
+  position:relative;
+  left:40%;
   width: 350px;
   background: #fff;
   border-radius: 10px;

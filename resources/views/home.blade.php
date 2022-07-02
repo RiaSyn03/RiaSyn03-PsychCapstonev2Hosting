@@ -3,7 +3,7 @@
          @hasrole('admin')
         <div class="container">
         <div class="row justify-content-center">
-                <div class="card">
+                <div class="admincard">
                 <div class="admincontainer">
                 <div class="adminbox">
                 <div class="card-body">
@@ -32,14 +32,14 @@
          <a href="#" class="logo">Logo</a>
          <ul>
              <li><a href="{{ url('home') }}" class="active">Home</a></li>
-             <li><a href="{{ url('exam_history') }}">Exam History</a></li>
+             <li><a href="{{ url('exams_history') }}">Exam History</a></li>
              <li><a href="{{ url('stdntappointment') }}">Appointment</a></li>
              <li><a href="{{ url('appointment_history') }}">Appointment History</a></li>
          </ul>
      </header>
      <div class="content">
                     <div class="container-fluid">
-                                <div class="card">    
+                                <div class="homecard">    
                                     <div class="card-body">  
                                     <center><img src="{{ asset('img/wellness.png') }}"></center>
                                     <div class="card2">
