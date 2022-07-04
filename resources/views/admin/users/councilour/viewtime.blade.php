@@ -1,11 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<title>List of Time</title>
-<table class="table table-striped">
-<thead>
+<section>
+     <header>
+         <a href="#" class="logo">Logo</a>
+         <ul>
+         <li><a href="{{ url('home') }}">Home</a></li>
+             <li><a href="{{ url('viewquestions') }}">Questions</a></li>
+             <li><a href="{{ url('viewtime')  }}" class="active">List of Appointments</a></li>
+             <li><a href="{{ url('#') }}">My Appointments</a></li>
+         </ul>
+     </header>
+            <div class="examscard">          
+                <div class="card-body"> 
+                <table class="table table-striped">
 <tr>
-<td>ID</td>
 <td>ID Number </td>
 <td> Name </td>
 <td>Date </td>
@@ -19,14 +28,13 @@
 <form method="post" action="listofapprovedappointments" >
   @csrf
 <input type="hidden" class="btn_val_id" value="{{ $t->id }}">
-<td><input type="text" name="id" value="{{ $t->id }}" ></td>
 <td><input type="text" name="user_idnum" value="{{ $t->user_idnum }}" ></td>
 <td><input type="text" name="user_fname" value="{{ $t->user_fname }} "></td>
 <td><input type="text" name="date" value="{{ $t->date }} "></td>
 <td><input type="text" name="time" value="{{ $t->time }} "></td>
 <td>
   <a href="" class="float-left">
-  <button type="submit" >Submit</i></button>
+  <button type="submit" >Accept</i></button>
 </form>
   <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
     </td> 

@@ -130,62 +130,19 @@
     </div>
 </div>
                 @hasrole('councilour')
-                <div class=”wrapper”>
-        <div class="sidebar" data-image="{{ asset('img/sidebar-5.jpg') }}" data-color="red" >
-        <div class="sidebar-wrapper">
-                <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text">
-                        PSYCHCARE 2.0
-                    </a>
-                </div>
-                <ul class="nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url('studentdash') }}">
-                            <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>Home</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ url('viewquestions') }}">
-                            <i class="nc-icon nc-circle-09"></i>
-                            <p>Add Questions</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ url('viewtime') }}">
-                            <i class="nc-icon nc-notes"></i>
-                            <p>Test Result</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ url('listofstudent') }}">
-                            <i class="nc-icon nc-paper-2"></i>
-                            <p>Appointment</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="main-panel">
-            <!-- Navbar -->
-           
-                <div class="container-fluid">
-                    
-                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <ul class="nav navbar-nav mr-auto">
-                            
-                            
-                        
-                    </div>
-                </div>
-            </nav>
-            <!-- End Navbar -->
-            
+                <section>
+     <header>
+         <a href="#" class="logo">Logo</a>
+         <ul>
+             <li><a href="{{ url('home') }}" class="active">Home</a></li>
+             <li><a href="{{ url('viewquestions') }}">Questions</a></li>
+             <li><a href="{{ url('viewtime') }}">List of Appointments</a></li>
+             <li><a href="{{ url('#') }}">My Appointments</a></li>
+         </ul>
+     </header>
+     <div class="content">
+                    <div class="container-fluid">
+                                <div class="homecard">    
                    
 
                 @endhasrole
