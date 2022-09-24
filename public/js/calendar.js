@@ -43,6 +43,16 @@ generateCalendar = (month, year) => {
         }
         calendar_days.appendChild(day)
     }
+
+    // if(currDate < 10){
+    //   currDate = '0' + currDate;
+    // }
+    // if( curr_month < 10){
+    //   curr_month = '0' + curr_month;
+    // }
+    // var minDate = currDate;
+    
+    // document.getElementById("hide").setAttribute('min', minDate)
 }
 
 
@@ -83,13 +93,6 @@ document.querySelector('#prev-year').onclick = () => {
 document.querySelector('#next-year').onclick = () => {
     ++curr_year.value
     generateCalendar(curr_month.value, curr_year.value)
-}
-
-let dark_mode_toggle = document.querySelector('.dark-mode-switch')
-
-dark_mode_toggle.onclick = () => {
-    document.querySelector('body').classList.toggle('light')
-    document.querySelector('body').classList.toggle('dark')
 }
 
 function toggle(idd){

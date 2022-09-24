@@ -8,9 +8,10 @@
              <li><a href="{{ url('home') }}">Home</a></li>
              <li><a href="{{ url('exams_history') }}">Exam History</a></li>
              <li><a href="{{ url('stdntappointment') }}"class="active">Appointment</a></li>
-             <li><a href="{{ url('appointment_history') }}">Appointment History</a></li>
+             <li><a href="{{ url('appointment_history') }}">My Appointments</a></li>
          </ul>
      </header>
+     @include('partials.alerts')
 <body class="light">
     <center>
 <div class="calendarcontainer">
@@ -37,13 +38,11 @@
                 <div>Fri</div>
                 <div>Sat</div>
             </div>
-            <div class="calendar-days"></div>
+            <div class="calendar-days" id ="hide"></div>
         </div>
         <div class="month-list"></div>
         </div>
     </div>
-
-
     <div id="popup">
         <h2><div><center>Description</center></div></h2>
         <div id="appointmentDate"></div>
@@ -51,9 +50,8 @@
         <h3><div><center>Want to make an Appointment ?</center></div></h3>
         <form method="post" action="stdntappointment">
         @csrf
-        <label>Date</label>
-        <input type="text" name="date" id="appointdate">
-        <p>Please select Time: <p>
+        <input type="hidden" name="date" id="appointdate"><br>
+        <label>Time: </label>
         <select name="time">
         <!-- <optgroup>Morning</optgroup> -->
       <option value="9:00-10:00 AM">9:00-10:00 AM</option>
@@ -64,12 +62,13 @@
       <option value="2:00-3:00 PM">2:00-3:00 PM</option>
       <option value="3:00-4:00 PM">3:00-4:00 PM</option>
     </select>
-  </label>
+    <br>
+  <input readonly="readonly" type="hidden" name="status" value="Pending">
+  <br>
   <button type="submit">Submit</button>
 </form>
 
         <div onclick="toggle()"><center>Close</center></div>
-        <p>List of Students</p>
     </div>
     
     

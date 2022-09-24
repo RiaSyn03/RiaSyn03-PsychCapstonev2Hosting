@@ -2758,19 +2758,18 @@ Copyright (c) 2015 Daniel Eden
     overflow: visible;
 }
 
-.card {
+.wellnesscard{
     
     position:absolute;
-    right:8%;
+    left:25%;
     top:30%;
     border-radius: 20px;
     background: rgba(255, 255, 255,0.2);
+    box-shadow: 10px 5px 20px #A45EE5;
     margin-bottom: 30px;
-    max-width: 2000px;
-    display: flex;
-    flex-wrap: wrap;
+    max-width: 1000px;
     flex-direction: row;
-    max-height: fit-content;
+    height: 800px;
     
 }
 .admincard {
@@ -2795,6 +2794,7 @@ Copyright (c) 2015 Daniel Eden
     top:30%;
     border-radius: 20px;
     background: rgba(255, 255, 255,0.2);
+    box-shadow: 10px 5px 20px #A45EE5;
     margin-bottom: 30px;
     max-width: 2000px;
     display: flex;
@@ -2803,20 +2803,54 @@ Copyright (c) 2015 Daniel Eden
     height: 1800px;
     
 }
-
-.examscard {
+.councilourcard {
     
     position:absolute;
-    left:20%;
+    right: 20%;
     top:30%;
     border-radius: 20px;
     background: rgba(255, 255, 255,0.2);
+    box-shadow: 10px 5px 20px #A45EE5;
     margin-bottom: 30px;
     max-width: 2000px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    height: 600px;
+    
+}
+
+.examscard {
+    
+    position:absolute;
+    left:10%;
+    top:30%;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.658);
+    box-shadow: 10px 5px 20px #A45EE5;
+    margin-bottom: 30px;
+    width: 1300px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     max-height: max-content;
+    
+}
+
+.questioncard {
+    
+    position:absolute;
+    left:25%;
+    top:30%;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.658);
+    box-shadow: 10px 5px 20px #A45EE5;
+    margin-bottom: 30px;
+    width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: 1000px;
     
 }
 
@@ -6304,4 +6338,696 @@ max-height: 400px;
     background: #ff0052;
     cursor: pointer;
     font-size: 15px;
+}
+
+.examcard#blur.active {
+    filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
+}
+
+.wrapper#blur.active {
+    filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
+}
+
+#not-stressmodal
+{
+    position: fixed;
+    top: 20%;
+    left: 50%; 
+    transition: translate(-50%,-50%);
+    width: 600px;
+    padding: 50px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+#not-stressmodal.active
+{
+    top: 40%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.not-stressmodal, .not-stress-face, .back-face {
+    position: absolute;
+}
+
+.not-stresscard {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 500px;
+    width: 700px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    box-shadow: 10px 5px 20px #4EC6DE;
+}
+
+.not-stresscard .not-stress-face,
+.not-stresscard .back-face {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: url("../img/none.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+}
+.not-stresscard .back-face {
+    transform: rotateY(180deg);
+    background: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.not-stresscard .back-face h2 {
+    margin-top: 40%;
+    color: #ffffff;
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+
+.not-stresscard .back-face p {
+    margin-top: 6px;
+    color: #dddddd;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.not-stresscard .back-face .icons {
+    margin-top: 30px;
+}
+
+.not-stresscard .back-face .icons i {
+    cursor: pointer;
+    color: #d74039;
+    background: #ffffff;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.not-stresscard:hover > .back-face {
+    transform: rotateY(0deg);
+}
+
+.not-stresscard:hover > .not-stress-face {
+    transform: rotateY(-180deg);
+}
+
+
+#stressmodal
+{
+    position: fixed;
+    top: 20%;
+    left: 50%; 
+    transition: translate(-50%,-50%);
+    width: 600px;
+    padding: 50px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+#stressmodal.active
+{
+    top: 40%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.stressmodal, .stress-face, .back-face {
+    position: absolute;
+}
+
+.stresscard {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 500px;
+    width: 700px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    box-shadow: 10px 5px 20px #4EC6DE;
+}
+
+.stresscard .stress-face,
+.stresscard .back-face {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: url("../img/mild.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+}
+
+.stresscard .back-face {
+    transform: rotateY(180deg);
+    background: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.stresscard .back-face h2 {
+    margin-top: 40%;
+    color: #ffffff;
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+
+.stresscard .back-face p {
+    margin-top: 6px;
+    color: #dddddd;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.stresscard .back-face .icons {
+    margin-top: 30px;
+}
+
+.stresscard .back-face .icons i {
+    cursor: pointer;
+    color: #d74039;
+    background: #ffffff;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.stresscard:hover > .back-face {
+    transform: rotateY(0deg);
+}
+
+
+.stresscard:hover > .stress-face {
+    transform: rotateY(-180deg);
+}
+
+#super-stressmodal
+{
+    position: fixed;
+    top: 20%;
+    left: 50%; 
+    transition: translate(-50%,-50%);
+    width: 600px;
+    padding: 50px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+#super-stressmodal.active
+{
+    top: 40%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.super-stressmodal, .not-stress-face, .back-face {
+    position: absolute;
+}
+
+.super-stresscard {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 500px;
+    width: 700px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    box-shadow: 10px 5px 20px #4EC6DE;
+}
+
+.super-stresscard .super-stress-face,
+.super-stresscard .back-face {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: url("../img/moderate.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+}
+.super-stresscard .back-face {
+    transform: rotateY(180deg);
+    background: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.super-stresscard .back-face h2 {
+    margin-top: 40%;
+    color: #ffffff;
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+
+.super-stresscard .back-face p {
+    margin-top: 6px;
+    color: #dddddd;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.super-stresscard .back-face .icons {
+    margin-top: 30px;
+}
+
+.super-stresscard .back-face .icons i {
+    cursor: pointer;
+    color: #d74039;
+    background: #ffffff;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.super-stresscard:hover > .back-face {
+    transform: rotateY(0deg);
+}
+
+.super-stresscard:hover > .super-stress-face {
+    transform: rotateY(-180deg);
+}
+
+#moderately-severe-stressmodal
+{
+    position: fixed;
+    top: 20%;
+    left: 50%; 
+    transition: translate(-50%,-50%);
+    width: 600px;
+    padding: 50px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+#moderately-severe-stressmodal.active
+{
+    top: 40%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.moderately-severe-stressmodal, .moderately-severe-face, .back-face {
+    position: absolute;
+}
+
+.moderately-severe-stresscard {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 500px;
+    width: 700px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    box-shadow: 10px 5px 20px #4EC6DE;
+}
+
+.moderately-severe-stresscard .moderately-severe-face,
+.moderately-severe-stresscard .back-face {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: url("../img/moderately-severe.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+}
+.moderately-severe-stresscard .back-face {
+    transform: rotateY(180deg);
+    background: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.moderately-severe-stresscard .back-face h2 {
+    margin-top: 40%;
+    color: #ffffff;
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+
+.moderately-severe-stresscard .back-face p {
+    margin-top: 6px;
+    color: #dddddd;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.moderately-severe-stresscard .back-face .icons {
+    margin-top: 30px;
+}
+
+.moderately-severe-stresscard .back-face .icons i {
+    cursor: pointer;
+    color: #d74039;
+    background: #ffffff;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.moderately-severe-stresscard:hover > .back-face {
+    transform: rotateY(0deg);
+}
+
+.moderately-severe-stresscard:hover > .moderately-severe-face {
+    transform: rotateY(-180deg);
+}
+
+
+
+
+
+.examscard td p
+{
+    font-family: sans-serif;
+    font-size: large;
+    color: black;
+    font-weight: bold;
+    
+    
+}
+
+#severe-stressmodal
+{
+    position: fixed;
+    top: 20%;
+    left: 50%; 
+    transition: translate(-50%,-50%);
+    width: 600px;
+    padding: 50px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+#severe-stressmodal.active
+{
+    top: 40%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.severe-stressmodal, .severe-face, .back-face {
+    position: absolute;
+}
+
+.severe-stresscard {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 500px;
+    width: 700px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    box-shadow: 10px 5px 20px #4EC6DE;
+}
+
+.severe-stresscard .severe-face,
+.severe-stresscard .back-face {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: url("../img/severe.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+}
+.severe-stresscard .back-face {
+    transform: rotateY(180deg);
+    background: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.severe-stresscard .back-face h2 {
+    margin-top: 40%;
+    color: #ffffff;
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+
+.severe-stresscard .back-face p {
+    margin-top: 6px;
+    color: #dddddd;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.severe-stresscard .back-face .icons {
+    margin-top: 30px;
+}
+
+.severe-stresscard .back-face .icons i {
+    cursor: pointer;
+    color: #d74039;
+    background: #ffffff;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.severe-stresscard:hover > .back-face {
+    transform: rotateY(0deg);
+}
+
+.severe-stresscard:hover > .severe-face {
+    transform: rotateY(-180deg);
+}
+
+
+.calendar#blur.active {
+    filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
+}
+#popup
+{
+    position: fixed;
+    top: 30%;
+    left: 3%; 
+    transition: translate(-50%,-50%);
+    width: 850px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0,0,0, .30);
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+#popup.active
+{
+    top: 20%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+#popup2
+{
+    position: fixed;
+    top: 30%;
+    left: 3%; 
+    transition: translate(-50%,-50%);
+    width: 850px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0,0,0, .30);
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+#popup2.active
+{
+    top: 20%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+#popup3
+{
+    position: fixed;
+    top: 30%;
+    left: 3%; 
+    transition: translate(-50%,-50%);
+    width: 850px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0,0,0, .30);
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+#popup3.active
+{
+    top: 20%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.not-stresscard .introvert-face
+ {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: url("../img/introvert.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+}
+
+.not-stresscard:hover > .introvert-face {
+    transform: rotateY(-180deg);
+}
+
+.not-stressmodal, .introvert-face, .back-face {
+    position: absolute;
+}
+
+.stresscard .ambivert-face{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: url("../img/ambivert.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+}
+
+
+.stresscard:hover > .ambivert-face {
+    transform: rotateY(-180deg);
+}
+
+.stressmodal, .ambivert-face, .back-face {
+    position: absolute;
+}
+
+.super-stresscard .extrovert-face
+{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: url("../img/extrovert.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+}
+
+
+.super-stresscard:hover > .extrovert-face {
+    transform: rotateY(-180deg);
+}
+
+.super-stressmodal, .extrovert-face, .back-face {
+    position: absolute;
+}
+
+.not-stresscard .linguistic-face
+ {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: url("../img/linguistic.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+}
+
+.not-stresscard:hover > .linguistic-face {
+    transform: rotateY(-180deg);
+}
+
+.not-stressmodal, .linguistic-face, .back-face {
+    position: absolute;
+}
+
+.stresscard .kinesthetic-face{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: url("../img/kinesthetic.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+}
+
+
+.stresscard:hover > .kinesthetic-face {
+    transform: rotateY(-180deg);
+}
+
+.stressmodal, .kinesthetic-face, .back-face {
+    position: absolute;
+}
+
+.super-stresscard .visual-face
+{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: url("../img/visual.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+}
+
+
+.super-stresscard:hover > .visual-face {
+    transform: rotateY(-180deg);
+}
+
+.super-stressmodal, .visual-face, .back-face {
+    position: absolute;
 }

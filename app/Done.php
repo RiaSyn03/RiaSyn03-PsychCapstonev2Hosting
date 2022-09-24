@@ -4,10 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Listofappointment extends Model
+class Done extends Model
 {
     protected $fillable = [
         'id' ,
-        'time' ,
+        'user_id', 
+        'status',
+        'time',
+        'date',
+        'councilour_name',
          ];
 }

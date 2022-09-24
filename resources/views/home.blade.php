@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-         @hasrole('admin')
+@hasrole('admin')
         <div class="container">
         <div class="row justify-content-center">
                 <div class="admincard">
@@ -19,7 +19,7 @@
                 <div class="adminicon">02</div>
                 <div class="admincontent">
                 <h3>Add Users</h3>
-                 <div class="managebtn"><a href="{{ route('register') }}">Add User</div></a>
+                 <div class="managebtn"><a href="#">Add User</div></a>
                 </div>
                 </div>
                 </div>
@@ -34,7 +34,7 @@
              <li><a href="{{ url('home') }}" class="active">Home</a></li>
              <li><a href="{{ url('exams_history') }}">Exam History</a></li>
              <li><a href="{{ url('stdntappointment') }}">Appointment</a></li>
-             <li><a href="{{ url('appointment_history') }}">Appointment History</a></li>
+             <li><a href="{{ url('appointment_history') }}">My Appointments</a></li>
          </ul>
      </header>
      <div class="content">
@@ -59,7 +59,6 @@
         <div class="cardcontainer">        
         <div class="card-body"> 
             <center><img src="{{ asset('img/exams.png') }}"></center>
-      
                 <div class="card2">
                         <div class="imgBox">
                             <img src="{{ asset('img/stresslogo.png') }}">
@@ -137,12 +136,17 @@
              <li><a href="{{ url('home') }}" class="active">Home</a></li>
              <li><a href="{{ url('viewquestions') }}">Questions</a></li>
              <li><a href="{{ url('viewtime') }}">List of Appointments</a></li>
-             <li><a href="{{ url('#') }}">My Appointments</a></li>
+             <li><a href="{{ url('myfinishappointments') }}">Completed Appointments</a></li>
          </ul>
      </header>
      <div class="content">
                     <div class="container-fluid">
-                                <div class="homecard">    
+                                <div class="councilourcard">    
+                                <canvas id="pie-chart" width="800" height="400"></canvas>
+                                <input type="hidden" id="accept" value="{{$accept}}"/>
+                                <input type="hidden" id="pending" value="{{$pending}}"/>
+                                <input type="hidden" id="total" value="{{$total}}"/>
+                                <script src="js/piechart.js"></script>
                    
 
                 @endhasrole

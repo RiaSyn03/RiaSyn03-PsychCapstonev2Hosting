@@ -8,33 +8,33 @@
              <li><a href="{{ url('home') }}">Home</a></li>
              <li><a href="{{ url('exams_history') }}" class="active">Exam History</a></li>
              <li><a href="{{ url('stdntappointment') }}">Appointment</a></li>
-             <li><a href="{{ url('appointment_history') }}">Appointment History</a></li>
+             <li><a href="{{ url('appointment_history') }}">My Appointments</a></li>
          </ul>
      </header>
      <div class="examscard">          
                 <div class="card-body"> 
                 <table class="table table-striped">
+               
    <thead>
    <div class="panel-body">
    <tr>
-<td>Exam Id</td>
-<td>User Id</td>
-<td>Exam Result </td>
-<td>Date</td>
-<td>Action </td>
+   <th colspan="3"><center><h2>Exams History</h2></center></th>
+</tr>
+   <tr>
+<td><center>Exam Result </center></td>
+<td><center>Date & Time</center></td>
+<td><center>Action </center></td>
 </tr>
   </thead>
   <tbody id="dynamic-row">
   @foreach($myexams as $examhistory)
 <tr>
-<td><input type="text" name="id" value="{{ $examhistory->id }}" ></td>
-<td><input type="text" name="user_id" value="{{ $examhistory->user_id }}" ></td>
-<td><input type="text" name="result_name" value="{{ $examhistory->result_name }} "></td>
-<td><input type="text" name="created_at" value="{{ $examhistory->created_at }} "></td>
-<td>
-  <a href="" class="float-left">
+
+<td><center><p>{{ $examhistory->result_name }}</p></center></td>
+<td><center><p>{{ $examhistory->created_at }}<p></center></td>
+<td><center>
   <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
-    </td> 
+</center></td> 
 </tr>
   @endforeach
   </tbody>

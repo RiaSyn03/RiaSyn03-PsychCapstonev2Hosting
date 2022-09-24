@@ -94,48 +94,73 @@ Route::get('/exams_history', function () {
 
 Auth::routes();
 
+// Admin //
+Route::post('/index','Admin\UserController@create')->name('index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/account/activate/{token}', 'AccountController@activate');
-Route::resource('/questions','Councilour\QuestionController', ['except' => ['show', 'edit', 'update']]);
-Route::resource('/listofstudent', 'Councilour\ListofStudents', ['except' => ['show', 'create', 'store']]);
-Route::get('/viewtime', 'Councilour\Appointmentlist@index')->name('viewtime');
-Route::resource('/listofapprovedappointments','Myapprovedappointments', ['except' => ['show', 'edit', 'update']]);
-Route::get('/listofapprovedappointments', 'Myapprovedappointments@index')->name('listofapprovedappointments');
-Route::post('/stdntappointment', 'Councilour\Appointmentlist@store')->name('stdntappointment');
-Route::get('/appointment_history', 'Councilour\Appointmentlist@show')->name('appointment_history');
-Route::get('/viewquestions', 'Councilour\QuestionController@index')->name('viewquestions');
-Route::get('/stress_exam', 'Councilour\QuestionController@stress')->name('stress_exam');
-Route::get('/exams_history', 'Councilour\QuestionController@showexam')->name('exams_history');
-
-Route::get('/learner_exam', 'Councilour\QuestionController@learner')->name('learner_exam');
-Route::get('/personality_exam', 'Councilour\QuestionController@personality')->name('personality_exam');
-Route::post('/viewquestions', 'Councilour\QuestionController@create')->name('viewquestions');
-Route::post('/stress_exam', 'Councilour\QuestionController@store')->name('stress_exam');
-
-
-
-Route::post('/stdnttime', 'Councilour\Appointmentlist@store',['except'=>['show','create','store']])->name('stdnttime');
-Route::get('/admin/users/student/questionaire', 'StudentquestionaireController@index')->name('questionaire');
-
-
-
 Route::get('/index', function(){
     return view('admin.users');
 }) ->middleware(['auth', 'auth.admin']);
 Route::get('/admin/users', 'LiveSearch@index');
 Route::post('/admin/users/index/action', 'LiveSearch@action')->name('admin.users.index.action');
 Route::post('/admin/users/student/stdntbook', 'BookingController@index')->name('admin.users.student.stdntbook');
-
 Route::namespace('Admin') ->prefix('admin')->middleware(['auth', 'auth.admin']) ->name('admin.')->group(function(){
 Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
 Route::get('/impersonate/user/{id}', 'ImpersonateController@index')->name('impersonate');
-
 });
-Route::delete('/appointment-delete/{id}', 'Councilour\Appointmentlist@destroy');
-Route::delete('/question-delete/{id}', 'Councilour\QuestionController@destroy');
-
 Route::get('/admin/impersonate/destroy', 'Admin\ImpersonateController@destroy')->name('admin.impersonate.destroy');
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/index','HomeController@adminregister')->name('adminregister');
+
+//Counselour//
+Route::resource('/questions','Councilour\QuestionController', ['except' => ['show', 'edit', 'update']]);
+Route::resource('/listofstudent', 'Councilour\ListofStudents', ['except' => ['show', 'create', 'store']]);
+Route::get('/viewtime', 'Councilour\Appointmentlist@index')->name('viewtime');
+Route::post('/viewtime', 'Councilour\Appointmentlist@done')->name('viewtime');
+Route::get('/viewquestions', 'Councilour\QuestionController@index')->name('viewquestions');
+Route::get('/listofapprovedappointments', 'Myapprovedappointments@index')->name('listofapprovedappointments');
+Route::get('/change-status/{id}', 'Councilour\Appointmentlist@status')->name('changestatus');
+Route::post('/viewquestions', 'Councilour\QuestionController@create')->name('viewquestions');
+Route::delete('/question-delete/{id}', 'Councilour\QuestionController@destroy');
+Route::get('/myfinishappointments', 'Councilour\Appointmentlist@finishappointments')->name('myfinishappointments');
+Route::get('/home', 'Councilour\Appointmentlist@percentage')->name('home');
+
+//Student//
+Route::post('/stdntappointment', 'Councilour\Appointmentlist@store')->name('stdntappointment');
+Route::get('/appointment_history', 'Councilour\Appointmentlist@show')->name('appointment_history');
+Route::get('/stress_exam', 'Councilour\QuestionController@stress')->name('stress_exam');
+Route::post('/stress_exam', 'Councilour\QuestionController@store')->name('stress_exam');
+Route::get('/personality_exam', 'Councilour\QuestionController@personality')->name('personality_exam');
+Route::post('/personality_exam', 'Councilour\QuestionController@pstore')->name('personality_exam');
+Route::get('/exams_history', 'Councilour\QuestionController@showexam')->name('exams_history');
+Route::get('/learner_exam', 'Councilour\QuestionController@learner')->name('learner_exam');
+Route::post('/learner_exam', 'Councilour\QuestionController@lstore')->name('learner_exam');
+Route::get('/exam_result', 'Councilour\QuestionController@result')->name('exam_result');
+Route::post('/exam_result', 'Councilour\QuestionController@store')->name('exam_result');
+Route::post('/stdnttime', 'Councilour\Appointmentlist@store',['except'=>['show','create','store']])->name('stdnttime');
+Route::get('/admin/users/student/questionaire', 'StudentquestionaireController@index')->name('questionaire');
+Route::delete('/appointment-delete/{id}', 'Councilour\Appointmentlist@destroy');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

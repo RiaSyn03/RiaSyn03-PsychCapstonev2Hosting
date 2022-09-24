@@ -9,6 +9,7 @@ class Timeslot extends Model
     protected $fillable = [
         'id' ,
         'user_id', 
+        'status',
         'time',
         'date',
          ];

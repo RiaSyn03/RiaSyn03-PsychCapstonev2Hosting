@@ -58,7 +58,8 @@ class UserController extends Controller
     if ($request->has('permissions')){
         $user->givePermissionTo(collect($request->permissions)->pluck('id')->toArray());
     }
-    return response(['message'=>'User Created', 'user'=>$user]);
+    // return response(['message'=>'User Created', 'user'=>$user]);
+    return redirect()->route('index')->with('success','Student Added');
     
 }
 

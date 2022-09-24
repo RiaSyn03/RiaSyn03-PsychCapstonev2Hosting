@@ -10,7 +10,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
             <div class="title">Registration</div>
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('adminregister') }}">
                         @csrf
                     <div class="user-details">
                     <div class="input-box">

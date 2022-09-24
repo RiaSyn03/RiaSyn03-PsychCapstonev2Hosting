@@ -26,6 +26,10 @@ class HomeController extends Controller
         
         return view('home');
     }
-
+    public function adminregister()
+    {
+        
+        return view('admin.users.adminregister');
+    }
 
 }

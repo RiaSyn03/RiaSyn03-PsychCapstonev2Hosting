@@ -1,49 +1,51 @@
 @extends('layouts.app')
 @section('content')
-<a href="{{ url('home') }}">
-<button class="complete" style="postion:left">Go Back</button></a>
-</div>
-<div class="container">
-        <div class="row justify-content-center">
-        <div class="card">
-        <div class="container-fluid">
+<section>
+     <header>
+         <a href="#" class="logo">Logo</a>
+         <ul>
+             <li><a href="{{ url('home') }}">Home</a></li>
+             <li><a href="{{ url('exams_history') }}">Exam History</a></li>
+             <li><a href="{{ url('stdntappointment') }}">Appointment</a></li>
+             <li><a href="{{ url('appointment_history') }}">My Appointments</a></li>
+         </ul>
+     </header>
+     <div class="content">
+                    <div class="container-fluid">
+                     <div class="wellnesscard"> 
         <center><img src="{{ asset('img/wellness.png') }}"></center>
         <div class="wellnessrow">
             <div class="wellnesscol-3">
                 <div class="wellnessbox">
                     <div class="wellnessinfo">
                         <div class="wellnessinfo-inner">
-                            <h4>Leigh Hunt</h4>
-                            <i> The groundwork for all happiness is good health. </i>  
+                            
+                            <i> Talking about your feelings isn’t a sign of weakness. It’s part of taking charge of your well-being and doing what you can to stay healthy. </i>  
                         </div>
                         <br>
                         <br>
                     </div>
-                    <div class ="wellnessbutton" button>Read Me!</div>
+                    <div class ="wellnessbutton" button>Talk about your feelings</div>
                 </div>
                 </div>
                 <div class="wellnesscol-3">
                 <div class="wellnessbox">
                     <div class="wellnessinfo">
                         <div class="wellnessinfo-inner">
-                        <h4>Leigh Hunt</h4>
-                            <i> The four keys to good health: a working digestive system, an alkaline body, low stress, and a joyful state of being. </i>
-                            <p>heelloo</p>
+                            <i> Exercise also keeps the brain and your other vital organs healthy.</i>
                         </div>
                     </div>
-                    <div class ="wellnessbutton" button>Read Me!</div>
+                    <div class ="wellnessbutton" button>Keep active</div>
                 </div>
                 </div>
                 <div class="wellnesscol-3">
                 <div class="wellnessbox">
                     <div class="wellnessinfo">
                         <div class="wellnessinfo-inner">
-                            <h4>Wellness</h4>
-                            <i> The higher your energy level, the more efficient your body. The more efficient your body, the better you feel and the more you will use your talent to produce outstanding results.  </i>
-                            <p> Anthony Robbins</p>
+                            <i> Your brain needs a mix of nutrients to stay healthy and function well, just like the other organs in your body.</i>
                         </div>
                     </div>
-                    <div class ="wellnessbutton" button>Read Me!</div>
+                    <div class ="wellnessbutton" button>Eat well</div>
                     </div>
                 </div>
                 </div>
@@ -53,38 +55,54 @@
                     <div class="wellnessbox">
                         <div class="wellnessinfo">
                             <div class="wellnessinfo-inner">
-                                <h4>Wellness</h4>
-                                <i> Workout because you love yourself, not because you hate your body. </i>
-                                <p>heelloo</p>
+                                <i> Strong family ties and supportive friends can help you deal with the stresses of life. </i>
                             </div>
                         </div>
-                        <div class ="wellnessbutton" button>Read Me!</div>
+                        <div class ="wellnessbutton" button>Keep in touch</div>
                     </div>
                     </div>
                     <div class="wellnesscol-3">
                         <div class="wellnessbox">
                             <div class="wellnessinfo">
                                 <div class="wellnessinfo-inner">
-                                    <h4>Wellness</h4>
-                                    <i> A healthy lifestyle not only changes your body, it changes your mind, your attitude and your mood. </i>
-                                    <p>heelloo</p>
+                                    <i> If things are getting too much for you and you feel you can’t cope, ask for help.</i>
                                 </div>
                             </div>
-                            <div class ="wellnessbutton" button>Read Me!</div>
+                            <div class ="wellnessbutton" button>Ask for help</div>
                         </div>
                         </div>
                         <div class="wellnesscol-3">
                             <div class="wellnessbox">
                                 <div class="wellnessinfo">
                                     <div class="wellnessinfo-inner">
-                                        <h4>Wellness</h4>
-                                        <i> Whatever it takes, you are worth it. Eat food that nourishes your body. Get up and move every day. Treat your mind and body with love and respect. Not next month. Not tomorrow. Today. </i>
-                                        <p>heelloo</p>
+                                        <i> A change of scene or a change of pace is good for your mental health.</i>
                                     </div>
                                 </div>
-                                <div class ="wellnessbutton" button>Read Me!</div>
+                                <div class ="wellnessbutton" button>Take a break</div>
                             </div>
                             </div>
+                            </div>
+                            <div class="wellnessrow">
+                            <div class="wellnesscol-3">
+                        <div class="wellnessbox">
+                            <div class="wellnessinfo">
+                                <div class="wellnessinfo-inner">
+                                    <i> Doing an activity you enjoy probably means you’re good at it and achieving something boosts your self-esteem.</i>
+                                </div>
+                            </div>
+                            <div class ="wellnessbutton" button>Do something you're good at</div>
+                        </div>
+                        </div>
+                        <div class="wellnesscol-3">
+                        <div class="wellnessbox">
+                            <div class="wellnessinfo">
+                                <div class="wellnessinfo-inner">
+                                    <i>Relaxing is one of those things that's easy to say and harder to do. Unwinding and staying calm can take practice.</i>
+                                </div>
+                            </div>
+                            <div class ="wellnessbutton" button>Write Down Ways to Relax</div>
+                        </div>
+                        </div>
                          </div>
                          </div>
                          
