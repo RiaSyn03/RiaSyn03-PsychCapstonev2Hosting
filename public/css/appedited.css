@@ -1,20 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
-.studentbody
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    
-}
 section
 {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 300vh;
-    background-color: #8EC5FC;
-    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%); 
+    background: #2786b3;
+    opacity: 100% ;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -53,7 +45,7 @@ header
     border-top: 1px solid rgba(255, 255, 255, 0.5);
     border-left: 1px solid rgba(255, 255, 255, 0.5);
 }
-header .logo
+header .logo 
 {
     color: #8a2435;
     font-weight: 700;
@@ -72,17 +64,37 @@ header ul li
 }
 header ul li a
 {
+  
     text-decoration: none;
-    font-weight: 500;
-    color: #8a2435;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #ff4584 ;
     padding: 8px 15px;
     border-radius: 25px;
+    background: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
 }
+
+/* {
+  color: #607d8b;
+  font-weight: 600;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-bottom: 4px solid #ff4584 ;
+  display: inline-block;
+  letter-spacing: 1px;
+} */
+
+
 header ul li a:hover,
 header ul li a.active
 {
-    background: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+    background: #ff4584;
+    text-decoration: none;
+    color: #fff;
+    
 }
 
 .imgBx img
@@ -131,7 +143,7 @@ header ul li a.active
 
 thead
 {
-    background-color:#A45EE5;
+    background-color:#2786b3;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     font-size: x-large;
@@ -169,11 +181,16 @@ th h2
 }
 
 .tabbed > input {
+  
   display: none;
 }
 
 .tabbed > label {
   display: block;
+  color: #ff4584;
+  font-weight: 600;
+  font-size: 1em;
+  text-transform: uppercase;
   float: left;
   padding: 12px 20px;
   margin-right: 5px;
@@ -183,7 +200,7 @@ th h2
 
 .tabbed > label:hover,
 .tabbed > input:checked + label {
-  background: #4EC6DE;
+  background: white;
 }
 
 .tabs {
@@ -196,7 +213,7 @@ th h2
   position: absolute;
   background: rgba(255, 255, 255, 0.658);
   border-radius: 20px;
-  box-shadow: 10px 5px 20px #A45EE5;
+  box-shadow: 10px 5px 20px #3caadc;
   padding: 10px 30px 40px;
   line-height: 1.4em;
   opacity: 0;
@@ -231,4 +248,109 @@ th h2
     border-bottom: 2px solid #4EC6DE;
     padding-bottom: .5em;
   }
+}
+
+.aboutus {
+  position: absolute;
+  bottom: 50%;
+  left: 40%;
+}
+.aboutus h1{
+    color: #607d8b;
+    font-weight: 600;
+    font-size: 3.5em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #ff4584 ;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+.description
+{
+  position: absolute;
+  bottom: 40%;
+  left: 10%;
+  margin-right: 10%;
+}
+
+.description2
+{
+  position: absolute;
+  bottom: 28%;
+  left: 10%;
+  margin-right: 10%;
+}
+.description3
+{
+  position: absolute;
+  bottom: 16%;
+  left: 10%;
+  margin-right: 10%;
+}
+.description4
+{
+  position: absolute;
+  bottom: 4%;
+  left: 10%;
+  margin-right: 10%;
+}
+.description h4
+{
+  color: #607d8b;
+    font-weight: 600;
+    font-size: 2.0em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+
+}
+.description2 h4
+{
+  color: #607d8b;
+  font-weight: 600;
+  font-size: 2.0em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+
+}
+.description3 h4
+{
+  color: #607d8b;
+  font-weight: 600;
+  font-size: 2.0em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+
+}
+.description4 h4
+{
+  color: #607d8b;
+  font-weight: 600;
+  font-size: 2.0em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+
+}
+.description p
+{
+  font-size: 18px;
+    display: inline;
+}
+.description2 p
+{
+  font-size: 18px;
+    display: inline;
+}
+.description3 p
+{
+  font-size: 18px;
+    display: inline;
+}
+.description4 p
+{
+  font-size: 18px;
+    display: inline;
 }

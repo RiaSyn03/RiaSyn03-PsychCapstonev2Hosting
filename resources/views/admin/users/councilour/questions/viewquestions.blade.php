@@ -10,17 +10,15 @@
          <li><a href="{{ url('home') }}">Home</a></li>
              <li><a href="{{ url('viewquestions') }}"class="active">Questions</a></li>
              <li><a href="{{ url('viewtime') }}" >List of Appointments</a></li>
-             <li><a href="{{ url('myfinishappointments') }}">Completed Appointments</a></li>
          </ul>
      </header>
      @include('partials.alerts')     
                 <div class="card-body"> 
                 <div class="tabbed">
     <input type="radio" name="tabs" id="tab-nav-1" checked>
-    <label for="tab-nav-1">Stress Scale</label>
+    <label for="tab-nav-1"> Stress Scale</label>
     <input type="radio" name="tabs" id="tab-nav-2">
     <label for="tab-nav-2">Personality</label>
-    
     <input type="radio" name="tabs" id="tab-nav-3">
     <label for="tab-nav-3">Learners</label>
     <div class="tabs">

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Approvedappointment;
+use App\Course;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -23,12 +27,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-        return view('home');
+        $users = User::all();
+        $nousers = User::count();
+        $appointments = Approvedappointment::count();
+        $numcourses = Course::count();
+        return view('home', compact('users', 'nousers', 'appointments', 'numcourses'));
     }
     public function adminregister()
     {
-        
         return view('admin.users.adminregister');
     }
 

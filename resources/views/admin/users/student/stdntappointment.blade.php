@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<link href="{{ asset('css/calendar.css') }}" rel="stylesheet">`
+<link href="{{ asset('css/calendar.css') }}" rel="stylesheet">
 <section>
      <header>
          <a href="#" class="logo">Logo</a>

@@ -16,7 +16,7 @@
 
     --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
-    --font-family: cursive;
+    --font-family: Sans-serif;
 }
 
 .dark {
@@ -80,6 +80,8 @@ body {
     font-weight: 600;
     color: var(--color-txt);
     padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .calendar-body {

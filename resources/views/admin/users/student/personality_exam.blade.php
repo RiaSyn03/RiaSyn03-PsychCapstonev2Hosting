@@ -46,9 +46,9 @@
 <input type="hidden" id="result_name" name="result_name" value=""/> 
 <br><br><br>    <br><br><br>
 <center>
-<h3>Personality Level: 0-10 Introvert, 11-20 Ambivert, 21-40 Extrovert</h3>
+
 <br><br>
-<button class="resultbutton" type="button" onclick="calculate()">Get Result</button>
+<button class="resultbtn" type="button" onclick="calculate()">Get Result</button>
 
 </center>
 
@@ -60,8 +60,9 @@
             <div class="not-stresscard" id="not-stresscard">
                 <div class="introvert-face"></div>
                 <div class="back-face">
+                <h3>Personality Level: 0-10 Introvert, 11-20 Ambivert, 21-40 Extrovert</h3>
                 <br><br><br>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
                     <a href="#" onclick="calculate()">close</a>
                    
@@ -72,8 +73,9 @@
             <div class="stresscard" id="stresscard">
                 <div class="ambivert-face"></div>
                 <div class="back-face">
+                <h3>Personality Level: 0-10 Introvert, 11-20 Ambivert, 21-40 Extrovert</h3>
                     <br><br><br>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
                     <a href="#" onclick="calculate()">close</a>
                    
@@ -84,8 +86,9 @@
             <div class="super-stresscard" id="super-stresscard">
                 <div class="extrovert-face"></div>
                 <div class="back-face">
+                <h3>Personality Level: 0-10 Introvert, 11-20 Ambivert, 21-40 Extrovert</h3>
                     <br><br><br>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
                     <a href="#" onclick="calculate()">close</a>
                 </div>

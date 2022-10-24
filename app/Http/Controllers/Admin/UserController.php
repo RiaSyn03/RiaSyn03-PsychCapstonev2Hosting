@@ -23,44 +23,47 @@ class UserController extends Controller
         $userid = User::sum('year');
         $ave = User::avg('year');
         return view('admin.users.index', compact('users', 'numusers', 'userid', 'ave'));
-    
+
 }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
     $request->validate([
         'idnum'=>'required',
         'fname'=>'required',
         'mname'=>'required',
         'lname'=>'required',
-        'course'=>'required',
+        'course_id'=>'nullable',
         'year'=>'required',
         'email'=>'required|email',
-        'password'=>'required', 
-        
+        'password'=>'required',
+
     ]);
     $user = User::create([
         'idnum'=> $request->idnum,
         'fname'=> $request->fname,
         'mname'=> $request->mname,
         'lname'=> $request->lname,
-        'course'=> $request->course,
+        'course_id'=> $request->course,
         'year'=> $request->year,
         'email'=> $request->email,
         'password'=>bcrypt($request->password)
+        
 
     ]);
-    
-    if ($request->has('role')){
-        $user->assignRole($request->role['name']);
-    }
+    $role = Role::select('id')->where('name', 'councilour')->first();
 
-    if ($request->has('permissions')){
-        $user->givePermissionTo(collect($request->permissions)->pluck('id')->toArray());
-    }
-    // return response(['message'=>'User Created', 'user'=>$user]);
-    return redirect()->route('index')->with('success','Student Added');
-    
+     $user->roles()->attach($role);
+
+    // if ($request->has('role')){
+    //     $user->assignRole($request->role['name']);
+    // }
+
+    // if ($request->has('permissions')){
+    //     $user->givePermissionTo(collect($request->permissions)->pluck('id')->toArray());
+    // }
+    return redirect()->route('admin.users.addcouncilour')->with('success','Student Added');
+
 }
 
     /**
@@ -108,7 +111,7 @@ class UserController extends Controller
             return redirect()->route('admin.users.index')->with('warning', 'You are not allowed to delete yourself.');
        }
 
-       
+
        $user = User::find($id);
        if($user){
            $user->roles()->detach();

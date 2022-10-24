@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <link href="{{ asset('css/questions.css') }}" rel="stylesheet">
+<link href="{{ asset('css/piechart.css') }}" rel="stylesheet">
 <section>
      <header>
          <div class="logo">Logo</div>
@@ -49,10 +50,9 @@
 <input type="hidden" id="result_name" name="result_name" value=""/> 
 <br><br><br>    <br><br><br>
 <center>
-<h3>Depression Severity: 0-4 none, 5-9 mild, 10-15 moderate, 16-19 moderately severe, 20-30 severe.</h3>
-<br><br>
-<button class="resultbutton" type="button" onclick="calculate()">Get Result</button>
 
+<br><br>
+<button type="button" class="resultbtn" onclick="calculate()">Get Result</button>
 </center>
 
 <!-- 
@@ -63,8 +63,13 @@
             <div class="not-stresscard" id="not-stresscard">
                 <div class="not-stress-face"></div>
                 <div class="back-face">
+                <div class="chartCard">
+      <div class="chartBox">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
                 <br><br><br>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
                     <a href="#" onclick="calculate()">close</a>
                    
@@ -75,8 +80,13 @@
             <div class="stresscard" id="stresscard">
                 <div class="stress-face"></div>
                 <div class="back-face">
+                <div class="chartCard">
+      <div class="chartBox">
+        <canvas id="myChart2"></canvas>
+      </div>
+    </div>
                     <br><br><br>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
                     <a href="#" onclick="calculate()">close</a>
                    
@@ -87,8 +97,13 @@
             <div class="super-stresscard" id="super-stresscard">
                 <div class="super-stress-face"></div>
                 <div class="back-face">
+                <div class="chartCard">
+      <div class="chartBox">
+        <canvas id="myChart3"></canvas>
+      </div>
+    </div>
                     <br><br><br>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
                     <a href="#" onclick="calculate()">close</a>
                     
@@ -99,8 +114,13 @@
             <div class="moderately-severe-stresscard" id="moderately-severe-stresscard">
                 <div class="moderately-severe-face"></div>
                 <div class="back-face">
+                <div class="chartCard">
+      <div class="chartBox">
+        <canvas id="myChart4"></canvas>
+      </div>
+    </div>
                     <br><br><br>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
                     <a href="#" onclick="calculate()">close</a>
                    
@@ -111,8 +131,13 @@
             <div class="severe-stresscard" id="severe-stresscard">
                 <div class="severe-face"></div>
                 <div class="back-face">
+                <div class="chartCard">
+      <div class="chartBox">
+        <canvas id="myChart5"></canvas>
+      </div>
+    </div>
                     <br><br><br>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
                     <a href="#" onclick="calculate()">close</a>
                    
@@ -122,8 +147,10 @@
         </form>
   <input type="hidden" value="{{$questioncount}}" id="noquestions" name="noquestions"/><br>
 </section>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/piechart.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  
-
+  
   <script>
   function calculate(){
 $(":radio")

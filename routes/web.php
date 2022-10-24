@@ -1,4 +1,5 @@
 <?php
+use illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
         return view('welcome');
@@ -30,18 +31,6 @@ Route::get('/wellness', function () {
 
 Route::get('/stdntappointment', function () {
     return view('admin.users.student.stdntappointment');
-});
-
-Route::get('/stdntbook', function () {
-    return view('admin.users.student.stdntbook');
-});
-
-Route::get('/stdntbooked', function () {
-    return view('admin.users.student.stdntbooked');
-});
-
-Route::get('/allstdntbooked.', function () {
-    return view('admin.users.student.allstdntbooked');
 });
 
 Route::get('/stdnttime', function () {
@@ -79,17 +68,34 @@ Route::get('/editquestionaire', function () {
     return view('admin.users.councilour.questions.editquestion');
 });
 
-Route::get('/viewtime', function () {
-    return view('admin.users.councilour.viewtime');
-});
-
-Route::get('/listofapprovedappointments', function () {
-    return view('admin.users.councilour.listofapprovedappointments');
-});
-
 Route::get('/exams_history', function () {
     return view('admin.users.councilour.exams_history');
 });
+Route::get('/category', function () {
+    return view('admin.users.student.category');
+});
+
+//edited Gio
+Route::get('/addstudent', function(){
+    return view('admin.users.addstudent');
+});
+Route::get('/addcouncilor', function(){
+    return view('admin.users.addcouncilor');
+});
+Route::get('/addcourse', function(){
+    return view('admin.users.addcourse');
+});
+Route::get('/course', function(){
+    return view('admin.users.course');
+});
+
+Route::get('/dash', function(){
+    return view('admin.users.dash');
+});
+Route::resource('course', CourseController::class);
+Route::resource('user', Admin\UserController::class);
+//end
+
 
 
 Auth::routes();
@@ -103,7 +109,6 @@ Route::get('/index', function(){
 }) ->middleware(['auth', 'auth.admin']);
 Route::get('/admin/users', 'LiveSearch@index');
 Route::post('/admin/users/index/action', 'LiveSearch@action')->name('admin.users.index.action');
-Route::post('/admin/users/student/stdntbook', 'BookingController@index')->name('admin.users.student.stdntbook');
 Route::namespace('Admin') ->prefix('admin')->middleware(['auth', 'auth.admin']) ->name('admin.')->group(function(){
 Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
 Route::get('/impersonate/user/{id}', 'ImpersonateController@index')->name('impersonate');
@@ -117,14 +122,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/questions','Councilour\QuestionController', ['except' => ['show', 'edit', 'update']]);
 Route::resource('/listofstudent', 'Councilour\ListofStudents', ['except' => ['show', 'create', 'store']]);
 Route::get('/viewtime', 'Councilour\Appointmentlist@index')->name('viewtime');
-Route::post('/viewtime', 'Councilour\Appointmentlist@done')->name('viewtime');
+Route::post('/viewtime-accept', 'Councilour\Appointmentlist@accepted')->name('viewtime-accept');
+Route::post('/viewtime-done', 'Councilour\Appointmentlist@done')->name('viewtime-done');
 Route::get('/viewquestions', 'Councilour\QuestionController@index')->name('viewquestions');
-Route::get('/listofapprovedappointments', 'Myapprovedappointments@index')->name('listofapprovedappointments');
-Route::get('/change-status/{id}', 'Councilour\Appointmentlist@status')->name('changestatus');
+// Route::get('/listofapprovedappointments', 'Myapprovedappointments@index')->name('listofapprovedappointments');
 Route::post('/viewquestions', 'Councilour\QuestionController@create')->name('viewquestions');
 Route::delete('/question-delete/{id}', 'Councilour\QuestionController@destroy');
 Route::get('/myfinishappointments', 'Councilour\Appointmentlist@finishappointments')->name('myfinishappointments');
-Route::get('/home', 'Councilour\Appointmentlist@percentage')->name('home');
 
 //Student//
 Route::post('/stdntappointment', 'Councilour\Appointmentlist@store')->name('stdntappointment');

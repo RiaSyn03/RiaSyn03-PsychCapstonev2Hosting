@@ -38,9 +38,8 @@
 <input type="hidden" id="result_name" name="result_name" value=""/> 
 <br><br><br>    <br><br><br>
 <center>
-<h3>Depression Severity: 0-12 Linguistc, 13-25 Kinesthetic, 26-50 Visual</h3>
 <br><br>
-<button class="resultbutton" type="button" onclick="calculate()">Get Result</button>
+<button class="resultbtn" type="button" onclick="calculate()">Get Result</button>
 
 </center>
 
@@ -52,8 +51,9 @@
             <div class="not-stresscard" id="not-stresscard">
                 <div class="linguistic-face"></div>
                 <div class="back-face">
+                <h3>Learner Level: 0-12 Linguistc, 13-25 Kinesthetic, 26-50 Visual</h3>
                 <br><br><br>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
                     <a href="#" onclick="calculate()">close</a>
                    
@@ -64,8 +64,9 @@
             <div class="stresscard" id="stresscard">
                 <div class="kinesthetic-face"></div>
                 <div class="back-face">
+                <h3>Learner Level: 0-12 Linguistc, 13-25 Kinesthetic, 26-50 Visual</h3>
                     <br><br><br>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
                     <a href="#" onclick="calculate()">close</a>
                    
@@ -76,8 +77,9 @@
             <div class="super-stresscard" id="super-stresscard">
                 <div class="visual-face"></div>
                 <div class="back-face">
+                <h3>Learner Level: 0-12 Linguistc, 13-25 Kinesthetic, 26-50 Visual</h3>
                     <br><br><br>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
                     <a href="#" onclick="calculate()">close</a>
                 </div>

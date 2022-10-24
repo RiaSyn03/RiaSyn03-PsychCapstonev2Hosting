@@ -1,0 +1,15 @@
+
+  .chartMenu p {
+    padding: 10px;
+    font-size: 20px;
+  }
+  .chartCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .chartBox {
+    width: 420px;
+    padding: 20px;
+    border-radius: 20px;
+  }

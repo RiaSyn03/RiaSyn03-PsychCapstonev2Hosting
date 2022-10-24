@@ -7,10 +7,11 @@
          <ul>
              <li><a href="{{ url('home') }}">Home</a></li>
              <li><a href="{{ url('exams_history') }}" class="active">Exam History</a></li>
-             <li><a href="{{ url('stdntappointment') }}">Appointment</a></li>
-             <li><a href="{{ url('appointment_history') }}">My Appointments</a></li>
+             <li><a href="{{ url('appointment_history') }}">Appointments</a></li>
+             <li><a href="{{ url('category') }}">Category</a></li>
          </ul>
      </header>
+     <div class="homecardbody"> 
      <div class="examscard">          
                 <div class="card-body"> 
                 <table class="table table-striped">
