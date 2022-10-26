@@ -5,10 +5,27 @@
      <header>
          <a href="#" class="logo">Logo</a>
          <ul>
-         <li><a href="{{ url('home') }}" >Home</a></li>
-             <li><a href="{{ url('exams_history') }}" >Exam History</a></li>
-             <li><a href="{{ url('appointment_history') }}" >Appointments</a></li>
-             <li><a href="{{ url('category') }}" class="active">Category</a></li>
+         <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->fname }} <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                      </div>
+                </li>
+                <li><a href="{{ url('category') }}" class="active">Category</a></li>
+                <li><a href="{{ url('appointment_history') }}" >Appointments</a></li>
+                <li><a href="{{ url('exams_history') }}" >Exam History</a></li>
+             <li><a href="{{ url('home') }}" >Home</a></li>
          </ul>
      </header>
      

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
+use App\Course;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -19,14 +20,13 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        $courses = Course::all();
         $numusers = User::count();
-        $userid = User::sum('year');
-        $ave = User::avg('year');
-        return view('admin.users.index', compact('users', 'numusers', 'userid', 'ave'));
+        return view('admin.users.index', compact('users', 'numusers', 'courses'));
 
 }
 
-    public function store(Request $request)
+    public function create(Request $request)
     {
     $request->validate([
         'idnum'=>'required',
@@ -35,6 +35,7 @@ class UserController extends Controller
         'lname'=>'required',
         'course_id'=>'nullable',
         'year'=>'required',
+        'role_id'=>'required',
         'email'=>'required|email',
         'password'=>'required',
 
@@ -44,27 +45,63 @@ class UserController extends Controller
         'fname'=> $request->fname,
         'mname'=> $request->mname,
         'lname'=> $request->lname,
-        'course_id'=> $request->course,
+        'course_id'=> $request->course_id,
         'year'=> $request->year,
+        'role_id'=>$request->role_id,
         'email'=> $request->email,
         'password'=>bcrypt($request->password)
-        
 
     ]);
-    $role = Role::select('id')->where('name', 'councilour')->first();
-
-     $user->roles()->attach($role);
 
     // if ($request->has('role')){
     //     $user->assignRole($request->role['name']);
     // }
+    // $role = Role::select('id')->where('role_name', 'student')->first();
+    //     $user->roles()->attach($role);
+        return redirect()->route('admin.users.index')->with('success','Student Added');
+    }
 
-    // if ($request->has('permissions')){
-    //     $user->givePermissionTo(collect($request->permissions)->pluck('id')->toArray());
-    // }
-    return redirect()->route('admin.users.addcouncilour')->with('success','Student Added');
+    public function makecounselour(Request $request)
+        {
+        $request->validate([
+            'idnum'=>'required',
+            'fname'=>'required',
+            'mname'=>'required',
+            'lname'=>'required',
+            'course_id'=>'nullable',
+            'year'=>'required',
+            'role_id'=>'required',
+            'email'=>'required|email',
+            'password'=>'required',
 
-}
+        ]);
+        $user = User::create([
+            'idnum'=> $request->idnum,
+            'fname'=> $request->fname,
+            'mname'=> $request->mname,
+            'lname'=> $request->lname,
+            'course_id'=> $request->course_id,
+            'role_id'=>$request->role_id,
+            'year'=> $request->year,
+            'email'=> $request->email,
+            'password'=>bcrypt($request->password)
+            
+
+
+        ]);
+
+        // if ($request->has('role')){
+        //     $user->assignRole($request->role['name']);
+        // }
+
+        // if ($request->has('permissions')){
+        //     $user->givePermissionTo(collect($request->permissions)->pluck('id')->toArray());
+        // }
+        $role = Role::select('id')->where('role_name', 'councilour')->first();
+        $user->roles()->attach($role);
+        return redirect()->route('admin.users.index')->with('success','Counselour Added');
+
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -78,7 +115,7 @@ class UserController extends Controller
             return redirect()->route('admin.users.index')->with('warning', 'You are not allowed to edit yourself.');
         }
 
-        return view('admin.users.edit')->with(['user'=>User::find($id), 'roles'=>Role::all()]);
+        return view('admin.users.edit')->with(['user'=>User::find($id)]);
     }
 
     /**

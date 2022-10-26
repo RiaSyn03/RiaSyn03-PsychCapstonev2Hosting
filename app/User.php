@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'idnum','fname', 'mname', 'lname', 'course', 'year', 'email', 'password',
+        'idnum','fname', 'mname', 'lname', 'course_id', 'role_id', 'year', 'email', 'password',
     ];
 
     /**
@@ -45,13 +45,13 @@ class User extends Authenticatable
     }
 
     public function roles(){
-        return $this->belongsToMany( 'App\Role');
+        return $this->belongsToMany('App\Role');
     }
 
    public function hasAnyRoles($roles) {
-    return null !== $this->roles()->whereIn('name', $roles)->first();
+    return null !== $this->roles()->whereIn('role_name', $roles)->first();
    }
    public function hasAnyRole($role) {
-    return null !== $this->roles()->where('name', $role)->first();
+    return null !== $this->roles()->where('role_name', $role)->first();
    }
 }

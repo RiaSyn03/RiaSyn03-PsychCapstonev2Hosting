@@ -5,10 +5,10 @@
      <header>
          <a href="#" class="logo">Logo</a>
          <ul>
-             <li><a href="{{ url('stress_exam') }}" >Stress Scale</a></li>
-             <li><a href="{{ url('personality_exam') }}" >Personality</a></li>
-             <li><a href="{{ url('learner_exam') }}" class="active">Learner</a></li>
-             <li><a href="{{ url('home') }}">Go to Homepage</a></li>
+         <li><a href="{{ url('home') }}">Go to Homepage</a></li>
+         <li><a href="{{ url('learner_exam') }}" class="active">Learner</a></li>
+         <li><a href="{{ url('personality_exam') }}" >Personality</a></li>
+             <li><a href="{{ url('stress_exam') }}" >Stress Scale</a></li> 
          </ul>
      </header>
      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>

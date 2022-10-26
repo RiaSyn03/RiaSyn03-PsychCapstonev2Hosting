@@ -13,15 +13,16 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::truncate();
+        // User::truncate();
         DB::table('role_user')->truncate();
         DB::table('timeslots')->truncate();
 
-        $adminRole = Role::where('name', 'admin') -> first();
-        $councilourRole = Role::where('name', 'councilour') -> first();
-        $studentRole = Role::where('name', 'student') -> first();
+        $adminRole = Role::where('role_name', 'admin') -> first();
+        $councilourRole = Role::where('role_name', 'councilour') -> first();
+        $studentRole = Role::where('role_name', 'student') -> first();
 
         $admin = User::create([
+            'role_id'=>'1',
             'idnum' => '11111111',
             'fname' => 'Admin',
             'mname' => 'Ad',
@@ -32,6 +33,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         $councilour = User::create([
+            'role_id'=>'2',
             'idnum' => '22222222',
             'fname' => 'Councilour',
             'mname' => 'Co',
@@ -41,20 +43,11 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt ('councilour')
 
         ]);
-        $jenny = User::create([
-            'idnum' => '12102212',
-            'fname' => 'Generosa',
-            'mname' => 'Misa',
-            'lname' => 'Arches',
-            'year' => '0',
-            'email' => 'jenny@jenny.com',
-            'password' => bcrypt ('generosa')
-
-        ]);
 
         $student = User::create([
+            'role_id'=>'3',
             'idnum' => '33333333',
-            
+            'course_id' => '1',
             'fname' => 'Student',
             'mname' => 'St',
             'lname' => 'Student',
@@ -64,8 +57,8 @@ class UsersTableSeeder extends Seeder
         ]);
 
         $kyle = User::create([
+            'role_id'=>'3',
             'idnum' => '15105515',
-         
             'fname' => 'Kyle Christian',
             'mname' => 'Misa',
             'lname' => 'Arches',
@@ -76,7 +69,6 @@ class UsersTableSeeder extends Seeder
 
         $admin -> roles() -> attach($adminRole);
         $councilour->roles()->attach($councilourRole);
-        $jenny->roles()->attach($councilourRole);
         $student->roles()->attach($studentRole);
         $kyle->roles()->attach($studentRole);
 

@@ -77,13 +77,15 @@ Route::get('/category', function () {
 
 //edited Gio
 Route::get('/addstudent', function(){
-    return view('admin.users.addstudent');
+    $course = App\Course::all();
+    return view('admin.users.addstudent', ['course' => $course]);
 });
 Route::get('/addcouncilor', function(){
     return view('admin.users.addcouncilor');
 });
 Route::get('/addcourse', function(){
-    return view('admin.users.addcourse');
+    $depts = App\Department::all();
+    return view('admin.users.addcourse', ['depts' => $depts]);
 });
 Route::get('/course', function(){
     return view('admin.users.course');
@@ -92,6 +94,7 @@ Route::get('/course', function(){
 Route::get('/dash', function(){
     return view('admin.users.dash');
 });
+Route::post('/addcouncilor','Admin\UserController@makecounselour')->name('addcouncilor');
 Route::resource('course', CourseController::class);
 Route::resource('user', Admin\UserController::class);
 //end
@@ -101,7 +104,6 @@ Route::resource('user', Admin\UserController::class);
 Auth::routes();
 
 // Admin //
-Route::post('/index','Admin\UserController@create')->name('index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/account/activate/{token}', 'AccountController@activate');
 Route::get('/index', function(){
@@ -109,14 +111,13 @@ Route::get('/index', function(){
 }) ->middleware(['auth', 'auth.admin']);
 Route::get('/admin/users', 'LiveSearch@index');
 Route::post('/admin/users/index/action', 'LiveSearch@action')->name('admin.users.index.action');
+Route::post('/admin/users/student/stdntbook', 'BookingController@index')->name('admin.users.student.stdntbook');
 Route::namespace('Admin') ->prefix('admin')->middleware(['auth', 'auth.admin']) ->name('admin.')->group(function(){
 Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
 Route::get('/impersonate/user/{id}', 'ImpersonateController@index')->name('impersonate');
 });
 Route::get('/admin/impersonate/destroy', 'Admin\ImpersonateController@destroy')->name('admin.impersonate.destroy');
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-// Route::get('/index','HomeController@adminregister')->name('adminregister');
 
 //Counselour//
 Route::resource('/questions','Councilour\QuestionController', ['except' => ['show', 'edit', 'update']]);

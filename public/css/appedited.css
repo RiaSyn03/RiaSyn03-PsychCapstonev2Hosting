@@ -31,8 +31,8 @@ header
 {
     position: absolute;
     top: 40px;
-    right: 20px;
-    left: 20px;
+    right: 0px;
+    left: 0px;
     padding: 20px 50px;
     display: flex;
     justify-content: space-between;
@@ -47,18 +47,25 @@ header
 }
 header .logo 
 {
-    color: #8a2435;
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 2em;
+    width: 300px;
+    object-fit: cover;
+    height: fit-content;  
+}
+header .logo img
+{
+  
+  width: 100%;   
 }
 header ul
 {
     display: flex;
+    flex-direction: row-reverse;
+
 }
 header ul li
 {
-    left:700px;
+  
+    left:10px;
     list-style: none;
     margin: 0 10px;
 }
@@ -187,7 +194,7 @@ th h2
 
 .tabbed > label {
   display: block;
-  color: #ff4584;
+  color: #fff ;
   font-weight: 600;
   font-size: 1em;
   text-transform: uppercase;
@@ -200,7 +207,7 @@ th h2
 
 .tabbed > label:hover,
 .tabbed > input:checked + label {
-  background: white;
+  background: #ff4584;
 }
 
 .tabs {

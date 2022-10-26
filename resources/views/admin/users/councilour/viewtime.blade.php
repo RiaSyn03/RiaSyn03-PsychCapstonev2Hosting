@@ -6,13 +6,31 @@
      <header>
          <a href="#" class="logo">Logo</a>
          <ul>
-         <li><a href="{{ url('home') }}">Home</a></li>
-             <li><a href="{{ url('viewquestions') }}">Questions</a></li>
-             <li><a href="{{ url('viewtime')  }}" class="active">List of Appointments</a></li>
+         <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->fname }} <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                      </div>
+                </li>
+                <li><a href="{{ url('viewtime') }}" class="active">Appointments</a></li>
+                <li><a href="{{ url('viewquestions') }}">Questions</a></li>
+             <li><a href="{{ url('home') }}" >Home</a></li> 
          </ul>
      </header>
      @include('partials.alerts')
       <div class="card-body"> 
+      <br><br><br><br>
     <div class="tabbed">
     <input type="radio" name="tabs" id="tab-nav-1" checked>
     <label for="tab-nav-1"> Lists</label>

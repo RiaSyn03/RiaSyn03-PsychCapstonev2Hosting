@@ -1,26 +1,58 @@
 @extends('layouts.app')
 @section('content')
 @hasrole('admin')
-<div id="app">
+        <div id="app">
         <header>
             <a href="#" class="logo">Manage Accounts</a>
             <ul>
                 <li><a href="{{ route('home') }}">Dashboard</a></li>
-                <li><a href="{{ route('admin.users.index') }}">Home</a></li>
-                <li><a href="{{ url('addstudent') }}">Add Student</a></li>
-                <li><a href="{{ url('addcouncilor') }}">Add Councilor</a></li>
-                <li><a href="{{ url('addcourse') }}">Add Course</a></li>
-                <li><a href="{{ url('course') }}">Course</a></li>
-            <li>
-                <input type="text" id="search"class="form-control" placeholder="search" style="width: 15rem"/>
-            </li>
+                <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Manage Accounts
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ route('admin.users.index') }}">List of Accounts</a>
+                            <a class="dropdown-item" href="{{ url('addcouncilor') }}">Add Councilor</a>
+                          <a class="dropdown-item" href="{{ url('addstudent') }}">Add Student</a>
+                        </div>
+                      </div>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Manage Course
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="{{ url('course') }}">List of Courses</a>
+                          <a class="dropdown-item" href="{{ url('addcourse') }}">Add Course</a>
+                        </div>
+                      </div>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->fname }} <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                      </div>
+                </li>
             </ul>
         </header>
             @include('partials.alerts')
             <div class="container text-center">
                 <div class="row justify-content-center mt-5 pt-5">
                     <div class="col-4">
-                        <div class="card border-info bg-info text-center mb-3" style="max-width: 25rem;">
+                        <div class="card border-success bg-success text-center mb-3" style="max-width: 25rem;">
                             <div class="card-header text-success">
                                 <h3>Accounts</h3>
                             </div>
@@ -30,7 +62,7 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="card border-info bg-info text-center mb-3" style="max-width: 25rem;">
+                        <div class="card border-success bg-success text-center mb-3" style="max-width: 25rem;">
                             <div class="card-header text-success">
                                 <h3>Courses</h3>
                             </div>
@@ -40,12 +72,12 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="card border-info bg-info text-center mb-3" style="max-width: 25rem;">
+                        <div class="card border-success bg-success text-center mb-3" style="max-width: 25rem;">
                             <div class="card-header text-success">
                                 <h3>Approved Appointments</h3>
                             </div>
                             <div class="card-body text-white">
-                             
+                              <h1>{{$appointments}}</h5>
                             </div>
                         </div>
                     </div>
@@ -53,7 +85,7 @@
                 </div>
             </div>
         </div>
-                @endhasrole
+        @endhasrole
 
                 @hasrole('student')         
 <head>
@@ -62,12 +94,29 @@
 </head>
 <section>
      <header>
-         <a href="#" class="logo">Logo</a>
+     <a href="#" class="logo">Logo</a>
          <ul>
+            <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->fname }} <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                      </div>
+                </li>
+                <li><a href="{{ url('category') }}" >Category</a></li>
+                <li><a href="{{ url('appointment_history') }}" >Appointments</a></li>
+                <li><a href="{{ url('exams_history') }}" >Exam History</a></li>
              <li><a href="{{ url('home') }}" class="active">Home</a></li>
-             <li><a href="{{ url('exams_history') }}" >Exam History</a></li>
-             <li><a href="{{ url('appointment_history') }}" >Appointments</a></li>
-             <li><a href="{{ url('category') }}" >Category</a></li>
          </ul>
      </header> 
      <div class="homecardbody">  
@@ -129,9 +178,26 @@
      <header>
          <a href="#" class="logo">Logo</a>
          <ul>
-             <li><a href="{{ url('home') }}" class="active">Home</a></li>
-             <li><a href="{{ url('viewquestions') }}">Questions</a></li>
-             <li><a href="{{ url('viewtime') }}">Appointments</a></li>
+            <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->fname }} <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                      </div>
+                </li>
+                <li><a href="{{ url('viewtime') }}">Appointments</a></li>
+                <li><a href="{{ url('viewquestions') }}">Questions</a></li>
+             <li><a href="{{ url('home') }}" class="active">Home</a></li>  
          </ul>
      </header>
      <div class="category">
