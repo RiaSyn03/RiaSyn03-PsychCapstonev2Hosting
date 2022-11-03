@@ -33,60 +33,59 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <section>
     <div id="app">
-        <main class="py-4">
-
-            <div id="app">
                 <header>
                     <a href="#" class="logo">Manage Accounts</a>
                     <ul>
-                        <li><a href="{{ route('home') }}">Dashboard</a></li>
-                        <li>
-                            <div class="dropdown">
-                                <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Manage Accounts
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ route('admin.users.index') }}">List of Accounts</a>
-                                    <a class="dropdown-item" href="{{ url('addcouncilor') }}">Add Councilor</a>
-                                  <a class="dropdown-item" href="{{ url('addstudent') }}">Add Student</a>
-                                </div>
-                              </div>
-                        </li>
-                        <li>
-                            <div class="dropdown">
-                                <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Manage Course
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="{{ url('course') }}">List of Courses</a>
-                                  <a class="dropdown-item" href="{{ url('addcourse') }}">Add Course</a>
-                                </div>
-                              </div>
-                        </li>
-                        <li>
-                            <div class="dropdown">
-                                <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ Auth::user()->fname }} <span class="caret"></span>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                              </div>
-                        </li>
+                    <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->fname }} <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                      </div>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Manage Course
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="{{ url('course') }}">List of Courses</a>
+                          <a class="dropdown-item" href="{{ url('addcourse') }}">Add Course</a>
+                        </div>
+                      </div>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Manage Accounts
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ route('admin.users.index') }}">List of Accounts</a>
+                            <a class="dropdown-item" href="{{ url('addcouncilor') }}">Add Councilor</a>
+                          <a class="dropdown-item" href="{{ url('addstudent') }}">Add Student</a>
+                        </div>
+                      </div>
+                </li>
+                <li><a href="{{ route('home') }} ">Dashboard</a></li>
                     </ul>
                 </header>
                 @include('partials.alerts')
+                <br> <br> <br> <br> <br><br><br><br><br><br><br><br><br>
                     <div class="container">
                         <div class="formcard col-8">
-                            <div class="card-body">
+                            <div class="course-body">
                                 <form method="PUT" id="addaccount" action="{{ route('course.create')}}">
                                                         @csrf
                                 <div class="row g-3 align-items-center">
@@ -113,7 +112,7 @@
                     </div>
             </div>
 
-        </main>
+    </section>
     </div>
 
 

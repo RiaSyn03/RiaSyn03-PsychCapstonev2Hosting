@@ -63,7 +63,6 @@
                 </div>
             </div>
         </div>
-<a href="{{ url('home') }}"><button class="complete">Back to menu</button></a>
 </div>
 <script type="text/javascript">
 $('body').on('keyup', '#search', function(){

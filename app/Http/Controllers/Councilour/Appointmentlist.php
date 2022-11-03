@@ -53,7 +53,7 @@ class Appointmentlist extends Controller
         $timeslot->date = $request->input('date');
         $timeslot->save();
 
-        return redirect()->route('stdntappointment')->with('success','Time Added');
+        return redirect()->route('appointment_history')->with('success','Time Added');
     }
 
     /**

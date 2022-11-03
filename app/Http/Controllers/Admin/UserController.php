@@ -127,14 +127,28 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(Auth::user()->id == $id){
-            return redirect()->route('admin.users.index')->with('warning', 'You are not allowed to edit yourself.');
-       }
+        $request->validate([
+            'idnum'=>'required',
+            'fname'=>'required',
+            'mname'=>'required',
+            'lname'=>'required',
+            'course_id'=>'nullable',
+            'year'=>'required',
+            'email'=>'required|email',
+        ]);
+        $users = User::find($id);
 
-       $user = User::find($id);
-       $user->roles()->sync($request->roles);
+        $users->idnum = $request->input('idnum');
+        $users->fname = $request->input('fname');
+        $users->mname = $request->input('mname');
+        $users->lname = $request->input('lname');
+        $users->course_id = $request->input('course_id');
+        $users->year = $request->input('year');
+        $users->email = $request->input('email');
 
-       return redirect()->route('admin.users.index')->with('success', 'Users has been updated');
+        $users->save();
+
+        return redirect('/user')->with('Profile Updated');
     }
     /**
      * Remove the specified resource from storage.

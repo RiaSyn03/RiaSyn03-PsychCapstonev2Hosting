@@ -74,7 +74,7 @@
         <div id="appointmentDate"></div>
         <p>No Appointment in this current Date<p><br>
         <h3><div><center>Want to make an Appointment ?</center></div></h3>
-        <form method="post" action="stdntappointment">
+        <form method="post" action="appointment_history">
         @csrf
         <input type="hidden" name="date" id="appointdate"><br>
         <label>Time: </label>

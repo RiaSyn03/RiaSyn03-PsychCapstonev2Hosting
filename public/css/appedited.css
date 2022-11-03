@@ -83,18 +83,6 @@ header ul li a
     box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
 }
 
-/* {
-  color: #607d8b;
-  font-weight: 600;
-  font-size: 1.5em;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  border-bottom: 4px solid #ff4584 ;
-  display: inline-block;
-  letter-spacing: 1px;
-} */
-
-
 header ul li a:hover,
 header ul li a.active
 {
@@ -119,12 +107,6 @@ header ul li a.active
     {
         transform: translateY(100px);
     }
-}
-.wellnesscardcontainer
-{
-    position:relative;
-    top:130px;
-    
 }
 .cardcontainer
 {
@@ -257,107 +239,108 @@ th h2
   }
 }
 
-.aboutus {
-  position: absolute;
-  bottom: 50%;
-  left: 40%;
-}
-.aboutus h1{
-    color: #607d8b;
-    font-weight: 600;
-    font-size: 3.5em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    border-bottom: 4px solid #ff4584 ;
-    display: inline-block;
-    letter-spacing: 1px;
-}
-.description
+#popup
 {
-  position: absolute;
-  bottom: 40%;
-  left: 10%;
-  margin-right: 10%;
+    position: fixed;
+    top: 30%;
+    left: 3%; 
+    transition: translate(-50%,-50%);
+    width: 850px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0,0,0, .30);
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+#popup.active
+{
+    top: 20%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+#popup2
+{
+    position: fixed;
+    top: 30%;
+    left: 3%; 
+    transition: translate(-50%,-50%);
+    width: 850px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0,0,0, .30);
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+#popup2.active
+{
+    top: 20%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+#popup3
+{
+    position: fixed;
+    top: 30%;
+    left: 3%; 
+    transition: translate(-50%,-50%);
+    width: 850px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0,0,0, .30);
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+#popup3.active
+{
+    top: 20%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
 }
 
-.description2
-{
-  position: absolute;
-  bottom: 28%;
-  left: 10%;
-  margin-right: 10%;
-}
-.description3
-{
-  position: absolute;
-  bottom: 16%;
-  left: 10%;
-  margin-right: 10%;
-}
-.description4
-{
-  position: absolute;
-  bottom: 4%;
-  left: 10%;
-  margin-right: 10%;
-}
-.description h4
-{
-  color: #607d8b;
-    font-weight: 600;
-    font-size: 2.0em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-
-}
-.description2 h4
-{
-  color: #607d8b;
+#popup .title{
+  color: white;
+  line-height: 30px;
+  text-align: center;
+  background: #2786b3;
+  font-size: 25px;
   font-weight: 600;
-  font-size: 2.0em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
+  border-radius: 10px 10px 10px 10px;
+  padding: 20px;
+}
+#popup .box{
 
+  padding: 20px 30px;
+  background: white;
+  border-radius: 10px;
 }
-.description3 h4
-{
-  color: #607d8b;
-  font-weight: 600;
-  font-size: 2.0em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-
+.addquestbtn {
+  
+  width: 200px;
+  height: 40px;
+  background: #ff4584;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 5px;
 }
-.description4 h4
-{
-  color: #607d8b;
-  font-weight: 600;
-  font-size: 2.0em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-
+.addquestbtn:hover {
+  background: #f53677;
 }
-.description p
-{
-  font-size: 18px;
-    display: inline;
-}
-.description2 p
-{
-  font-size: 18px;
-    display: inline;
-}
-.description3 p
-{
-  font-size: 18px;
-    display: inline;
-}
-.description4 p
-{
-  font-size: 18px;
-    display: inline;
+.course-body {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255,0.5);
+  box-shadow: 10px 5px 20px #3caadc;
+  border-radius: 20px 20px 20px 20px;
 }

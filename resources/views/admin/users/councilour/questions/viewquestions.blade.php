@@ -72,25 +72,34 @@
 <button type="button" onclick="toggle()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddAccountModal">Add Question</button>
 <div class="p-2">
        <div id="popup">
-         <h2><div><center>Add Question Here</center></div></h2>
+       <div class="wrapper" >
+         <h2><div class="title"><center>ADD STRESS SCALE QUESTION</center></div></h2>
          <form action="viewquestions" method="POST">
    @csrf
-   <label>Number
-   <input id="question_num" class="form-control" name="question_num"></label>
-   <br>
-   <label>Question</label>
-   <input id="question" type="text" class="form-control" name="question">
-   <label class="custom-select">
-     Question Type
-     <select name="question_type">
-       <option value="stress">Stress</option>
-     </select>
-   </label>
-   <button type="submit">Submit</button>
+   <div class="box">
+   <div class="row">
+                                    <div class="col-8 col-sm-4">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Question Number</span>
+                                            <input type="text" id="question_num" name="question_num" placeholder="No." class="form-control">
+                                        </div>
+                                        </div>
+                                  <div class="col-6 col-sm-8">
+                                        <div class="input-group mb-9">
+                                            <span class="input-group-text">Question</span>
+                                            <textarea row="5" cols="80" id="question" name="question" placeholder="Question" class="form-control"></textarea>
+                                            
+                                        </div>
+   <input type="text" id="question_type" name="question_type" value="stress" class="form-control" hidden>
+   </div>
+   </div>
+   <br><br><br>
+   <center><button type="submit" class="addquestbtn">Submit</button></center>
  </form>
          
          <div onclick="toggle()"><center>Close</center></div>
-         
+         </div>
+        </div>
 </div>
 </div>
 </div>
@@ -125,30 +134,40 @@
 <button type="button" onclick="toggle()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddAccountModal">Add Question</button>
 <div class="p-2">
        <div id="popup2">
-         <h2><div><center>Add Question Here</center></div></h2>
+       <div class="wrapper" >
+         <h2><div class="title"><center>ADD PERSONALITY QUESTION</center></div></h2>
          <form action="viewquestions" method="POST">
    @csrf
-   <label>Number
-   <input id="question_num" class="form-control" name="question_num"></label>
-   <br>
-   <label>Question</label>
-   <input id="question" type="text" class="form-control" name="question">
-   <label class="custom-select">
-     Question Type
-     <select name="question_type">
-       <option value="personality">Personality</option>
-     </select>
-   </label>
-   <button type="submit">Submit</button>
+   <div class="box">
+       <div class="row">
+                                    <div class="col-8 col-sm-4">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Question Number</span>
+                                            <input type="text" id="question_num" name="question_num" placeholder="No." class="form-control">
+                                        </div>
+                                        </div>
+                                  <div class="col-6 col-sm-8">
+                                        <div class="input-group mb-9">
+                                            <span class="input-group-text">Question</span>
+                                            <textarea row="5" cols="80" id="question" name="question" placeholder="Question" class="form-control"></textarea>
+                                            
+                                        </div>
+   <input type="text" id="question_type" name="question_type" value="personality" class="form-control" hidden>
+   </div>
+   </div>
+   <br><br><br>
+   <center><button type="submit" class="addquestbtn">Submit</button></center>
  </form>
          
          <div onclick="toggle()"><center>Close</center></div>
-         
+         </div>
+        </div>
 </div>
 </div>
 </div>
 
       <div>
+      
       <table class="table table-striped">
 <thead>
 <tr>
@@ -179,29 +198,39 @@
 <button type="button" onclick="toggle()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddAccountModal">Add Question</button>
 <div class="p-2">
        <div id="popup3">
-         <h2><div><center>Add Question Here</center></div></h2>
+       <div class="wrapper" >
+         <h2><div class="title"><center>ADD LEARNER QUESTION</center></div></h2>
          <form action="viewquestions" method="POST">
    @csrf
-   <label>Number
-   <input id="question_num" class="form-control" name="question_num"></label>
-   <br>
-   <label>Question</label>
-   <input id="question" type="text" class="form-control" name="question">
-   <label class="custom-select">
-     Question Type
-     <select name="question_type">
-       <option value="learners">Learners</option>
-     </select>
-   </label>
-   <button type="submit">Submit</button>
+   <div class="box">
+       <div class="row">
+                                    <div class="col-8 col-sm-4">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Question Number</span>
+                                            <input type="text" id="question_num" name="question_num" placeholder="No." class="form-control">
+                                        </div>
+                                        </div>
+                                  <div class="col-6 col-sm-8">
+                                        <div class="input-group mb-9">
+                                            <span class="input-group-text">Question</span>
+                                            <textarea row="5" cols="80" id="question" name="question" placeholder="Question" class="form-control"></textarea>
+                                            
+                                        </div>
+   <input type="text" id="question_type" name="question_type" value="learners" class="form-control" hidden>
+   </div>
+   </div>
+   <br><br><br>
+   <center><button type="submit" class="addquestbtn">Submit</button></center>
  </form>
          
          <div onclick="toggle()"><center>Close</center></div>
-         
+         </div>
+        </div>
 </div>
 </div>
 </div>
-    </div>
+
+      <div>
   </div>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>

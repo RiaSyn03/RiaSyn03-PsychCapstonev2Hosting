@@ -4,37 +4,20 @@ use illuminate\Support\Facades\Route;
 Route::get('/', function () {
         return view('welcome');
     });
-Route::get('/adminregister', function () {
-        return view('admin.users.adminregister');
-    });
-
-Route::get('/unregistered', function () {
-        return view('admin.users.student.unregistered');
-    });
 
 Route::get('markAsRead', function(){
     auth()->user()->unreadNotifications->markAsRead();
     return redirect()->back();
 })->name('markRead');
 
-Route::get('/councilourdash', function () {
-    return view('admin.users.councilour.councilour');
-});
+//Student Views
 
 Route::get('/studentdash', function () {
     return view('admin.users.student.studentdash');
 });
 
-Route::get('/wellness', function () {
-    return view('admin.users.student.wellness');
-});
-
 Route::get('/stdntappointment', function () {
     return view('admin.users.student.stdntappointment');
-});
-
-Route::get('/stdnttime', function () {
-    return view('admin.users.student.stdnttime');
 });
 
 Route::get('/questionaire', function () {
@@ -51,9 +34,15 @@ Route::get('/personality_exam', function () {
     return view('admin.users.student.personality_exam');
 });
 
-Route::get('/listofstudent', function () {
-    return view('admin.users.councilour.listofstudent');
+Route::get('/wellness', function () {
+    return view('admin.users.student.wellness');
 });
+
+Route::get('/category', function () {
+    return view('admin.users.student.category');
+});
+
+//Counselour Views
 
 Route::get('/councilourdash', function () {
     return view('admin.users.councilour.councilourdash');
@@ -71,11 +60,9 @@ Route::get('/editquestionaire', function () {
 Route::get('/exams_history', function () {
     return view('admin.users.councilour.exams_history');
 });
-Route::get('/category', function () {
-    return view('admin.users.student.category');
-});
 
-//edited Gio
+
+//Edited Gio / Admin Views
 Route::get('/addstudent', function(){
     $course = App\Course::all();
     return view('admin.users.addstudent', ['course' => $course]);
@@ -97,6 +84,7 @@ Route::get('/dash', function(){
 Route::post('/addcouncilor','Admin\UserController@makecounselour')->name('addcouncilor');
 Route::resource('course', CourseController::class);
 Route::resource('user', Admin\UserController::class);
+
 //end
 
 
@@ -121,18 +109,16 @@ Auth::routes();
 
 //Counselour//
 Route::resource('/questions','Councilour\QuestionController', ['except' => ['show', 'edit', 'update']]);
-Route::resource('/listofstudent', 'Councilour\ListofStudents', ['except' => ['show', 'create', 'store']]);
 Route::get('/viewtime', 'Councilour\Appointmentlist@index')->name('viewtime');
 Route::post('/viewtime-accept', 'Councilour\Appointmentlist@accepted')->name('viewtime-accept');
 Route::post('/viewtime-done', 'Councilour\Appointmentlist@done')->name('viewtime-done');
 Route::get('/viewquestions', 'Councilour\QuestionController@index')->name('viewquestions');
-// Route::get('/listofapprovedappointments', 'Myapprovedappointments@index')->name('listofapprovedappointments');
 Route::post('/viewquestions', 'Councilour\QuestionController@create')->name('viewquestions');
 Route::delete('/question-delete/{id}', 'Councilour\QuestionController@destroy');
 Route::get('/myfinishappointments', 'Councilour\Appointmentlist@finishappointments')->name('myfinishappointments');
 
 //Student//
-Route::post('/stdntappointment', 'Councilour\Appointmentlist@store')->name('stdntappointment');
+Route::post('/appointment_history', 'Councilour\Appointmentlist@store')->name('appointment_history');
 Route::get('/appointment_history', 'Councilour\Appointmentlist@show')->name('appointment_history');
 Route::get('/stress_exam', 'Councilour\QuestionController@stress')->name('stress_exam');
 Route::post('/stress_exam', 'Councilour\QuestionController@store')->name('stress_exam');
@@ -143,7 +129,6 @@ Route::get('/learner_exam', 'Councilour\QuestionController@learner')->name('lear
 Route::post('/learner_exam', 'Councilour\QuestionController@lstore')->name('learner_exam');
 Route::get('/exam_result', 'Councilour\QuestionController@result')->name('exam_result');
 Route::post('/exam_result', 'Councilour\QuestionController@store')->name('exam_result');
-Route::post('/stdnttime', 'Councilour\Appointmentlist@store',['except'=>['show','create','store']])->name('stdnttime');
 Route::get('/admin/users/student/questionaire', 'StudentquestionaireController@index')->name('questionaire');
 Route::delete('/appointment-delete/{id}', 'Councilour\Appointmentlist@destroy');
 

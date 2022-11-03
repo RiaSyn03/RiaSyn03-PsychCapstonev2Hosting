@@ -34,70 +34,72 @@
 </head>
 <body>
     <div id="app">
-        <main class="py-4">
-
-            <div id="app">
+        <section>
                 <header>
                     <a href="#" class="logo">Manage Accounts</a>
                     <ul>
-                        <li><a href="{{ route('home') }}">Dashboard</a></li>
-                        <li>
-                            <div class="dropdown">
-                                <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Manage Accounts
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ route('admin.users.index') }}">List of Accounts</a>
-                                    <a class="dropdown-item" href="{{ url('addcouncilor') }}">Add Councilor</a>
-                                  <a class="dropdown-item" href="{{ url('addstudent') }}">Add Student</a>
-                                </div>
-                              </div>
-                        </li>
-                        <li>
-                            <div class="dropdown">
-                                <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Manage Course
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="{{ url('course') }}">List of Courses</a>
-                                  <a class="dropdown-item" href="{{ url('addcourse') }}">Add Course</a>
-                                </div>
-                              </div>
-                        </li>
-                        <li>
-                            <div class="dropdown">
-                                <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ Auth::user()->fname }} <span class="caret"></span>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                              </div>
-                        </li>
+                    <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->fname }} <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                      </div>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Manage Course
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="{{ url('course') }}">List of Courses</a>
+                          <a class="dropdown-item" href="{{ url('addcourse') }}">Add Course</a>
+                        </div>
+                      </div>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Manage Accounts
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ route('admin.users.index') }}">List of Accounts</a>
+                            <a class="dropdown-item" href="{{ url('addcouncilor') }}">Add Councilor</a>
+                          <a class="dropdown-item" href="{{ url('addstudent') }}">Add Student</a>
+                        </div>
+                      </div>
+                </li>
+                <li><a href="{{ route('home') }} ">Dashboard</a></li>
                     </ul>
                 </header>
                 @include('partials.alerts')
+                <br><br><br><br><br><br><br><br><br>
                 <div class="container">
                     <div class="row justify-content-center">
                             <div class="formcard">
                                 <div class="card-body">
-                                    <table class="table table-striped">
+                                    <table id ="datatable" class="table table-striped">
                                         <thead>
                                         <div class="panel-body">
                                             <tr>
+                                            <th scope="col">ID</th>
                                             <th scope="col">ID Number</th>
                                             <th scope="col">Last Name</th>
                                             <th scope="col">First Name</th>
-                                            <th scope="col">Role</th>
-                                            {{-- <th scope="col">Edit</th> --}}
-                                            <th scope="col">View</th>
+                                            <th scope="col">Middle Initial</th>
+                                            <th scope="col">Email Address</th>
+                                            <th scope="col">Course</th>
+                                            <th scope="col">Year</th>
+                                            <th scope="col">Edit</th>
                                             <th scope="col">Delete</th>
                                             </tr>
                                         </div>
@@ -105,14 +107,20 @@
                                         <tbody id="dynamic-row">
                                             @foreach($users as $user)
                                                 <tr>
+                                                <td>{{ $user->id }}</td>
                                                 <td>{{ $user->idnum }}</td>
                                                 <td>{{ $user->lname }}</td>
                                                 <td>{{ $user->fname }}</td>
-                                                <td>{{ $user->roles }}</td>
+                                                <td>{{ $user->mname }}</td>
+                                                <td>{{ $user->email }}</td>
+                                                <td>{{ $user->course }}</td>
+                                                <td>{{ $user->year }}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-id="{{$user->id}}" data-bs-target="#viewModal">
-                                                        <i class="fa fa-eye"></i>
-                                                    </button>
+                                                    <button type="button" class="brn btn-primary edit">Edit</button>
+                                              
+                                                <!-- <td><a href="#" class="btn btn-success edit"></a> -->
+                                                        
+                                                   
                                                 </td>
                                                 <td>
                                                     <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="float-left">
@@ -131,36 +139,38 @@
                     <div class="modal fade">
 
                     </div>
-
-                    <!-- View & Edit Modal -->
-                    <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
+                   <!-- View & Edit Modal -->
+                   <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="viewModalLabel">Account Information</h5>
                           </div>
+                          <form action="/user" method="POST" id="editForm">
+                        {{ csrf_field() }}
+                        {{ method_field('PATCH' )}}
                           <div class="modal-body">
                             <div class="row">
                                 <div class="col-8 col-sm-6">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">ID Number</span>
-                                        <input type="text" id="idnum" name="idnum" value="{{$user->idnum}}" class="form-control" required>
+                                        <input type="text" id="idnum" name="idnum" class="form-control" required>
                                     </div>
                                 </div>
-                                {{-- <div class="col-4 col-sm-6">
-                                </div> --}}
+                                <div class="col-4 col-sm-6">
+                                </div> 
                                 <div class="col-12">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">First, middle and last name</span>
-                                        <input type="text" aria-label="First name" class="form-control" value="{{$user->fname}}">
-                                        <input type="text" aria-label="Middle name" class="form-control" value="{{$user->mname}}">
-                                        <input type="text" aria-label="Last name" class="form-control" value="{{$user->lname}}">
+                                        <input type="text" id="fname" name="fname" aria-label="First name" class="form-control">
+                                        <input type="text" id="mname" name="mname" aria-label="Middle name" class="form-control" >
+                                        <input type="text" id="lname" name="lname" aria-label="Last name" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-8 col-sm-6">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">Email</span>
-                                        <input type="text" id="email" name="email" value="{{$user->email}}" class="form-control" required>
+                                        <input type="text" id="email" name="email" class="form-control" required>
                                     </div>
                                     <div class="input-group mb-3">
                                         <label class="input-group-text" for="year" >{{ __('Year') }}</label>
@@ -173,60 +183,29 @@
                                             </select>
                                     </div>
                                 </div>
-                                <div class="col-4 col-sm-6">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text">Role</span>
-                                        <input type="text" id="role" name="role" value="{{$user->role}}" class="form-control" required>
-                                    </div>
                                     <div class="input-group mb-3">
                                         <label class="input-group-text" for="course" >{{ __('Course') }}</label>
                                                 <select class="form-select" id="course" name="course">
-                                                    {{-- <option value="{{$user->course_id}}">{{$user->course_id == $courses->course_name}}</option> --}}
+                                                
                                                     @foreach ($courses as $course)
-                                                    <option value="{{$course->id}}">{{$course->course_name}}</option>
+                                                    <option>{{$course->course_name}}</option>
                                                     @endforeach
                                                 </select>
-                                    </div>
+                                 
                                 </div>
                             </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
                           </div>
                         </div>
                       </div>
                     </div>
                 </div>
+            </form>
 
-
-                    <script type="text/javascript">
-                    $('body').on('keyup', '#search', function(){
-                        var searchQuest = $(this).val();
-
-                        $.ajax({
-                                method:'POST',
-                                url:"{{route ('admin.users.index.action') }}",
-                                dataType:'json',
-                                data: {
-                                    '_token': '{{ csrf_token() }}',
-                                    searchQuest: searchQuest,
-                                },
-                                success:function(res){
-                                    var tableRow = '';
-                                    $('#dynamic-row').html('');
-
-                                    $.each(res, function(index, value){
-                                        tableRow = '<tr><td>'+value.idnum+'</td><td>'+value.lname+'</td><td>'+value.fname+'</td><td>'+value.roles+'</td><td><button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-id="{{$user->id}}" data-bs-target="#viewModal"><i class="fa fa-eye"></i></button></td><td><form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="float-left">{{ method_field('DELETE') }}@csrf<button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button></form></td></tr>';
-                                        $('#dynamic-row').append(tableRow);
-                                    });
-                                }
-                            });
-                        });
-                    </script>
-            </div>
-
-        </main>
+        </section>
     </div>
 
 
@@ -238,6 +217,35 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var table = $('#datatable').DataTable();
+
+            table.on('click','.edit', function() {
+
+                $tr = $(this).closest('tr');
+                if ($($tr).hasClass('child')) {
+                    $tr = $tr.prev('.parent');
+                }
+
+                var data = table.row($tr).data();
+                console.log(data);
+
+                $('#idnum').val(data[1]);
+                $('#fname').val(data[3]);
+                $('#mname').val(data[4]);
+                $('#lname').val(data[2]);
+                $('#email').val(data[5]);
+                $('#year').val(data[7]);
+                $('#course').val(data[6]);
+                $('#editForm').attr('action', '/user/'+data[0]);
+                $('#editModal').modal('show');
+
+            });
+        });
+    </script>
 
 </body>
 </html>

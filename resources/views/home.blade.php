@@ -2,33 +2,10 @@
 @section('content')
 @hasrole('admin')
         <div id="app">
+        <section>
         <header>
             <a href="#" class="logo">Manage Accounts</a>
             <ul>
-                <li><a href="{{ route('home') }}">Dashboard</a></li>
-                <li>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Manage Accounts
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{ route('admin.users.index') }}">List of Accounts</a>
-                            <a class="dropdown-item" href="{{ url('addcouncilor') }}">Add Councilor</a>
-                          <a class="dropdown-item" href="{{ url('addstudent') }}">Add Student</a>
-                        </div>
-                      </div>
-                </li>
-                <li>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Manage Course
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="{{ url('course') }}">List of Courses</a>
-                          <a class="dropdown-item" href="{{ url('addcourse') }}">Add Course</a>
-                        </div>
-                      </div>
-                </li>
                 <li>
                     <div class="dropdown">
                         <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,9 +23,35 @@
                         </div>
                       </div>
                 </li>
+                <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Manage Course
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="{{ url('course') }}">List of Courses</a>
+                          <a class="dropdown-item" href="{{ url('addcourse') }}">Add Course</a>
+                        </div>
+                      </div>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Manage Accounts
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ route('admin.users.index') }}">List of Accounts</a>
+                            <a class="dropdown-item" href="{{ url('addcouncilor') }}">Add Councilor</a>
+                          <a class="dropdown-item" href="{{ url('addstudent') }}">Add Student</a>
+                        </div>
+                      </div>
+                </li>
+                <li><a href="{{ route('home') }} " class="active">Dashboard</a></li>
+               
             </ul>
         </header>
             @include('partials.alerts')
+            <br><br><br><br><br><br>
             <div class="container text-center">
                 <div class="row justify-content-center mt-5 pt-5">
                     <div class="col-4">
@@ -85,11 +88,12 @@
                 </div>
             </div>
         </div>
+</section>
         @endhasrole
 
                 @hasrole('student')         
 <head>
-                <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
+                <link href="{{ asset('css/studenthomepage.css') }}" rel="stylesheet">
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
 </head>
 <section>
@@ -119,8 +123,8 @@
              <li><a href="{{ url('home') }}" class="active">Home</a></li>
          </ul>
      </header> 
-     <div class="homecardbody">  
-     <div class="homecard"> 
+     <div class="student-align">  
+     <div class="studentcontainer"> 
         <div class="menu">
     <h2>Menu</h2>
 </div>
@@ -154,16 +158,17 @@
           
         </div>
         <div class="description">
-          <h4>PsychCare2.0</h4> <p>is about checking your mental health. mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make healthy choices. 1. Mental health is important at every stage of life, from childhood and adolescence through adulthood.<br><button>Appoint Now </button></p>
+          <h4>PsychCare2.0</h4> <p>is about checking your mental health. mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make healthy choices. 1. Mental health is important at every stage of life, from childhood and adolescence through adulthood.Issues that are related to mental health needs attention and guidance as soon as possible. 
+                     Through this system you can seek guidance on our reliable counselors here inside the University.<br><button class="takebtn">Appoint Now </button></p>
           </div>
           <div class="description2">
-          <h4>Stress Scale</h4> <p>is about checking your mental health. mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make healthy choices. 1. Mental health is important at every stage of life, from childhood and adolescence through adulthood.</p>
+          <h4>Stress Scale</h4> <p>is to check your stress level from none to severe. Taking this test at least twice a week is good to avoid mental disorder. Stress can also affect to your personality and learning, taking stress scale first is recommended before taking the others </p>
 </div>
 <div class="description3">
-          <h4>Learner</h4> <p>is about checking your mental health. mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make healthy choices. 1. Mental health is important at every stage of life, from childhood and adolescence through adulthood.</p>
+          <h4>Learner</h4> <p>is to check what time of learners you are. Learners has a very important role to our life. We learn at work, school, books and other things we have interests everyday. So taking the test often will be a good help to you.  </p>
 </div>
 <div class="description4">
-          <h4>Personality</h4> <p>is about checking your mental health. mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make healthy choices. 1. Mental health is important at every stage of life, from childhood and adolescence through adulthood.</p>
+          <h4>Personality</h4> <p>is to check what behavior you have. Are you comfortable together with friends? or have lots of people around you instead ? You can find out what type of person you are on this test. </p>
 </div>
         
 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,8 +17,8 @@ class CourseController extends Controller
     public function index()
     {
         $course = Course::all();
-
-        return view('admin.users.course', compact('course'));
+        $dept = Department::all();
+        return view('admin.users.course', compact('course', 'dept'));
     }
 
     /**
@@ -29,15 +30,19 @@ class CourseController extends Controller
     {
         $request->validate([
             'course_name' => 'required',
-            'department' => 'required'
+            'dept_id' => 'required'
         ]);
 
-        $courses = Course::create([
-            'course_name'=> $request->course_name,
-            'department'=> $request->department,
-
+        Course::create([
+            'course_name' => $request->course_name,
+            'dept_id' => $request->dept_id
         ]);
 
+        // $courses = Course::create([
+        //     'course_name'=> $request->course_name,
+        //     'dept_id'=> $request->dept,
+
+        // ]);
         return redirect()->route('course.index')->with('message', 'Course has been saved!');
     }
 
