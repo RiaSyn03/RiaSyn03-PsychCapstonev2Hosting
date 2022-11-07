@@ -4,9 +4,9 @@
         <div id="app">
         <section>
         <header>
-            <a href="#" class="logo">Manage Accounts</a>
+        <div class="logo"><img src="{{ asset('img/logo.gif') }}"></div>
             <ul>
-                <li>
+                    <li>
                     <div class="dropdown">
                         <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::user()->fname }} <span class="caret"></span>
@@ -23,32 +23,10 @@
                         </div>
                       </div>
                 </li>
-                <li>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Manage Course
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="{{ url('course') }}">List of Courses</a>
-                          <a class="dropdown-item" href="{{ url('addcourse') }}">Add Course</a>
-                        </div>
-                      </div>
-                </li>
-                <li>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Manage Accounts
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{ route('admin.users.index') }}">List of Accounts</a>
-                            <a class="dropdown-item" href="{{ url('addcouncilor') }}">Add Councilor</a>
-                          <a class="dropdown-item" href="{{ url('addstudent') }}">Add Student</a>
-                        </div>
-                      </div>
-                </li>
-                <li><a href="{{ route('home') }} " class="active">Dashboard</a></li>
-               
-            </ul>
+                <li><a href="{{ url('course') }}">Manage Course</a></li>
+                <li><a href="{{ url('user') }}" >Manage Account</a></li>
+                <li><a href="{{ route('home') }} " class="active" >Dashboard</a></li>
+                    </ul>
         </header>
             @include('partials.alerts')
             <br><br><br><br><br><br>
@@ -98,7 +76,7 @@
 </head>
 <section>
      <header>
-     <a href="#" class="logo">Logo</a>
+     <div class="logo"><img src="{{ asset('img/logo.gif') }}"></div>
          <ul>
             <li>
                     <div class="dropdown">
@@ -181,7 +159,7 @@
                 <link href="{{ asset('css/category.css') }}" rel="stylesheet">
                 <section>
      <header>
-         <a href="#" class="logo">Logo</a>
+     <div class="logo"><img src="{{ asset('img/logo.gif') }}"></div>
          <ul>
             <li>
                     <div class="dropdown">

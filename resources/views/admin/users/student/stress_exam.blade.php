@@ -4,7 +4,7 @@
 <link href="{{ asset('css/piechart.css') }}" rel="stylesheet">
 <section>
      <header>
-         <div class="logo">Logo</div>
+     <div class="logo"><img src="{{ asset('img/logo.gif') }}"></div>
          <ul>
             <li><a href="{{ url('home') }}">Go to Homepage</a></li>
             <li><a href="{{ url('learner_exam') }}">Learner</a></li>

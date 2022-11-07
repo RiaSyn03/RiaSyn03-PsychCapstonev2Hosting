@@ -47,9 +47,11 @@ header
 }
 header .logo 
 {
-    width: 300px;
-    object-fit: cover;
-    height: fit-content;  
+  position: relative;
+  left: 100px;
+  bottom: 30px;
+    width: 400px;
+    height: 40px;  
 }
 header .logo img
 {
@@ -335,6 +337,7 @@ th h2
 .addquestbtn:hover {
   background: #f53677;
 }
+
 .course-body {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
@@ -343,4 +346,68 @@ th h2
   background: rgba(255, 255, 255,0.5);
   box-shadow: 10px 5px 20px #3caadc;
   border-radius: 20px 20px 20px 20px;
+}
+
+.course-body .addcouncilorBx {
+  position:relative;
+  left: 68%;
+  align-content: center;
+  display: inline-block;
+  width: 185px;
+  height:45px;
+  background: #ff4584;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 5px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.course-body .addcouncilorBx:hover {
+  background: #f53677;
+}
+.course-body .addStudentBx {
+  position:relative;
+  left: 70%;
+  display: inline-block;
+  width: 165px;
+  height:45px;
+  background: #ff4584;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 5px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.course-body .addStudentBx:hover {
+  background: #f53677;
+}
+
+.course-body .addcourseBx {
+  position:relative;
+  left: 70%;
+  display: inline-block;
+  width: 165px;
+  height:45px;
+  background: #ff4584;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 5px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.course-body .addcourseBx:hover {
+  background: #f53677;
 }

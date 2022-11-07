@@ -3,7 +3,7 @@
 <link href="{{ asset('css/category.css') }}" rel="stylesheet">
 <section>
      <header>
-         <a href="#" class="logo">Logo</a>
+     <div class="logo"><img src="{{ asset('img/logo.gif') }}"></div>
          <ul>
          <li>
                     <div class="dropdown">

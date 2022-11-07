@@ -19,10 +19,14 @@ class UserController extends Controller
      */
     public function index()
     {
+        $roles = Role::all();
+        $admins = User::where('role_id','1')->orderBy('lname', 'asc')->get();
+        $counselours = User::where('role_id','2')->orderBy('lname', 'asc')->get();
+        $students = User::where('role_id','3')->orderBy('lname', 'asc')->get();
         $users = User::all();
         $courses = Course::all();
         $numusers = User::count();
-        return view('admin.users.index', compact('users', 'numusers', 'courses'));
+        return view('admin.users.index', compact('users', 'numusers', 'courses', 'admins', 'counselours', 'students', 'roles'));
 
 }
 

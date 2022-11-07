@@ -3,7 +3,7 @@
 @section('content')
 <section>
      <header>
-         <a href="#" class="logo">Logo</a>
+     <div class="logo"><img src="{{ asset('img/logo.gif') }}"></div>
          <ul>
          <li>
                     <div class="dropdown">
@@ -28,7 +28,7 @@
              <li><a href="{{ url('home') }}">Home</a></li>
          </ul>
      </header>
-     <div class="homecardbody"> 
+     <div class="align-examscard"> 
      <div class="examscard">          
                 <div class="card-body"> 
                 <table class="table table-striped">

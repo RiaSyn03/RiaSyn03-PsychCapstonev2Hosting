@@ -36,7 +36,7 @@
     <div id="app">
         <section>
                 <header>
-                    <a href="#" class="logo">Manage Accounts</a>
+                <div class="logo"><img src="{{ asset('img/logo.gif') }}"></div>
                     <ul>
                     <li>
                     <div class="dropdown">
@@ -55,29 +55,8 @@
                         </div>
                       </div>
                 </li>
-                <li>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Manage Course
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="{{ url('course') }}">List of Courses</a>
-                          <a class="dropdown-item" href="{{ url('addcourse') }}">Add Course</a>
-                        </div>
-                      </div>
-                </li>
-                <li>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Manage Accounts
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{ route('admin.users.index') }}">List of Accounts</a>
-                            <a class="dropdown-item" href="{{ url('addcouncilor') }}">Add Councilor</a>
-                          <a class="dropdown-item" href="{{ url('addstudent') }}">Add Student</a>
-                        </div>
-                      </div>
-                </li>
+                <li><a href="{{ url('course') }}">Manage Course</a></li>
+                <li><a href="{{ url('user') }}" class="active" >Manage Account</a></li>
                 <li><a href="{{ route('home') }} ">Dashboard</a></li>
                     </ul>
                 </header>
@@ -86,7 +65,9 @@
                 <div class="container">
                     <div class="row justify-content-center">
                             <div class="formcard">
-                                <div class="card-body">
+                                <div class="course-body">
+                                <div class="addcouncilorBx " type="button" data-bs-toggle="modal" data-bs-target="#addcounselorModal"><center>Add Counselor</center></div>
+                                <div class="addStudentBx" type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#addstudentModal"><center>Add Student</center></div>
                                     <table id ="datatable" class="table table-striped">
                                         <thead>
                                         <div class="panel-body">
@@ -116,7 +97,7 @@
                                                 <td>{{ $user->course }}</td>
                                                 <td>{{ $user->year }}</td>
                                                 <td>
-                                                    <button type="button" class="brn btn-primary edit">Edit</button>
+                                                    <button type="button" class="btn btn-primary edit">Edit</button>
                                               
                                                 <!-- <td><a href="#" class="btn btn-success edit"></a> -->
                                                         
@@ -137,7 +118,6 @@
                             </div>
                     </div>
                     <div class="modal fade">
-
                     </div>
                    <!-- View & Edit Modal -->
                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
@@ -202,8 +182,152 @@
                         </div>
                       </div>
                     </div>
+                    <div class="modal fade">
                 </div>
             </form>
+            <div class="modal fade" id="addcounselorModal" tabindex="-1" aria-labelledby="AddcounselorModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="AddcounselorModalLabel">Add Counselor</h5>
+                          </div>
+                          <br><br><br><br>
+                          <div class="modal-body">
+                          <form method="POST" id="addaccount" action="{{ route('addcouncilor')}}">
+                            @csrf
+                            <div class="row">
+                             <div class="col-4 col-sm-6">
+                                </div> 
+                                <div class="row">
+                                    <div class="col-8 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">First Name</span>
+                                            <input type="text" id="fname" name="fname" placeholder="First Name" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Middle Name</span>
+                                            <input type="text" id="fname" name="mname" placeholder="Middle Name" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Last Name</span>
+                                            <input type="text" id="lname" name="lname" placeholder="Last Name" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <input type="text" id="year" name="year" value="0" class="form-control" hidden>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">ID Number</span>
+                                            <input type="text" id="idnum" name="idnum" placeholder="ID Number" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Email</span>
+                                            <input type="text" id="email" name="email" placeholder="Email" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Password</span>
+                                            <input type="text" id="password" name="password" placeholder="Passwword" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Confirm Password</span>
+                                            <input type="text" id="password-confirm" name="password-confirm" placeholder="Confirm Password" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <input type="text" id="role_id" name="role_id" value="2" class="form-control" hidden>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary" form="addaccount">Submit Account</button>
+                                </div>
+                               
+                            </div>
+                        </div>
+                  
+                    </div>  
+                </div> 
+            </div>
+                   
+                    </form>
+                    <div class="modal fade" id="addstudentModal" tabindex="-1" aria-labelledby="AddstudentModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="AddstudentModalLabel">Add Student</h5>
+                          </div>
+                          <br><br><br><br>
+                          <div class="modal-body">
+                          <form method="PUT" id="addstudent" action="{{ route('user.create')}}">
+                                 @csrf
+                                <div class="row">
+                                    <div class="col-8 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">First Name</span>
+                                            <input type="text" id="fname" name="fname" placeholder="First Name" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Middle Name</span>
+                                            <input type="text" id="fname" name="mname" placeholder="Middle Name" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Last Name</span>
+                                            <input type="text" id="lname" name="lname" placeholder="Last Name" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <label class="input-group-text" for="course" >{{ __('Course') }}</label>
+                                                <select class="form-select" id="course" name="course_id">
+                                                    <option>Choose Course</option>
+                                                    @foreach ($courses as $course)
+                                                        <option value="{{$course->id}}">{{$course->course_name}}</option>
+                                                    @endforeach
+                                                </select>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <label class="input-group-text" for="year" >{{ __('Year') }}</label>
+                                                <select class="form-select" id="year" name="year">
+                                                    <option value="1st Year">1st Year</option>
+                                                    <option value="2nd Year">2nd Year</option>
+                                                    <option value="3rd Year">3rd Year</option>
+                                                    <option value="4th Year">4th Year</option>
+                                                    <option value="4th Year">5th Year</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">ID Number</span>
+                                            <input type="text" id="idnum" name="idnum" placeholder="ID Number" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Email</span>
+                                            <input type="text" id="email" name="email" placeholder="Email" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Password</span>
+                                            <input type="text" id="password" name="password" placeholder="Passwword" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Confirm Password</span>
+                                            <input type="text" id="password-confirm" name="password-confirm" placeholder="Confirm Password" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <input type="text" id="role_id" name="role_id" value="3" class="form-control" hidden>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary" form="addstudent">Submit Account</button>
+
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
 
         </section>
     </div>

@@ -38,7 +38,7 @@
 
             <div id="app">
                 <header>
-                    <a href="#" class="logo">Manage Accounts</a>
+                <div class="logo"><img src="{{ asset('img/logo.gif') }}"></div>
                     <ul>
                     <li>
                     <div class="dropdown">
@@ -57,30 +57,9 @@
                         </div>
                       </div>
                 </li>
-                <li>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Manage Course
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="{{ url('course') }}">List of Courses</a>
-                          <a class="dropdown-item" href="{{ url('addcourse') }}">Add Course</a>
-                        </div>
-                      </div>
-                </li>
-                <li>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Manage Accounts
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{ route('admin.users.index') }}">List of Accounts</a>
-                            <a class="dropdown-item" href="{{ url('addcouncilor') }}">Add Councilor</a>
-                          <a class="dropdown-item" href="{{ url('addstudent') }}">Add Student</a>
-                        </div>
-                      </div>
-                </li>
-                <li><a href="{{ route('home') }} ">Dashboard</a></li>
+                <li><a href="{{ url('course') }}"  class="active" >Manage Course</a></li>
+                <li><a href="{{ url('user') }}" >Manage Account</a></li>
+                <li><a href="{{ route('home') }} "x>Dashboard</a></li>
                     </ul>
                 </header>
                 @include('partials.alerts')
@@ -117,12 +96,41 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                   <div class="addcourseBx " type="button" data-bs-toggle="modal" data-bs-target="#addcourseModal"><center>Add Course</center></div>
                                 </div>
                             </div>
                     </div>
                 </div>
             </div>
-
+            <div class="modal fade" id="addcourseModal" tabindex="-1" aria-labelledby="AddcourseModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="AddcourseModalLabel">Add Course</h5>
+                          </div>
+                          <br><br><br><br>
+                          <div class="modal-body">
+                          <form method="PUT" id="addaccount" action="{{ route('course.create')}}">
+                                                        @csrf
+                                <div class="row g-3 align-items-center">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Course Name</span>
+                                        <input type="text" id="course_name" name="course_name" placeholder="Course Name" class="form-control" required>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <label class="input-group-text" for="dept_id" >Department</label>
+                                                <select class="form-select" id="dept_id" name="dept_id">
+                                                    <option>Choose Department</option>
+                                                    @foreach ($depts as $dept)
+                                                        <option value="{{$dept->id}}">{{$dept->dept_name}}</option>
+                                                    @endforeach
+                                                </select>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary" form="addaccount">Submit Account</button>
+                                </div>
+                                </form>
     </section>
     </div>
 

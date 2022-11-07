@@ -17,8 +17,8 @@ class CourseController extends Controller
     public function index()
     {
         $course = Course::all();
-        $dept = Department::all();
-        return view('admin.users.course', compact('course', 'dept'));
+        $depts = Department::all();
+        return view('admin.users.course', compact('course', 'depts'));
     }
 
     /**

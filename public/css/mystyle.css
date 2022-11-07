@@ -34,7 +34,14 @@
     display: inline-block;
     letter-spacing: 1px;
 }
-.examscard {
+.align-examscard {
+    
+    display: flex;
+  align-items: center;
+  justify-content: center
+    
+}
+.align-examscard .examscard {
     
     position:absolute;
     top:30%;

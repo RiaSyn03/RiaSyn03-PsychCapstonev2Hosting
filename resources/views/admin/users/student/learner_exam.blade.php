@@ -3,7 +3,7 @@
 <link href="{{ asset('css/questions.css') }}" rel="stylesheet">
 <section>
      <header>
-         <a href="#" class="logo">Logo</a>
+     <div class="logo"><img src="{{ asset('img/logo.gif') }}"></div>
          <ul>
          <li><a href="{{ url('home') }}">Go to Homepage</a></li>
          <li><a href="{{ url('learner_exam') }}" class="active">Learner</a></li>
