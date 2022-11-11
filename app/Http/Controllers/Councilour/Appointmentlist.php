@@ -15,12 +15,12 @@ class Appointmentlist extends Controller
 {
     public function index()
     {
-       $timescheds = Timeslot::all();
-       $done = Done::all();
+       $timescheds = Timeslot::where('status','pending')->get();
        $id = Auth()->user()->fname;
-       $acceptedlist = Accept::where('councilour_name',$id)->get();
-       $donelist = Done::where('councilour_name',$id)->get();
-        return view('admin.users.councilour.viewtime',compact('timescheds','done','donelist','acceptedlist'));
+       $acceptedlist = Timeslot::where('status','accepted')->get();
+       
+       $donelist = Timeslot::where('status','done')->get();
+        return view('admin.users.councilour.viewtime',compact('timescheds','donelist','acceptedlist'));
     }
 
 
@@ -45,12 +45,16 @@ class Appointmentlist extends Controller
         $this->validate($request,[
             'time' => 'required',
             'date' => 'required',
+            'status' => 'required',
+            'counselor_name' => 'nullable',
           ]);
         $timeslot = new Timeslot;
         $timeslot->user_fname = $request->user()->fname;
         $timeslot->user_idnum = $request->user()->idnum;
         $timeslot->time = $request->input('time');
         $timeslot->date = $request->input('date');
+        $timeslot->status = $request->input('status');
+        $timeslot->counselor_name = $request->input('counselor_name');
         $timeslot->save();
 
         return redirect()->route('appointment_history')->with('success','Time Added');
@@ -67,7 +71,6 @@ class Appointmentlist extends Controller
         $id = Auth()->user()->idnum;
         $mylist = Timeslot::where('user_idnum',$id)->get();
         $donelist = Done::where('user_idnum',$id)->get();
-        // $mylist = Timeslot::all();
         return view('admin.users.student.appointment_history', compact('mylist','donelist'));
 
     }
@@ -80,7 +83,7 @@ class Appointmentlist extends Controller
      */
     public function edit($id)
     {
-        //
+      //
     }
 
     /**
@@ -92,7 +95,22 @@ class Appointmentlist extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+     //
+    }
+
+    public function updatetime($id)
+    {
+        $counsel_name = Timeslot::select('counselor_name')->where('id',$id)->first();
+        $status = Timeslot::select('status')->where('id',$id)->first();
+        if ($status->status='pending'){
+            $status='accepted';
+            $counsel_name= Auth()->user()->fname;
+           }else{
+            $status='pending';
+           }
+           Timeslot::where('id',$id)->update(['status'=>$status]);
+           Timeslot::where('id',$id)->update(['counselor_name'=>$counsel_name]);
+           return redirect()->back();
     }
 
     /**
@@ -104,7 +122,13 @@ class Appointmentlist extends Controller
     public function destroy($id)
     {
         $appointment_delete = Timeslot::findorFail($id);
-        $appointment_delete->delete();
+        $appointment_delete->delete();  
+        return response()->json(['status' => 'Delete Successful !']);
+    }
+    public function destroycompleted($id)
+    {
+        $completed_delete = Done::findorFail($id);
+        $completed_delete->delete();
         return response()->json(['status' => 'Delete Successful !']);
     }
 
@@ -136,24 +160,15 @@ class Appointmentlist extends Controller
         return redirect()->route('viewtime')->with('success','Added to Accepted');
     }
 
-    public function done(Request $request)
+    public function done($id)
     {
-        $this->validate($request,[
-            'user_fname' => 'required',
-            'user_idnum' => 'required',
-            'time' => 'required',
-            'date' => 'required',
-            
-          ]);
-        // Timeslot::where('id',$id)->delete();
-        $done = new Done;
-        $done ->user_fname = $request->input('user_fname');
-        $done ->user_idnum = $request->input('user_idnum');
-        $done ->time = $request->input('time');
-        $done ->date = $request->input('date');
-        $done ->councilour_name = $request->user()->fname;
-        $done ->save();
-       
-        return redirect()->route('viewtime')->with('success','Added to Completed ');
+        $status = Timeslot::select('status')->where('id',$id)->first();
+        if ($status->status='accepted'){
+            $status='done';
+           }else{
+            $status='accepted';
+           }
+           Timeslot::where('id',$id)->update(['status'=>$status]);
+           return redirect()->back();
     }
 }

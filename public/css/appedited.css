@@ -262,6 +262,28 @@ th h2
     opacity: 1;
     transition: 0.5s;
 }
+
+#editpopup
+{
+    position: fixed;
+    top: 30%;
+    left: 3%; 
+    transition: translate(-50%,-50%);
+    width: 850px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0,0,0, .30);
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+#editpopup.active
+{
+    top: 20%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
 #popup2
 {
     position: fixed;

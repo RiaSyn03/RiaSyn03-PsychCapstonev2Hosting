@@ -41,8 +41,6 @@
     <div class="tabs">
     
       <div>
-      <form method="POST" action="viewtime-accept" >
-      @csrf
     <table class="table table-striped">
 <thead>
 <tr>
@@ -64,9 +62,19 @@
 <td><center><input type="hidden" name="user_fname" value="{{ $t->user_fname }} "><p>{{ $t->user_fname }}</p></center></td>
 <td><center><input type="hidden" name="date" value="{{ $t->date }} "><p>{{ $t->date }}</p></center></td>
 <td><center><input type="hidden" name="time" value="{{ $t->time }} "><p>{{ $t->time }}</p></center></td>
+<input type="hidden" name="status" value="accepted "/>
+<input type="hidden" name="counselor_name" value="{{ Auth::user()->fname }} "/>
+
 <td>
 </form>
-<button type="submit">Accept</button>
+<!-- <button type="button" class="btn btn-success edit">Accept</button>
+<button type="button" class="btn btn-danger">Decline</button> -->
+@if ($t->status='pending')
+  <a href="{{url ('change-status/'.$t->id) }}" class="btn btn-success" onclick="return confirm('Are you sure?')">Accept</a>
+  @else
+  <a href="{{url ('change-status/'.$t->id) }}" class="btn btn-danger">Pending</a>
+  @endif
+  <button type="button" class="btn btn-danger">Decline</button>
     </td> 
 </tr>
 @endforeach
@@ -90,14 +98,18 @@
 <tbody id="dynamic-row">
 @foreach($acceptedlist as $a)
 <tr>
-<input type="hidden" class="btn_val_id" value="{{ $t->id }}">
-<td><center><input type="hidden" name="user_idnum" value="{{ $t->user_idnum }}" ><p>{{ $t->user_idnum }}</p></center></td>
-<td><center><input type="hidden" name="user_fname" value="{{ $t->user_fname }} "><p>{{ $t->user_fname }}</p></center></td>
-<td><center><input type="hidden" name="date" value="{{ $t->date }} "><p>{{ $t->date }}</p></center></td>
-<td><center><input type="hidden" name="time" value="{{ $t->time }} "><p>{{ $t->time }}</p></center></td>
+<input type="hidden" class="btn_val_id" value="{{ $a->id }}">
+<td><center><input type="hidden" name="user_idnum" value="{{ $a->user_idnum }}" ><p>{{ $a->user_idnum }}</p></center></td>
+<td><center><input type="hidden" name="user_fname" value="{{ $a->user_fname }} "><p>{{ $a->user_fname }}</p></center></td>
+<td><center><input type="hidden" name="date" value="{{ $a->date }} "><p>{{ $a->date }}</p></center></td>
+<td><center><input type="hidden" name="time" value="{{ $a->time }} "><p>{{ $a->time }}</p></center></td>
 <td>
 </form>
-<button type="submit">Done</button>
+@if ($a->status='accepted')
+  <a href="{{url ('change-done/'.$a->id) }}" class="btn btn-success" onclick="return confirm('Are you sure?')">Done</a>
+  @else
+  <a href="{{url ('change-done/'.$a->id) }}" class="btn btn-danger">Accepted</a>
+  @endif
     </td> 
 </tr>
 @endforeach
@@ -126,4 +138,31 @@
 </tbody>
 </table>
 </div>
+<!-- <script type="text/javascript">
+        $(document).ready(function() {
+            var table = $('#datatable').DataTable();
+
+            table.on('click','.edit', function() {
+
+                $tr = $(this).closest('tr');
+                if ($($tr).hasClass('child')) {
+                    $tr = $tr.prev('.parent');
+                }
+
+                var data = table.row($tr).data();
+                console.log(data);
+
+                $('#idnum').val(data[1]);
+                $('#fname').val(data[3]);
+                $('#mname').val(data[4]);
+                $('#lname').val(data[2]);
+                $('#email').val(data[5]);
+                $('#year').val(data[7]);
+                $('#course').val(data[6]);
+                $('#editForm').attr('action', '/user/'+data[0]);
+                $('#editModal').modal('show');
+
+            });
+        });
+    </script> -->
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <link href="{{ asset('css/questions.css') }}" rel="stylesheet">
-<section>
+<body style="background-color: #ce8eee">
      <header>
      <div class="logo"><img src="{{ asset('img/logo.gif') }}"></div>
          <ul>
@@ -16,7 +16,7 @@
      @csrf
      @foreach ($personality as $question)
 <div class="wrapper">
-  <div class="title">{{ $question->question_num }}. {{ $question->question}}</div>
+  <div class="personalitytitle">{{ $question->question_num }}. {{ $question->question}}</div>
   <div class="box">
       <input type="radio" name="select{{ $question->question_num }}" id="radio1{{ $question->question_num }}" value="0">
       <label for="radio1{{ $question->question_num }}">
@@ -59,8 +59,8 @@
 <div id="not-stressmodal">
             <div class="not-stresscard" id="not-stresscard">
                 <div class="introvert-face"></div>
-                <div class="back-face">
-                <h3>Personality Level: 0-10 Introvert, 11-20 Ambivert, 21-40 Extrovert</h3>
+                <div class="back-face"><br><br><br><br><br><br><br><br><br>
+                <a href="{{ url('category') }}"><button type="button" class="btn btn-primary">Go to Categories</button></a>
                 <br><br><br>
                     <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
@@ -96,11 +96,21 @@
         </div>
         </form>
   <input type="hidden" value="{{$questioncount}}" id="noquestions" name="noquestions"/><br>
-</section>
+</body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  
 
   <script>
   function calculate(){
+    var valid = false ;
+    var x = document.personalityquestion.select{{ $question->question_num }};
+
+    for (var i=0; i<x.length; i++){
+      if(x[i].checked){
+        valid = true;
+        break;
+      }
+    }
+    if(valid){
 $(":radio")
 
     var total = 0;
@@ -147,6 +157,11 @@ $(":radio")
    
       $("#result_name").val("You are an extrovert");
     }
+  }
+  else {
+    alert ("Please answer all the questions");
+    return false;
+  }
 
 };
 

@@ -81,6 +81,7 @@ Route::get('/course', function(){
 Route::get('/dash', function(){
     return view('admin.users.dash');
 });
+
 Route::post('/addcouncilor','Admin\UserController@makecounselour')->name('addcouncilor');
 Route::resource('course', CourseController::class);
 Route::resource('user', Admin\UserController::class);
@@ -105,16 +106,19 @@ Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'sto
 Route::get('/impersonate/user/{id}', 'ImpersonateController@index')->name('impersonate');
 });
 Route::get('/admin/impersonate/destroy', 'Admin\ImpersonateController@destroy')->name('admin.impersonate.destroy');
+Route::get('/questions', 'Admin\QuestionController@index')->name('questions');
+Route::post('/questions', 'Admin\QuestionController@create')->name('questions');
+Route::delete('/question-delete/{id}', 'Admin\QuestionController@destroy');
 Auth::routes();
 
 //Counselour//
-Route::resource('/questions','Councilour\QuestionController', ['except' => ['show', 'edit', 'update']]);
+// Route::resource('/questions','Councilour\QuestionController', ['except' => ['show', 'edit', 'update']]);
 Route::get('/viewtime', 'Councilour\Appointmentlist@index')->name('viewtime');
-Route::post('/viewtime-accept', 'Councilour\Appointmentlist@accepted')->name('viewtime-accept');
-Route::post('/viewtime-done', 'Councilour\Appointmentlist@done')->name('viewtime-done');
+// Route::post('/viewtime-accept/{id}', 'Councilour\Appointmentlist@update')->name('viewtime-accept');
+Route::get('/change-status/{id}', 'Councilour\Appointmentlist@updatetime')->name('changestatus');
+Route::get('/change-done/{id}', 'Councilour\Appointmentlist@done')->name('changedone');
 Route::get('/viewquestions', 'Councilour\QuestionController@index')->name('viewquestions');
 Route::post('/viewquestions', 'Councilour\QuestionController@create')->name('viewquestions');
-Route::delete('/question-delete/{id}', 'Councilour\QuestionController@destroy');
 Route::get('/myfinishappointments', 'Councilour\Appointmentlist@finishappointments')->name('myfinishappointments');
 
 //Student//
@@ -131,6 +135,8 @@ Route::get('/exam_result', 'Councilour\QuestionController@result')->name('exam_r
 Route::post('/exam_result', 'Councilour\QuestionController@store')->name('exam_result');
 Route::get('/admin/users/student/questionaire', 'StudentquestionaireController@index')->name('questionaire');
 Route::delete('/appointment-delete/{id}', 'Councilour\Appointmentlist@destroy');
+Route::delete('/completed-delete/{id}', 'Councilour\Appointmentlist@destroycompleted');
+
 
 
 

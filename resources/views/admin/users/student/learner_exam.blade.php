@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <link href="{{ asset('css/questions.css') }}" rel="stylesheet">
-<section>
+<body style="background-color: #f695d1">
      <header>
      <div class="logo"><img src="{{ asset('img/logo.gif') }}"></div>
          <ul>
@@ -16,7 +16,7 @@
      @csrf
 @foreach ($learner as $question)
 <div class="wrapper">
-  <div class="title">{{ $question->question_num }}. {{ $question->question}}</div>
+  <div class="learnertitle">{{ $question->question_num }}. {{ $question->question}}</div>
   <div class="box">
       <input type="radio" name="select{{ $question->question_num }}" id="radio1{{ $question->question_num }}" value="1">
       <label for="radio1{{ $question->question_num }}">
@@ -51,7 +51,7 @@
             <div class="not-stresscard" id="not-stresscard">
                 <div class="linguistic-face"></div>
                 <div class="back-face">
-                <h3>Learner Level: 0-12 Linguistc, 13-25 Kinesthetic, 26-50 Visual</h3>
+                <a href="{{ url('category') }}"><button type="button" class="btn btn-primary">Go to Categories</button></a>
                 <br><br><br>
                     <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
@@ -64,7 +64,7 @@
             <div class="stresscard" id="stresscard">
                 <div class="kinesthetic-face"></div>
                 <div class="back-face">
-                <h3>Learner Level: 0-12 Linguistc, 13-25 Kinesthetic, 26-50 Visual</h3>
+                <a href="{{ url('category') }}"><button type="button" class="btn btn-primary">Go to Categories</button></a>
                     <br><br><br>
                     <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
@@ -77,7 +77,7 @@
             <div class="super-stresscard" id="super-stresscard">
                 <div class="visual-face"></div>
                 <div class="back-face">
-                <h3>Learner Level: 0-12 Linguistc, 13-25 Kinesthetic, 26-50 Visual</h3>
+                <a href="{{ url('category') }}"><button type="button" class="btn btn-primary">Go to Categories</button></a>
                     <br><br><br>
                     <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
@@ -87,9 +87,19 @@
         </div>
         </form>
   <input type="hidden" value="{{$questioncount}}" id="noquestions" name="noquestions"/><br>
-</section>
+</body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script>function calculate(){
+    var valid = false ;
+    var x = document.learnerquestion.select{{ $question->question_num }};
+
+    for (var i=0; i<x.length; i++){
+      if(x[i].checked){
+        valid = true;
+        break;
+      }
+    }
+    if(valid){
 $(":radio")
 
     var total = 0;
@@ -133,6 +143,11 @@ $(":radio")
    
       $("#result_name").val("You are a visual learner");
     }
+  }
+  else {
+    alert ("Please answer all the questions");
+    return false;
+  }
 
 
 };

@@ -18,7 +18,9 @@ class CreateTimeslotsTable extends Migration
             $table->string('time');
             $table->string('user_fname');
             $table->string('user_idnum');
+            $table->string('status');
             $table->string('date');
+            $table->string('counselor_name');
             $table->timestamps();
         });
     }

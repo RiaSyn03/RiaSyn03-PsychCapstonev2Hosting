@@ -56,6 +56,7 @@
                       </div>
                 </li>
                 <li><a href="{{ url('course') }}">Manage Course</a></li>
+                <li><a href="{{ url('questions') }}" >Manage Questions</a></li>
                 <li><a href="{{ url('user') }}" class="active" >Manage Account</a></li>
                 <li><a href="{{ route('home') }} ">Dashboard</a></li>
                     </ul>
@@ -79,6 +80,7 @@
                                             <th scope="col">Middle Initial</th>
                                             <th scope="col">Email Address</th>
                                             <th scope="col">Course</th>
+                                            <!-- <th scope="col">Role</th> -->
                                             <th scope="col">Year</th>
                                             <th scope="col">Edit</th>
                                             <th scope="col">Delete</th>
@@ -95,9 +97,10 @@
                                                 <td>{{ $user->mname }}</td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->course }}</td>
+                                                <!-- <td>{{ $user->role_id }}</td> -->
                                                 <td>{{ $user->year }}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-primary edit">Edit</button>
+                                                    <button type="button" class="btn btn-primary btn-sm edit"><i class="fa fa-edit"></i></button>
                                               
                                                 <!-- <td><a href="#" class="btn btn-success edit"></a> -->
                                                         
@@ -107,7 +110,7 @@
                                                     <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="float-left">
                                                         {{ method_field('DELETE') }}
                                                             @csrf
-                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o"></i></button>
+                                                        <button type="submit" class="btn btn-danger btn-sm " onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o"></i></button>
                                                     </form>
                                                 </td>
                                                 </tr>
@@ -185,6 +188,7 @@
                     <div class="modal fade">
                 </div>
             </form>
+            <!-- ADD COUNSELOR MODAL -->
             <div class="modal fade" id="addcounselorModal" tabindex="-1" aria-labelledby="AddcounselorModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-xl">
                         <div class="modal-content">
@@ -237,6 +241,7 @@
                                             <input type="text" id="role_id" name="role_id" value="2" class="form-control" hidden>
                                         </div>
                                     </div>
+                                    </div>
 
                                 </div>
                                 <div class="modal-footer">
@@ -251,6 +256,9 @@
             </div>
                    
                     </form>
+                    <!-- END ADD COUNSELOR MODAL -->
+
+                    <!-- ADD STUDENT MODAL -->
                     <div class="modal fade" id="addstudentModal" tabindex="-1" aria-labelledby="AddstudentModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-xl">
                         <div class="modal-content">

@@ -26,16 +26,36 @@
   border: 15px solid rgba(255, 255, 255, 0.774);
   /* box-shadow: 10px 5px 20px #feffff; */
 }
-.wrapper .title{
+.wrapper .stresstitle{
   color: white;
   line-height: 65px;
   text-align: center;
-  background: #2786b3;
+  background: #5babc2;
   font-size: 25px;
   font-weight: 500;
   border-radius: 10px 10px 0 0;
   padding: 20px;
 }
+.wrapper .learnertitle{
+    color: white;
+    line-height: 65px;
+    text-align: center;
+    background: #e188bf;
+    font-size: 25px;
+    font-weight: 500;
+    border-radius: 10px 10px 0 0;
+    padding: 20px;
+  }
+  .wrapper .personalitytitle{
+    color: white;
+    line-height: 65px;
+    text-align: center;
+    background: #bb81d8;
+    font-size: 25px;
+    font-weight: 500;
+    border-radius: 10px 10px 0 0;
+    padding: 20px;
+  }
 .wrapper .box{
 
   padding: 20px 30px;

@@ -24,6 +24,15 @@ class QuestionController extends Controller
         
         return view('admin.users.councilour.questions.viewquestions', compact('questions','stressquestions','personalityquestions','learnersquestions'));
     }
+    public function questions()
+    {
+        $questions = Question::all(); 
+        $stressquestions = Question::where('question_type','stress')->orderBy('question_num', 'asc')->get();
+        $personalityquestions = Question::where('question_type','personality')->orderBy('question_num', 'asc')->get(); 
+        $learnersquestions = Question::where('question_type','learners')->orderBy('question_num', 'asc')->get(); 
+        
+        return view('admin.users.questions', compact('questions','stressquestions','personalityquestions','learnersquestions'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -45,7 +54,7 @@ class QuestionController extends Controller
         $question->save();
         
 
-        return redirect()->route('viewquestions')->with('success','Question Added');
+        return redirect()->route('questions')->with('success','Question Added');
     }
 
     /**
@@ -141,9 +150,7 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        $question_delete = Question::findorFail($id);
-        $question_delete->delete();
-        return response()->json(['status' => 'Delete Successful !']);
+       //
     }
     
     public function personality(Request $request)

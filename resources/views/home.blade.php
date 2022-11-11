@@ -24,6 +24,7 @@
                       </div>
                 </li>
                 <li><a href="{{ url('course') }}">Manage Course</a></li>
+                <li><a href="{{ url('questions') }}" >Manage Questions</a></li>
                 <li><a href="{{ url('user') }}" >Manage Account</a></li>
                 <li><a href="{{ route('home') }} " class="active" >Dashboard</a></li>
                     </ul>

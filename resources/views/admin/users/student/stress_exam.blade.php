@@ -2,7 +2,7 @@
 @section('content')
 <link href="{{ asset('css/questions.css') }}" rel="stylesheet">
 <link href="{{ asset('css/piechart.css') }}" rel="stylesheet">
-<section>
+<body style="background-color: #59b7d1">
      <header>
      <div class="logo"><img src="{{ asset('img/logo.gif') }}"></div>
          <ul>
@@ -12,12 +12,13 @@
             <li><a href="{{ url('stress_exam') }}" class="active">Stress Scale</a></li>
          </ul>
      </header>
+      @include('partials.alerts')
      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 <form method="POST" action="stress_exam" name="stressquestion" id="stressquestion">
 @csrf
 @foreach ($stress as $question)
 <div class="wrapper" >
-  <div class="title">{{ $question->question_num }}. {{ $question->question}}</div>
+  <div class="stresstitle">{{ $question->question_num }}. {{ $question->question}}</div>
   <div class="box">
       <input type="radio" name="select{{ $question->question_num }}" id="radio1{{ $question->question_num }}" value="0">
       <label for="radio1{{ $question->question_num }}">
@@ -146,13 +147,26 @@
         </div>
         </form>
   <input type="hidden" value="{{$questioncount}}" id="noquestions" name="noquestions"/><br>
-</section>
+</body>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/piechart.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  
   
   <script>
   function calculate(){
+
+    var valid = false ;
+    var x = document.stressquestion.select{{ $question->question_num }};
+
+    for (var i=0; i<x.length; i++){
+      if(x[i].checked){
+        valid = true;
+        break;
+      }
+    }
+    if(valid){
+
+    
 $(":radio")
 
     var total = 0;
@@ -166,15 +180,9 @@ $(":radio")
     $("#total").text(total);
     
     
-    var notstress = maxscore*0.16;
-    var stress = maxscore*0.33;
-    var superstress = maxscore*0.50;
-    var moderately = maxscore*0.66;
-    var severe = maxscore*0.83;
-    $("#notstress").text(notstress);
     // $("#result").text(notstress);
     
-    if(total <= notstress )
+    if(total <= 4 )
     {
       // var blur = document.getElementById('blur');
       // blur.classList.toggle('active');
@@ -185,7 +193,7 @@ $(":radio")
        
         }
 
-    else if (total <= stress)
+    else if (total <= 9)
     {
       // var blur = document.getElementById('blur');
       // blur.classList.toggle('active');
@@ -193,7 +201,7 @@ $(":radio")
       stressmodal.classList.toggle('active');
       $("#result_name").val("You have mild depression");
     }
-    else if (total <= superstress)
+    else if (total <= 14)
     {
       // var blur = document.getElementById('blur');
       // blur.classList.toggle('active');
@@ -201,7 +209,7 @@ $(":radio")
       superstressmodal.classList.toggle('active');
       $("#result_name").val("You have moderate depression");
     }
-    else if (total <= moderately)
+    else if (total <= 19)
     {
       // var blur = document.getElementById('blur');
       // blur.classList.toggle('active');
@@ -210,7 +218,7 @@ $(":radio")
    
       $("#result_name").val("You have a moderately severe depression");
     }
-    else if (total > moderately)
+    else if (total > 20)
     {
       // var blur = document.getElementById('blur');
       // blur.classList.toggle('active');
@@ -218,6 +226,11 @@ $(":radio")
       severemodal.classList.toggle('active');
       $("#result_name").val("You have severe depression");
     }
+  }
+  else {
+    alert ("Please answer all the questions");
+    return false;
+  }
 
 };
 

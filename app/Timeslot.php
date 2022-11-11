@@ -11,5 +11,7 @@ class Timeslot extends Model
         'user_id', 
         'time',
         'date',
+        'status',
+        'counselor_name',
          ];
 }

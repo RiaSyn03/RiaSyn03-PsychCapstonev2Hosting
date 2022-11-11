@@ -19,14 +19,17 @@ class UserController extends Controller
      */
     public function index()
     {
+        // $appointments = DB::table('roles')
+        // ->join('users as user', 'approved.timeslot_id', '=', 'roles.id')
+        // ->join('roles as role', 'approved.timeslot_id', '=', 'role.id')
+        // ->select('time.id as time_id','time.user_idnum as user_idnum','time.user_fname as user_name', 'time.time as timeslot_time', 'time.date as timeslot_date', 'approved.councilour_name as councilour_name')
+        // ->get()->toArray();
+
         $roles = Role::all();
-        $admins = User::where('role_id','1')->orderBy('lname', 'asc')->get();
-        $counselours = User::where('role_id','2')->orderBy('lname', 'asc')->get();
-        $students = User::where('role_id','3')->orderBy('lname', 'asc')->get();
         $users = User::all();
         $courses = Course::all();
         $numusers = User::count();
-        return view('admin.users.index', compact('users', 'numusers', 'courses', 'admins', 'counselours', 'students', 'roles'));
+        return view('admin.users.index', compact('users', 'numusers', 'courses', 'roles'));
 
 }
 
