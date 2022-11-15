@@ -14,8 +14,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $department = Department::all();;
-        return view('admin.users.department', compact('department'));
+        $departments = Department::all();;
+        return view('admin.users.department', compact('departments'));
     }
 
     /**
@@ -23,9 +23,17 @@ class DepartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->validate([
+            'dept_name' => 'required',
+        ]);
+
+        Department::create([
+            'dept_name' => $request->dept_name,
+        ]);
+
+        return redirect()->route('department.index')->with('message', 'Department has been saved!');
     }
 
     /**
@@ -79,8 +87,11 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Department $departments, $id)
     {
-        //
+        $departments = Department::find($id);
+        $departments->delete();
+
+        return redirect()->route('department.index')->with('message', 'This department has been deleted.');
     }
 }

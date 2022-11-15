@@ -125,11 +125,10 @@
                         <div class="modal-header">
                             <h5 class="modal-title" id="AddcourseModalLabel">Add Course</h5>
                         </div>
-                        <br><br><br><br>
                         <div class="modal-body">
                             <form method="PUT" id="addaccount" action="{{ route('course.create') }}">
                                 @csrf
-                                <div class="row g-3 align-items-center">
+                                <div class="g-3 align-items-center">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">Course Name</span>
                                         <input type="text" id="course_name" name="course_name"

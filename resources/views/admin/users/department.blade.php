@@ -68,7 +68,7 @@
                         <li><a href="{{ url('course') }}" class="active">Manage Course</a></li>
                         <li><a href="{{ url('questions') }}">Manage Questions</a></li>
                         <li><a href="{{ url('user') }}">Manage Account</a></li>
-                        <li><a href="{{ route('home') }} "x>Dashboard</a></li>
+                        <li><a href="{{ route('home') }} ">Dashboard</a></li>
                     </ul>
                 </header>
                 @include('partials.alerts')
@@ -92,7 +92,6 @@
                                             <tr>
                                                 <td>{{ $department->id }}</td>
                                                 <td>{{ $department->dept_name }}</td>
-                                                <td>{{ $department->dept_name }}</td>
                                                 <td>
                                                     <form action="{{ route('department.destroy', $department->id) }}"
                                                         method="POST" class="float-left">
@@ -100,7 +99,7 @@
                                                         @method('DELETE')
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger btn-sm"
-                                                            onclick="return confirm('Are you sure?')"><i
+                                                            onclick="return confirm('Are you sure you want to delete {{$department->dept_name}}?')"><i
                                                                 class="fa fa-trash-o"></i></button>
                                                     </form>
                                                 </td>
@@ -108,7 +107,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <button class="addcourseBx " type="button" data-bs-toggle="modal"
+                                <button class="adddepartmentBx" type="button" data-bs-toggle="modal"
                                     data-bs-target="#adddepartmentmodal">
                                     Add Department
                                 </button>
@@ -124,15 +123,14 @@
                         <div class="modal-header">
                             <h5 class="modal-title" id="AdddepartmentModallabel">Add Department</h5>
                         </div>
-                        <br><br><br><br>
                         <div class="modal-body">
                             <form method="PUT" id="addaccount" action="{{ route('department.create') }}">
                                 @csrf
-                                <div class="row g-3 align-items-center">
+                                <div class="g-3 align-items-center">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">Department Name</span>
                                         <input type="text" id="dept_name" name="dept_name"
-                                            placeholder="Course Name" class="form-control" required>
+                                            placeholder="Department Name" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">

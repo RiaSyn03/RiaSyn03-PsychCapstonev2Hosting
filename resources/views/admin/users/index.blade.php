@@ -92,7 +92,7 @@
                                             <th scope="col">First Name</th>
                                             <th scope="col">Email</th>
                                             <th scope="col" hidden>Course</th>
-                                            <th scope="col">Year</th>
+                                            <th scope="col" hidden>Year</th>
                                             <th scope="col">Role</th>
                                             <th scope="col">Actions</th>
                                         </tr>
@@ -106,7 +106,7 @@
                                             <td>{{ $user->fname }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td hidden>{{ $user->course ? $user->course->course_name : '-'}}</td>
-                                            <td>{{ $user->year }}</td>
+                                            <td hidden>{{ $user->year }}</td>
                                             <td>{{ $user->roles->first()->role_name }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-primary btn-sm edit"><i
@@ -185,7 +185,6 @@
                                             <label class="input-group-text"
                                                 for="course">{{ __('Course') }}</label>
                                             <select class="form-select" id="course" name="course">
-
                                                 @foreach ($courses as $course)
                                                     <option>{{ $course->course_name }}</option>
                                                 @endforeach
