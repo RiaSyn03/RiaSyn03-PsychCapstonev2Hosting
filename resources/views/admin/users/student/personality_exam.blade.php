@@ -60,37 +60,32 @@
             <div class="not-stresscard" id="not-stresscard">
                 <div class="introvert-face"></div>
                 <div class="back-face"><br><br><br><br><br><br><br><br><br>
-                <a href="{{ url('category') }}"><button type="button" class="btn btn-primary">Go to Categories</button></a>
+                <a href="{{ url('category') }}"><button type="button" class="back-categorybtn">Go to Categories</button></a>
                 <br><br><br>
-                    <button type="submit" class="back-facebtn">Submit</button>
+                    <button type="submit" class="back-facebtn">Save to Exam History</button>
                     <br><br><br>
-                    <a href="#" onclick="calculate()">close</a>
-                   
                 </div>
             </div>
         </div>
 <div id="stressmodal">
             <div class="stresscard" id="stresscard">
                 <div class="ambivert-face"></div>
-                <div class="back-face">
-                <h3>Personality Level: 0-10 Introvert, 11-20 Ambivert, 21-40 Extrovert</h3>
+                <div class="back-face"><br><br><br><br><br><br><br><br><br>
+                <a href="{{ url('category') }}"><button type="button" class="back-categorybtn">Go to Categories</button></a>
                     <br><br><br>
                     <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
-                    <a href="#" onclick="calculate()">close</a>
-                   
                 </div>
             </div>
         </div>
         <div id="super-stressmodal">
             <div class="super-stresscard" id="super-stresscard">
                 <div class="extrovert-face"></div>
-                <div class="back-face">
-                <h3>Personality Level: 0-10 Introvert, 11-20 Ambivert, 21-40 Extrovert</h3>
+                <div class="back-face"><br><br><br><br><br><br><br><br><br>
+                <a href="{{ url('category') }}"><button type="button" class="back-categorybtn">Go to Categories</button></a>
                     <br><br><br>
                     <button type="submit" class="back-facebtn">Submit</button>
                     <br><br><br>
-                    <a href="#" onclick="calculate()">close</a>
                 </div>
             </div>
         </div>

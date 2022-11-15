@@ -138,7 +138,7 @@
         </div>
         <div class="description">
           <h4>PsychCare2.0</h4> <p>is about checking your mental health. mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make healthy choices. 1. Mental health is important at every stage of life, from childhood and adolescence through adulthood.Issues that are related to mental health needs attention and guidance as soon as possible. 
-                     Through this system you can seek guidance on our reliable counselors here inside the University.<br><button class="takebtn">Appoint Now </button></p>
+                     Through this system you can seek guidance on our reliable counselors here inside the University.<br><a href="{{ url('appointment_history') }}"><button type="button" class="takebtn" >Appoint Now </button></a></p>
           </div>
           <div class="description2">
           <h4>Stress Scale</h4> <p>is to check your stress level from none to severe. Taking this test at least twice a week is good to avoid mental disorder. Stress can also affect to your personality and learning, taking stress scale first is recommended before taking the others </p>
@@ -194,7 +194,7 @@
                                 <h3>Total Appointments</h3>
                             </div>
                             <div class="card-body text-white">
-                              <h1></h5>
+                            <h1>{{$totalappointments}}</h5>
                             </div>
                         </div>
                     </div>
@@ -204,7 +204,7 @@
                                 <h3>Pending</h3>
                             </div>
                             <div class="card-body text-white">
-                              <h1></h5>
+                              <h1>{{$pending}}</h5>
                             </div>
                         </div>
                     </div>
@@ -214,7 +214,7 @@
                                 <h3>Accepted</h3>
                             </div>
                             <div class="card-body text-white">
-                              <h1></h5>
+                              <h1>{{$accepted}}</h5>
                             </div>
                         </div>
                     </div>

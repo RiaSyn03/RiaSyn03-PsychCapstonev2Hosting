@@ -49,7 +49,7 @@
 <tr>
 
 <td><center><p>{{ $examhistory->result_name }}</p></center></td>
-<td><center><p>{{ $examhistory->created_at }}<p></center></td>
+<td><center><p>{{ date('d F, Y', strtotime($examhistory->created_at)) }} <p></center></td>
 <td><center>
   <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
 </center></td> 

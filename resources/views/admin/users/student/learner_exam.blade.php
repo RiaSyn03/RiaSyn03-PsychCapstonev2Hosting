@@ -50,38 +50,30 @@
 <div id="not-stressmodal">
             <div class="not-stresscard" id="not-stresscard">
                 <div class="linguistic-face"></div>
-                <div class="back-face">
-                <a href="{{ url('category') }}"><button type="button" class="btn btn-primary">Go to Categories</button></a>
+                <div class="back-face"><br><br><br><br><br><br><br>
+                <a href="{{ url('category') }}"><button type="submit" class="back-categorybtn">Go to Categories</button></a>
                 <br><br><br>
-                    <button type="submit" class="back-facebtn">Submit</button>
-                    <br><br><br>
-                    <a href="#" onclick="calculate()">close</a>
-                   
+                    <button type="submit" class="back-facebtn">Save to Exam History</button>
                 </div>
             </div>
         </div>
 <div id="stressmodal">
             <div class="stresscard" id="stresscard">
                 <div class="kinesthetic-face"></div>
-                <div class="back-face">
-                <a href="{{ url('category') }}"><button type="button" class="btn btn-primary">Go to Categories</button></a>
+                <div class="back-face"><br><br><br><br><br><br><br><br><br>
+                <a href="{{ url('category') }}"><button type="button" class="back-categorybtn">Go to Categories</button></a>
                     <br><br><br>
-                    <button type="submit" class="back-facebtn">Submit</button>
-                    <br><br><br>
-                    <a href="#" onclick="calculate()">close</a>
-                   
+                    <button type="submit" class="back-facebtn">Save to Exam History</button>
                 </div>
             </div>
         </div>
         <div id="super-stressmodal">
             <div class="super-stresscard" id="super-stresscard">
                 <div class="visual-face"></div>
-                <div class="back-face">
-                <a href="{{ url('category') }}"><button type="button" class="btn btn-primary">Go to Categories</button></a>
+                <div class="back-face"><br><br><br><br><br><br><br><br><br>
+                <a href="{{ url('category') }}"><button type="button" class="back-categorybtn">Go to Categories</button></a>
                     <br><br><br>
-                    <button type="submit" class="back-facebtn">Submit</button>
-                    <br><br><br>
-                    <a href="#" onclick="calculate()">close</a>
+                    <button type="submit" class="back-facebtn">Save to Exam History</button>
                 </div>
             </div>
         </div>

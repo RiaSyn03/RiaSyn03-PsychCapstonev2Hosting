@@ -200,7 +200,7 @@ th h2
 }
 
 .tabs > div {
-  width: 900px;
+  width: 1100px;
   position: absolute;
   background: rgba(255, 255, 255, 0.658);
   border-radius: 20px;
@@ -432,4 +432,58 @@ th h2
 }
 .course-body .addcourseBx:hover {
   background: #f53677;
+}
+
+.submitbtn {
+  width: 200px;
+  height: 40px;
+  background: #ff4584;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 5px;
+}
+.submitbtn:hover {
+  background: #f53677;
+}
+
+.timeslot-align{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.timeslotcontainer {
+  
+  position:absolute;
+  top:10%;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 10px 5px 20px #3caadc;
+  margin-bottom: 30px;
+  width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 800px;
+  
+}
+
+.timeslotcontainer h2{
+  align-items: center;
+	color: #607d8b;
+    font-weight: 600;
+    font-size: 3.5em;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    border-bottom: 4px solid #ff4584 ;
+    letter-spacing: 1px;
+}
+
+.timeslotcontainer a{
+ text-decoration: none;
+
 }

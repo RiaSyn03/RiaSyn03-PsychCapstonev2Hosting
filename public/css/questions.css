@@ -220,9 +220,22 @@
   font-weight: 500;
   cursor: pointer;
   margin: 5px;
-
-
 }
+ .back-face .back-categorybtn{
+    position: absolute;
+    top: 50%px;
+    left: 35%;
+    width: 200px;
+    height: 40px;
+    background: #ff4584;
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 5px;
+  }
 
 .not-stresscard .back-face h2 {
     margin-top: 40%;

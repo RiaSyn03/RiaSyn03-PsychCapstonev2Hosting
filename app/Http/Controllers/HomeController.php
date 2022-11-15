@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Approvedappointment;
 use App\Course;
+use App\Timeslot;
 use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
@@ -31,7 +32,11 @@ class HomeController extends Controller
         $nousers = User::count();
         $appointments = Approvedappointment::count();
         $numcourses = Course::count();
-        return view('home', compact('users', 'nousers', 'appointments', 'numcourses'));
+        $totalappointments = Timeslot::all()->count();
+        $pending = Timeslot::where('status','pending')->count();
+        $accepted = Timeslot::where('status','accepted')->count();
+        
+        return view('home', compact('users', 'nousers', 'appointments', 'numcourses','totalappointments','pending','accepted'));
     }
     public function adminregister()
     {

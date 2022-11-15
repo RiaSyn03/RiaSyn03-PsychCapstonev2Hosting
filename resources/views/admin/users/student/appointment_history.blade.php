@@ -73,7 +73,7 @@
     <div id="popup">
         <h2><div><center>Description</center></div></h2>
         <div id="appointmentDate"></div>
-        <p>No Appointment in this current Date<p><br>
+       <br>
         <h3><div><center>Want to make an Appointment ?</center></div></h3>
         <form method="post" action="appointment_history">
         @csrf
@@ -117,18 +117,14 @@
   <tbody id="dynamic-row">
   @foreach($mylist as $history)
 <tr>
-<form method="post" action="appointment_history">
   @csrf
     <input type="hidden" class="btn_val_id" value="{{ $history->id }}">
-<td><center><p>{{ $history->date }}</p></center></td>
+<td><center><p>{{ date('d F, Y', strtotime($history->date)) }}</p></center></td>
 <td><center><p>{{ $history->time }}</p></center></td>
-<td><center><p>Pending</p></center></td>
-<td><center>
-</form>
-<button type="button" class="btn btn-danger btn-sm del"><i class="fa fa-trash-o"></i></button></center>
-    </td> 
+<td><center><p>{{ $history->status }}</p></center></td>
+<td><center><button type="button" class="btn btn-danger btn-sm del"><i class="fa fa-trash-o"></i></button></center></td> 
 </tr>
-  @endforeach
+@endforeach
 </table>
 </div>
       <div>
@@ -147,10 +143,9 @@
 </thead>
 @foreach($donelist as $d)
 <tr>
-<input type="hidden" class="btn_val_id" value="{{ $d->id }}">
-<td><center><p>{{ $d->date }} </p><center></td>
+<td><center><p>{{ date('d F, Y', strtotime($d->date)) }} </p><center></td>
 <td><center><p>{{ $d->time }} </p></center></td>
-<td> <center><p>{{ $d->councilour_name }} </p></center></td>
+<td> <center><p>{{ $d->counselor_name }} </p></center></td>
 <td>
 <center><button type="button" class="btn btn-danger btn-sm completed-delete"><i class="fa fa-trash-o"></i></button></center>
     </td> 

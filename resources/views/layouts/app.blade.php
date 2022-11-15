@@ -34,7 +34,7 @@
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('css/appedited.css') }}" rel="stylesheet">
-    {{-- <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" /> --}}
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet"> 
     <link href="{{ asset('css/mystyle.css') }}" rel="stylesheet">
 
 

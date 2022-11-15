@@ -110,7 +110,7 @@
 </table>
 
 <!-- Add Modal -->
-<button type="button" onclick="toggle()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddStressModal">Add Question</button>
+<button type="button" onclick="toggle()" class="btn btn-success">Add Question</button>
 <div class="p-2">
        <div id="popup">
        <div class="wrapper" >
