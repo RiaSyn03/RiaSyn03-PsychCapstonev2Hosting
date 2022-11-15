@@ -51,7 +51,7 @@ class UsersTableSeeder extends Seeder
             'fname' => 'Student',
             'mname' => 'St',
             'lname' => 'Student',
-            'year' => '55',
+            'year' => '4th Year',
             'email' => 'student@student.com',
             'password' => bcrypt ('student')
         ]);
@@ -62,7 +62,7 @@ class UsersTableSeeder extends Seeder
             'fname' => 'Kyle Christian',
             'mname' => 'Misa',
             'lname' => 'Arches',
-            'year' => '4',
+            'year' => '2nd Year',
             'email' => 'kurumitokisaki0324@gmail.com',
             'password' => bcrypt ('Kurumitokisaki')
         ]);
