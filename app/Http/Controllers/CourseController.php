@@ -39,11 +39,6 @@ class CourseController extends Controller
             'dept_id' => $request->dept_id
         ]);
 
-        // $courses = Course::create([
-        //     'course_name'=> $request->course_name,
-        //     'dept_id'=> $request->dept,
-
-        // ]);
         return redirect()->route('course.index')->with('message', 'Course has been saved!');
     }
 
