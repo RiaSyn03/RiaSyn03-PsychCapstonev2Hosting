@@ -68,7 +68,7 @@
                         <li><a href="{{ url('course') }}" class="active">Manage Course</a></li>
                         <li><a href="{{ url('questions') }}">Manage Questions</a></li>
                         <li><a href="{{ url('user') }}">Manage Account</a></li>
-                        <li><a href="{{ route('home') }} "x>Dashboard</a></li>
+                        <li><a href="{{ route('home') }} ">Dashboard</a></li>
                     </ul>
                 </header>
                 @include('partials.alerts')
@@ -82,26 +82,24 @@
                                         <div class="panel-body">
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Course</th>
                                                 <th scope="col">Department</th>
-                                                <th scope="col">Delete</th>
+                                                <th scope="col">Actions</th>
                                             </tr>
                                         </div>
                                     </thead>
                                     <tbody id="dynamic-row">
-                                        @foreach ($courses as $course)
+                                        @foreach ($departments as $department)
                                             <tr>
-                                                <td>{{ $course->id }}</td>
-                                                <td>{{ $course->course_name }}</td>
-                                                <td>{{ $course->department->dept_name }}</td>
+                                                <td>{{ $department->id }}</td>
+                                                <td>{{ $department->dept_name }}</td>
                                                 <td>
-                                                    <form action="{{ route('course.destroy', $course->id) }}"
+                                                    <form action="{{ route('department.destroy', $department->id) }}"
                                                         method="POST" class="float-left">
-                                                        {{-- {{ method_field('DELETE') }} --}}
+                                                        {{ method_field('DELETE') }}
                                                         @method('DELETE')
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger btn-sm"
-                                                            onclick="return confirm('Are you sure you want to delete {{$course->course_name}}?')"><i
+                                                            onclick="return confirm('Are you sure you want to delete {{$department->dept_name}}?')"><i
                                                                 class="fa fa-trash-o"></i></button>
                                                     </form>
                                                 </td>
@@ -109,44 +107,35 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <button class="addcourseBx " type="button" data-bs-toggle="modal"
-                                    data-bs-target="#addcourseModal">
-                                    Add Course
+                                <button class="adddepartmentBx" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#adddepartmentmodal">
+                                    Add Department
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="addcourseModal" tabindex="-1" aria-labelledby="AddcourseModalLabel"
+            <div class="modal fade" id="adddepartmentmodal" tabindex="-1" aria-labelledby="AdddepartmentModallabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="AddcourseModalLabel">Add Course</h5>
+                            <h5 class="modal-title" id="AdddepartmentModallabel">Add Department</h5>
                         </div>
                         <div class="modal-body">
-                            <form method="PUT" id="addaccount" action="{{ route('course.create') }}">
+                            <form method="PUT" id="addaccount" action="{{ route('department.create') }}">
                                 @csrf
                                 <div class="g-3 align-items-center">
                                     <div class="input-group mb-3">
-                                        <span class="input-group-text">Course Name</span>
-                                        <input type="text" id="course_name" name="course_name"
-                                            placeholder="Course Name" class="form-control" required>
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <label class="input-group-text" for="dept_id">Department</label>
-                                        <select class="form-select" id="dept_id" name="dept_id">
-                                            <option>Choose Department</option>
-                                            @foreach ($depts as $dept)
-                                                <option value="{{ $dept->id }}">{{ $dept->dept_name }}</option>
-                                            @endforeach
-                                        </select>
+                                        <span class="input-group-text">Department Name</span>
+                                        <input type="text" id="dept_name" name="dept_name"
+                                            placeholder="Department Name" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-primary" form="addaccount">Submit
-                                        Course</button>
+                                        Department</button>
                                 </div>
                             </form>
         </section>

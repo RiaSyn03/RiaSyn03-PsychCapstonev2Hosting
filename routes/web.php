@@ -1,4 +1,5 @@
 <?php
+
 use illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -81,6 +82,9 @@ Route::get('/addcourse', function(){
 Route::get('/course', function(){
     return view('admin.users.course');
 });
+Route::get('/department', function(){
+    return view('admin.users.department');
+});
 
 Route::get('/dash', function(){
     return view('admin.users.dash');
@@ -88,6 +92,7 @@ Route::get('/dash', function(){
 
 Route::post('/addcouncilor','Admin\UserController@makecounselour')->name('addcouncilor');
 Route::resource('course', CourseController::class);
+Route::resource('/department', DepartmentController::class);
 Route::resource('user', Admin\UserController::class);
 
 //end

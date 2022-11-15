@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Course;
 use App\Department;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class CourseController extends Controller
+class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +14,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::with(['department'])->get();;
-        $depts = Department::all();
-        // return response()->json($course);
-        return view('admin.users.course', compact('courses', 'depts'));
+        $departments = Department::all();;
+        return view('admin.users.department', compact('departments'));
     }
 
     /**
@@ -30,16 +26,14 @@ class CourseController extends Controller
     public function create(Request $request)
     {
         $request->validate([
-            'course_name' => 'required',
-            'dept_id' => 'required'
+            'dept_name' => 'required',
         ]);
 
-        Course::create([
-            'course_name' => $request->course_name,
-            'dept_id' => $request->dept_id
+        Department::create([
+            'dept_name' => $request->dept_name,
         ]);
 
-        return redirect()->route('course.index')->with('message', 'Course has been saved!');
+        return redirect()->route('department.index')->with('message', 'Department has been saved!');
     }
 
     /**
@@ -56,10 +50,10 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Course  $course
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+    public function show($id)
     {
         //
     }
@@ -67,10 +61,10 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Course  $course
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit($id)
     {
         //
     }
@@ -79,10 +73,10 @@ class CourseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Course  $course
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -90,14 +84,14 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Course  $course
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $courses, $id)
+    public function destroy(Department $departments, $id)
     {
-        $courses = Course::find($id);
-        $courses->delete();
+        $departments = Department::find($id);
+        $departments->delete();
 
-        return redirect()->route('course.index')->with('message', 'This course has been deleted.');
+        return redirect()->route('department.index')->with('message', 'This department has been deleted.');
     }
 }

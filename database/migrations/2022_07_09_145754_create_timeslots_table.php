@@ -14,11 +14,11 @@ class CreateTimeslotsTable extends Migration
     public function up()
     {
         Schema::create('timeslots', function (Blueprint $table) {
-            $table->bigIncrements('id'); 
+            $table->bigIncrements('id');
             $table->string('time');
             $table->string('user_fname');
             $table->string('user_idnum');
-            $table->string('status');
+            $table->enum('status', ['Pending', 'Re-Schedule', 'Accepted', 'Done'])->default('Pending');
             $table->string('date');
             $table->string('counselor_name');
             $table->string('user_email');
