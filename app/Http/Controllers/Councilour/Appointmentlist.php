@@ -21,7 +21,7 @@ class Appointmentlist extends Controller
        $timescheds = Timeslot::where('status','pending')->get();
        $id = Auth()->user()->fname;
        $acceptedlist = Timeslot::where('counselor_name',$id)->where('status','accepted')->get();
-       $reschedule = Timeslot::where('counselor_name',$id)->where('status','reschedule')->get();
+       $reschedule = Timeslot::where('counselor_name',$id)->where('status','Re-Schedule')->get();
        $donelist = Timeslot::where('status','done')->where('counselor_name',$id)->get();
         return view('admin.users.councilour.viewtime',compact('timescheds','donelist','acceptedlist','reschedule'));
     }
@@ -173,7 +173,7 @@ class Appointmentlist extends Controller
     {
         $status = Timeslot::select('status')->where('id',$id)->first();
         if ($status->status='pending'){
-            $status='reschedule';
+            $status= 'Re-Schedule';
             $counsel_name= Auth()->user()->fname;
            }else{
             $status='pending';
