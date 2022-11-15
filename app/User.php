@@ -40,8 +40,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function courses(){
-        return $this->belongsToMany( 'App\Course');
+    public function course(){
+        return $this->belongsTo('App\Course');
     }
 
     public function roles(){

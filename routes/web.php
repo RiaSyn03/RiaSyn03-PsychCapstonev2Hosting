@@ -77,6 +77,9 @@ Route::get('/addcourse', function(){
 Route::get('/course', function(){
     return view('admin.users.course');
 });
+Route::get('/department', function(){
+    return view('admin.users.department');
+});
 
 Route::get('/dash', function(){
     return view('admin.users.dash');
