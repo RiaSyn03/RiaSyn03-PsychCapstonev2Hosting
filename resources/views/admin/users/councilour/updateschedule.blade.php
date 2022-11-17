@@ -35,7 +35,7 @@
 </div></div>
 <br><br><br>
 <center><button type="submit" class="submitbtn">Update</button></center>
-<center><a type="button" class="submitbtn" href="{{ url('viewtime') }}" >Cancel</a></center>
+<center><a href="{{ url('viewtime') }}" ><button type="button" class="submitbtn">Cancel</button></a></center>
 </form>
   </div>
 </section>

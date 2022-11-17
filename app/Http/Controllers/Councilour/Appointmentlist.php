@@ -73,8 +73,9 @@ class Appointmentlist extends Controller
     {
         $id = Auth()->user()->idnum;
         $mylist = Timeslot::where('user_idnum',$id)->get();
+        $pending = Timeslot::where('user_idnum',$id)->where('status','pending')->get();
         $donelist = Timeslot::where('user_idnum',$id)->where('status','done')->get();
-        return view('admin.users.student.appointment_history', compact('mylist','donelist'));
+        return view('admin.users.student.appointment_history', compact('mylist','donelist','pending'));
     }
 
     /**
@@ -253,6 +254,29 @@ class Appointmentlist extends Controller
             $timeslots->update();
             return redirect()->route('viewtime')->with('success','Date and Time Updated !');
         }
+
+        public function adminappointments()
+    {
+       $timescheds = Timeslot::all();
+        return view('admin.users.manageappointments',compact('timescheds'));
+    }
+
+    public function adminupdate(Request $request, $id)
+    {
+        $request->validate([
+            'counselor_name'=>'required',
+            'status'=>'required',
+            
+        ]);
+        $timeslots = Timeslot::find($id);
+
+        $timeslots->counselor_name = $request->input('counselor_name');
+        $timeslots->status = $request->input('status');
+
+        $timeslots->update();
+
+        return redirect()->back()->with('success', 'Update Success !');
+    }
 }
 
 

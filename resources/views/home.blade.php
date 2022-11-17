@@ -24,6 +24,7 @@
                       </div>
                 </li>
                 <li><a href="{{ url('course') }}">Manage Course</a></li>
+                <li><a href="{{ url('manageappointments') }}">Manage Appointments</a></li>
                 <li><a href="{{ url('questions') }}" >Manage Questions</a></li>
                 <li><a href="{{ url('user') }}" >Manage Account</a></li>
                 <li><a href="{{ route('home') }} " class="active" >Dashboard</a></li>
@@ -194,7 +195,7 @@
                                 <h3>Total Appointments</h3>
                             </div>
                             <div class="card-body text-white">
-                            <h1>{{$totalappointments}}</h5>
+                            <h2>{{$totalappointments}}</h2>
                             </div>
                         </div>
                     </div>
@@ -204,7 +205,7 @@
                                 <h3>Pending</h3>
                             </div>
                             <div class="card-body text-white">
-                              <h1>{{$pending}}</h5>
+                              <h2>{{$pending}}</h2>
                             </div>
                         </div>
                     </div>
@@ -214,7 +215,7 @@
                                 <h3>Accepted</h3>
                             </div>
                             <div class="card-body text-white">
-                              <h1>{{$accepted}}</h5>
+                              <h2>{{$accepted}}</h2>
                             </div>
                         </div>
                     </div>

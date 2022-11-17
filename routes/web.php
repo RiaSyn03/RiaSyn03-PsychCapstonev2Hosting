@@ -90,6 +90,11 @@ Route::get('/dash', function(){
     return view('admin.users.dash');
 });
 
+Route::get('/manageappointments', function(){
+    return view('admin.users.manageappointments');
+});
+
+
 Route::post('/addcouncilor','Admin\UserController@makecounselour')->name('addcouncilor');
 Route::resource('course', CourseController::class);
 Route::resource('/department', DepartmentController::class);
@@ -118,6 +123,8 @@ Route::get('/admin/impersonate/destroy', 'Admin\ImpersonateController@destroy')-
 Route::get('/questions', 'Admin\QuestionController@index')->name('questions');
 Route::post('/questions', 'Admin\QuestionController@create')->name('questions');
 Route::delete('/question-delete/{id}', 'Admin\QuestionController@destroy');
+Route::get('/manageappointments', 'Councilour\Appointmentlist@adminappointments')->name('manageappointments');
+Route::put('/manageappointments-update/{id}', 'Councilour\Appointmentlist@adminupdate')->name('manageappointments-update');
 Auth::routes();
 
 //Counselour//

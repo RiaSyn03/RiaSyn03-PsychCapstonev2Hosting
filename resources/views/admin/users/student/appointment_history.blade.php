@@ -34,11 +34,13 @@
                   <br><br><br><br>
                 <div class="tabbed">
     <input type="radio" name="tabs" id="tab-nav-1" checked>
-    <label for="tab-nav-1"> Create </label>
+    <label for="tab-nav-1">Create</label>
     <input type="radio" name="tabs" id="tab-nav-2">
-    <label for="tab-nav-2">Ongoing </label>
+    <label for="tab-nav-2">Pending</label>
     <input type="radio" name="tabs" id="tab-nav-3">
-    <label for="tab-nav-3">Completed </label>
+    <label for="tab-nav-3">All Appointments</label>
+    <input type="radio" name="tabs" id="tab-nav-4">
+    <label for="tab-nav-4">Completed </label>
     <div class="tabs">
       <div>
       <body class="light">
@@ -90,7 +92,7 @@
       <option value="3:00-4:00 PM">3:00-4:00 PM</option>
     </select>
    <input type="text" id="status" name="status" value="pending" class="form-control" hidden>
-   <input type="text" id="counselor_name" name="counselor_name" value="none" class="form-control" hidden>
+   <input type="text" id="counselor_name" name="counselor_name" value="Not yet accepted" class="form-control" hidden>
   <button type="submit">Submit</button>
 </form>
 
@@ -100,18 +102,44 @@
     
     <script src="js/calendar.js"></script>
 </div>  
-      <div>
+<div>
       <table class="table table-striped">
    <thead>
    <div class="panel-body">
    <tr>
-   <th colspan="5"><center><h2>Ongoing Appointments</h2></center></th>
+   <th colspan="5"><center><h2>Pending</h2></center></th>
 </tr>
    <tr>  
 <td><center>Date </center></td>
 <td><center>Time </center></td>
 <td><center>Status </center></td>
 <td><center>Action </center></td>
+</tr>
+  </thead>
+  <tbody id="dynamic-row">
+  @foreach($pending as $p)
+<tr>
+  @csrf
+    <input type="hidden" class="btn_val_id" value="{{ $p->id }}">
+<td><center><p>{{ date('d F, Y', strtotime($p->date)) }}</p></center></td>
+<td><center><p>{{ $p->time }}</p></center></td>
+<td><center><p>{{ $p->status }}</p></center></td>
+<td><center><button type="button" class="btn btn-danger del">Cancel</button></center></td> 
+</tr>
+@endforeach
+</table>
+</div>
+      <div>
+      <table class="table table-striped">
+   <thead>
+   <div class="panel-body">
+   <tr>
+   <th colspan="5"><center><h2>All Appointments</h2></center></th>
+</tr>
+   <tr>  
+<td><center>Date </center></td>
+<td><center>Time </center></td>
+<td><center>Status </center></td>
 </tr>
   </thead>
   <tbody id="dynamic-row">
@@ -122,7 +150,6 @@
 <td><center><p>{{ date('d F, Y', strtotime($history->date)) }}</p></center></td>
 <td><center><p>{{ $history->time }}</p></center></td>
 <td><center><p>{{ $history->status }}</p></center></td>
-<td><center><button type="button" class="btn btn-danger btn-sm del"><i class="fa fa-trash-o"></i></button></center></td> 
 </tr>
 @endforeach
 </table>
@@ -138,7 +165,6 @@
 <td><center>Date </center></td>
 <td> <center>Time</center></td>
 <td><center>Councilour Name</center></td>
-<td><center> Action</center></td>
 </tr>
 </thead>
 @foreach($donelist as $d)
@@ -146,9 +172,6 @@
 <td><center><p>{{ date('d F, Y', strtotime($d->date)) }} </p><center></td>
 <td><center><p>{{ $d->time }} </p></center></td>
 <td> <center><p>{{ $d->counselor_name }} </p></center></td>
-<td>
-<center><button type="button" class="btn btn-danger btn-sm completed-delete"><i class="fa fa-trash-o"></i></button></center>
-    </td> 
 </tr>
 @endforeach
 </tbody>

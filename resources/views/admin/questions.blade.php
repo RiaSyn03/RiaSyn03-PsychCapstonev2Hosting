@@ -25,6 +25,7 @@
                       </div>
                 </li>
                 <li><a href="{{ url('course') }}">Manage Course</a></li>
+                <li><a href="{{ url('manageappointments') }}">Manage Appointments</a></li>
                 <li><a href="{{ url('questions') }}" class="active">Manage Questions</a></li>
                 <li><a href="{{ url('user') }}" >Manage Account</a></li>
                 <li><a href="{{ route('home') }} "  >Dashboard</a></li>
@@ -66,41 +67,6 @@
 <td>{{ $stress->question_type }}</td>
 <td>
 </form>
-
-<!-- Edit Question Modal -->
-<!-- <button type="button" id="editquestionModal" onclick="toggle()" class="btn btn-primary edit" data-bs-toggle="modal" data-bs-target="#EditQuestionModal"><i class="fa fa-edit"></i></button>  
-<div class="p-2">
-       <div id="editpopup">
-       <div class="wrapper" >
-         <h2><div class="title"><center>ADD STRESS SCALE QUESTION</center></div></h2>
-         <form action="questions" method="POST" id="editquestionForm">
-   @csrf
-   <div class="box">
-   <div class="row">
-                                    <div class="col-8 col-sm-4">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text">Question Number</span>
-                                            <input type="text" id="question_num" name="question_num" placeholder="No." class="form-control">
-                                        </div>
-                                        </div>
-                                  <div class="col-6 col-sm-8">
-                                        <div class="input-group mb-9">
-                                            <span class="input-group-text">Question</span>
-                                            <textarea row="5" cols="80" id="question" name="question" placeholder="Question" class="form-control"></textarea>
-                                            
-                                        </div>
-   <input type="text" id="question_type" name="question_type" value="stress" class="form-control" hidden>
-   </div>
-   </div>
-   <br><br><br>
-   <center><button type="submit" class="addquestbtn">Submit</button></center>
- </form>
-         
-         <div onclick="toggle()"><center>Close</center></div>
-         </div>
-        </div>
-</div> -->
-<!-- End of Edit Modal -->
 <button type="button" class="btn btn-success btn-sm "><i class="fa fa-edit"></i></button>   
   <button type="button" class="btn btn-danger btn-sm del"><i class="fa fa-trash-o"></i></button>     
   </td>

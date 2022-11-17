@@ -64,6 +64,7 @@
                         </div>
                     </li>
                     <li><a href="{{ url('course') }}">Manage Course</a></li>
+                    <li><a href="{{ url('manageappointments') }}">Manage Appointments</a></li>
                     <li><a href="{{ url('questions') }}">Manage Questions</a></li>
                     <li><a href="{{ url('user') }}" class="active">Manage Account</a></li>
                     <li><a href="{{ route('home') }} ">Dashboard</a></li>
@@ -107,7 +108,7 @@
                                             <td>{{ $user->email }}</td>
                                             <td hidden>{{ $user->course ? $user->course->course_name : '-'}}</td>
                                             <td hidden>{{ $user->year }}</td>
-                                            <td>{{ $user->roles->first()->role_name }}</td>
+                                            <td></td>
                                             <td>
                                                 <button type="button" class="btn btn-primary btn-sm edit"><i
                                                         class="fa fa-edit"></i>
@@ -204,6 +205,8 @@
                 <div class="modal fade">
                 </div>
                 </form>
+                <!-- END OF EDIT MODAL -->
+                
                 <!-- ADD COUNSELOR MODAL -->
                 <div class="modal fade" id="addcounselorModal" tabindex="-1"
                     aria-labelledby="AddcounselorModalLabel" aria-hidden="true">

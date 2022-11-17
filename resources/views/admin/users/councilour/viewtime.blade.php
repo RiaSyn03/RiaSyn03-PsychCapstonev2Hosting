@@ -100,18 +100,13 @@
                                         </div>
                                         </div></div>
                                         <div class="col-8 col-sm-8">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text">Subject</span>
-                                            <input type="text" id="subject" name="subject" placeholder="Ex. For Rescheduled" class="form-control">
-                                        </div>
+                                            <input type="text" id="subject" name="subject" value="FOR RESCHEDULE" class="form-control" hidden>
                                         </div></div>
                                   <div class="col-6 col-sm-8">
                                         <div class="input-group mb-9">
                                             <span class="input-group-text">Re-Schedule Note</span>
                                             <textarea row="5" cols="80" id="body" name="body" placeholder="Reason or Note for reschedule" class="form-control"></textarea>
-                                            
                                         </div>
-   <input type="text" id="question_type" name="question_type" value="stress" class="form-control" hidden>
    </div>
    
    <br><br><br>
