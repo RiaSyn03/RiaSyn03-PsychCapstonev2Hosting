@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Approvedappointment;
 use App\Course;
 use App\Timeslot;
 use App\Http\Controllers\Controller;
@@ -30,7 +29,7 @@ class HomeController extends Controller
     {
         $users = User::all();
         $nousers = User::count();
-        $appointments = Approvedappointment::count();
+        $appointments = Timeslot::count();
         $numcourses = Course::count();
         $totalappointments = Timeslot::all()->count();
         $pending = Timeslot::where('status','pending')->count();

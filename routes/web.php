@@ -43,6 +43,7 @@ Route::get('/category', function () {
     return view('admin.users.student.category');
 });
 
+
 //Counselour Views
 
 Route::get('/councilourdash', function () {
@@ -94,6 +95,9 @@ Route::get('/manageappointments', function(){
     return view('admin.users.manageappointments');
 });
 
+Route::get('/updatequestion', function () {
+    return view('admin.users.updatequestion');
+});
 
 Route::post('/addcouncilor','Admin\UserController@makecounselour')->name('addcouncilor');
 Route::resource('course', CourseController::class);
@@ -125,6 +129,8 @@ Route::post('/questions', 'Admin\QuestionController@create')->name('questions');
 Route::delete('/question-delete/{id}', 'Admin\QuestionController@destroy');
 Route::get('/manageappointments', 'Councilour\Appointmentlist@adminappointments')->name('manageappointments');
 Route::put('/manageappointments-update/{id}', 'Councilour\Appointmentlist@adminupdate')->name('manageappointments-update');
+Route::get('/updatequestion/{id}', 'Admin\QuestionController@edit')->name('updatequestion');
+Route::put('/updatequestion-edit/{id}', 'Admin\QuestionController@update')->name('updatequestion-edit');
 Auth::routes();
 
 //Counselour//

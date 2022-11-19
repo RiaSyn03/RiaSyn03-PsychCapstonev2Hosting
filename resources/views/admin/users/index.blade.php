@@ -76,7 +76,7 @@
                 <div class="row justify-content-center">
                     <div class="formcard">
                         <div class="course-body float-start">
-                            <button class="addcouncilorBx " type="button" data-bs-toggle="modal"
+                            <button class="addcouncilorBx" type="button" data-bs-toggle="modal"
                                 data-bs-target="#addcounselorModal">
                                 <center>Add Counselor</center>
                             </button>
@@ -110,7 +110,7 @@
                                             <td hidden>{{ $user->year }}</td>
                                             <td></td>
                                             <td>
-                                                <button type="button" class="btn btn-primary btn-sm edit"><i
+                                                <button type="button" class="btn btn-primary btn-sm edit ml-2"><i
                                                         class="fa fa-edit"></i>
                                                 </button>
 
@@ -407,7 +407,7 @@
             var table = $('#datatable').DataTable();
 
             table.on('click', '.edit', function() {
-
+                
                 $tr = $(this).closest('tr');
                 if ($($tr).hasClass('child')) {
                     $tr = $tr.prev('.parent');

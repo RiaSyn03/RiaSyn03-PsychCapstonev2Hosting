@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Timeslot;
 use App\User;
-use App\Done;
-use App\Accept;
 use DB;
 use PHPMailer\PHPMailer\PHPMailer;
 use App\Mail\DeclineMail;
@@ -137,25 +135,6 @@ class Appointmentlist extends Controller
     public function bookappoint()
     {
         return view('admin.users.councilour.stdntappointment');
-    }
-
-    public function accepted(Request $request)
-    {
-        $this->validate($request,[
-            'user_fname' => 'required',
-            'user_idnum' => 'required',
-            'time' => 'required',
-            'date' => 'required',
-          ]);
-        $accept = new Accept;
-        $accept ->user_fname = $request->input('user_fname');
-        $accept ->user_idnum = $request->input('user_idnum');
-        $accept ->time = $request->input('time');
-        $accept ->date = $request->input('date');
-        $accept ->councilour_name = $request->user()->fname;
-        $accept ->save();
-       
-        return redirect()->route('viewtime')->with('success','Added to Accepted');
     }
 
     public function done($id)

@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('fname');
             $table->string('mname');
             $table->string('lname');
-            $table->enum('year', ['1st Year', '2nd year', '3rd Year', '4th Year', '5th Year']);
+            $table->enum('year', ['1st Year', '2nd year', '3rd Year', '4th Year', '5th Year', 'Employee']);
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamps();

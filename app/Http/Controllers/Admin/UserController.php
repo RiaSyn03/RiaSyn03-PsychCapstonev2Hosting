@@ -104,9 +104,9 @@ class UserController extends Controller
         // if ($request->has('permissions')){
         //     $user->givePermissionTo(collect($request->permissions)->pluck('id')->toArray());
         // }
-        $role = Role::select('id')->where('role_name', 'councilour')->first();
+        $role = Role::select('id')->where('role_name', 'counselor')->first();
         $user->roles()->attach($role);
-        return redirect()->route('admin.users.index')->with('success','Counselour Added');
+        return redirect()->route('admin.users.index')->with('success','Counselor Added');
 
     }
 

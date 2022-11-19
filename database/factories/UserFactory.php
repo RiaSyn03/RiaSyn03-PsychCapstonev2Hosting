@@ -19,15 +19,11 @@ use App\Role;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-<<<<<<< HEAD
         'fname' => $faker->fname,
         'mname' => $faker->mname,
         'lname' => $faker->lname,
         'course' => $faker->course,
         'year' => $faker->year,
-=======
-        'name' => $faker->name,
->>>>>>> 106ca1a483bdf725dccae9f53e85da85d3cea71b
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

@@ -77,7 +77,9 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $getid = Question::findOrFail($id);
+    
+        return view('admin.users.updatequestion')->with('getid',$getid);
     }
 
     /**
@@ -89,7 +91,12 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $questions = Question::find($id);
+    
+            $questions->question_num = $request->input('question_num');
+            $questions->question = $request->input('question');
+            $questions->update();
+            return redirect()->route('questions')->with('success','Question Updated !');
     }
 
     /**

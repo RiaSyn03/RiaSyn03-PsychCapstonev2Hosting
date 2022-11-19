@@ -157,7 +157,7 @@
     </section>
                 
                 @endhasrole
-                @hasrole('councilour')
+                @hasrole('counselor')
                 <link href="{{ asset('css/category.css') }}" rel="stylesheet">
                 <section>
      <header>

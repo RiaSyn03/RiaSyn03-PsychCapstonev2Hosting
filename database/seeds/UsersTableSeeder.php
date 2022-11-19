@@ -13,66 +13,48 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        // User::truncate();
-        DB::table('role_user')->truncate();
-        DB::table('timeslots')->truncate();
 
         $adminRole = Role::where('role_name', 'admin') -> first();
-        $councilourRole = Role::where('role_name', 'councilour') -> first();
+        $counselorRole = Role::where('role_name', 'counselor') -> first();
         $studentRole = Role::where('role_name', 'student') -> first();
 
         $admin = User::create([
             'role_id'=>'1',
-            'idnum' => '11111111',
-            'fname' => 'Admin',
-            'mname' => 'Ad',
-            'lname' => 'Admin',
-            'year' => '5th Year',
-            'email' => 'admin@admin.com',
+            'idnum' => '15100278',
+            'fname' => 'John Gio',
+            'mname' => 'Gayo',
+            'lname' => 'Alfanta',
+            'year' => 'Employee',
+            'email' => 'johnalfanta20@gmail.com',
             'password' => bcrypt ('admin')
         ]);
 
-        $councilour = User::create([
+        $counselor = User::create([
             'role_id'=>'2',
-            'idnum' => '22222222',
-            'fname' => 'Councilour',
-            'mname' => 'Co',
-            'lname' => 'Councilour',
-            'year' => '5th Year',
-            'email' => 'councilour@councilour.com',
-            'password' => bcrypt ('councilour')
+            'idnum' => '15102502',
+            'fname' => 'Katherine Mitz',
+            'mname' => 'Cueva',
+            'lname' => 'Lebrias',
+            'year' => 'Employee',
+            'email' => 'staceyjung69@gmail.com',
+            'password' => bcrypt ('counselor')
 
         ]);
 
         $student = User::create([
             'role_id'=>'3',
-            'idnum' => '33333333',
-            'course_id' => '1',
-            'fname' => 'Student',
-            'mname' => 'St',
-            'lname' => 'Student',
-            'year' => '4th Year',
-            'email' => 'student@student.com',
-            'password' => bcrypt ('student')
-        ]);
-
-        $kyle = User::create([
-            'role_id'=>'3',
             'idnum' => '15105515',
             'fname' => 'Kyle Christian',
             'mname' => 'Misa',
             'lname' => 'Arches',
-            'year' => '2nd Year',
+            'year' => '4th Year',
             'email' => 'kurumitokisaki0324@gmail.com',
-            'password' => bcrypt ('Kurumitokisaki')
+            'password' => bcrypt ('student')
         ]);
 
         $admin -> roles() -> attach($adminRole);
-        $councilour->roles()->attach($councilourRole);
+        $counselor->roles()->attach($counselorRole);
         $student->roles()->attach($studentRole);
-        $kyle->roles()->attach($studentRole);
-
-        // factory(App\User::class, 5)->create();
     }
 
 
