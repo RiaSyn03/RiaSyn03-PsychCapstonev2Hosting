@@ -74,7 +74,6 @@
             <br><br><br><br><br><br><br><br><br>
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="formcard">
                         <div class="course-body float-start">
                             <button class="addcouncilorBx" type="button" data-bs-toggle="modal"
                                 data-bs-target="#addcounselorModal">
@@ -88,7 +87,8 @@
                                 <thead>
                                     <div class="panel-body">
                                         <tr>
-                                            <th scope="col">ID</th>
+                                            <th scope="col" hidden>ID</th>
+                                            <th scope="col">ID Number</th>
                                             <th scope="col">Last Name</th>
                                             <th scope="col">First Name</th>
                                             <th scope="col">Email</th>
@@ -100,15 +100,18 @@
                                     </div>
                                 </thead>
                                 <tbody id="dynamic-row">
+                                    
                                     @foreach ($users as $user)
                                         <tr>
+                                            
+                                            <td hidden>{{ $user->id }}</td>
                                             <td>{{ $user->idnum }}</td>
                                             <td>{{ $user->lname }}</td>
                                             <td>{{ $user->fname }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td hidden>{{ $user->course ? $user->course->course_name : '-'}}</td>
+                                            <td hidden>{{ $user->course}}</td>
                                             <td hidden>{{ $user->year }}</td>
-                                            <td></td>
+                                            <td>{{ $user->role_name }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-primary btn-sm edit ml-2"><i
                                                         class="fa fa-edit"></i>
@@ -227,17 +230,17 @@
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text">First Name</span>
                                                     <input type="text" id="fname" name="fname"
-                                                        placeholder="First Name" class="form-control">
+                                                        placeholder="First Name" class="form-control" required>
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text">Middle Name</span>
                                                     <input type="text" id="fname" name="mname"
-                                                        placeholder="Middle Name" class="form-control">
+                                                        placeholder="Middle Name" class="form-control" required>
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text">Last Name</span>
                                                     <input type="text" id="lname" name="lname"
-                                                        placeholder="Last Name" class="form-control">
+                                                        placeholder="Last Name" class="form-control" required>
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <input type="text" id="year" name="year"
@@ -248,23 +251,23 @@
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text">ID Number</span>
                                                     <input type="text" id="idnum" name="idnum"
-                                                        placeholder="ID Number" class="form-control">
+                                                        placeholder="ID Number" class="form-control" required>
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text">Email</span>
                                                     <input type="text" id="email" name="email"
-                                                        placeholder="Email" class="form-control">
+                                                        placeholder="Email" class="form-control" required>
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text">Password</span>
                                                     <input type="text" id="password" name="password"
-                                                        placeholder="Passwword" class="form-control">
+                                                        placeholder="Passwword" class="form-control" required>
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text">Confirm Password</span>
                                                     <input type="text" id="password-confirm"
                                                         name="password-confirm" placeholder="Confirm Password"
-                                                        class="form-control">
+                                                        class="form-control" required>
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <input type="text" id="role_id" name="role_id"
@@ -274,7 +277,8 @@
                                         </div>
 
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer"><button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary" form="addaccount">Submit
                                             Account</button>
                                     </div>
@@ -306,22 +310,22 @@
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">First Name</span>
                                             <input type="text" id="fname" name="fname"
-                                                placeholder="First Name" class="form-control">
+                                                placeholder="First Name" class="form-control" required>
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">Middle Name</span>
                                             <input type="text" id="fname" name="mname"
-                                                placeholder="Middle Name" class="form-control">
+                                                placeholder="Middle Name" class="form-control"required>
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">Last Name</span>
                                             <input type="text" id="lname" name="lname"
-                                                placeholder="Last Name" class="form-control">
+                                                placeholder="Last Name" class="form-control"required>
                                         </div>
                                         <div class="input-group mb-3">
                                             <label class="input-group-text"
                                                 for="course">{{ __('Course') }}</label>
-                                            <select class="form-select" id="course" name="course_id">
+                                            <select class="form-select" id="course" name="course_id" required>
                                                 <option>Choose Course</option>
                                                 @foreach ($courses as $course)
                                                     <option value="{{ $course->id }}">{{ $course->course_name }}
@@ -332,7 +336,7 @@
                                         <div class="input-group mb-3">
                                             <label class="input-group-text"
                                                 for="year">{{ __('Year') }}</label>
-                                            <select class="form-select" id="year" name="year">
+                                            <select class="form-select" id="year" name="year" required>
                                                 <option value="1st Year">1st Year</option>
                                                 <option value="2nd Year">2nd Year</option>
                                                 <option value="3rd Year">3rd Year</option>
@@ -345,22 +349,22 @@
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">ID Number</span>
                                             <input type="text" id="idnum" name="idnum"
-                                                placeholder="ID Number" class="form-control">
+                                                placeholder="ID Number" class="form-control" required>
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">Email</span>
                                             <input type="text" id="email" name="email" placeholder="Email"
-                                                class="form-control">
+                                                class="form-control" required>
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">Password</span>
                                             <input type="text" id="password" name="password"
-                                                placeholder="Passwword" class="form-control">
+                                                placeholder="Passwword" class="form-control" required>
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">Confirm Password</span>
                                             <input type="text" id="password-confirm" name="password-confirm"
-                                                placeholder="Confirm Password" class="form-control">
+                                                placeholder="Confirm Password" class="form-control" required>
                                         </div>
                                         <div class="input-group mb-3">
                                             <input type="text" id="role_id" name="role_id" value="3"
@@ -417,12 +421,12 @@
                 console.log(table.row($tr));
                 console.log(data);
 
-                $('#idnum').val(data[0]);
-                $('#fname').val(data[2]);
-                $('#lname').val(data[1]);
-                $('#email').val(data[3]);
-                $('#year').val(data[5]);
-                $('#course').val(data[4]);
+                $('#idnum').val(data[1]);
+                $('#fname').val(data[3]);
+                $('#lname').val(data[2]);
+                $('#email').val(data[4]);
+                $('#year').val(data[6]);
+                $('#course').val(data[7]);
                 $('#editForm').attr('action', '/user/' + data[0]);
                 $('#editModal').modal('show');
 

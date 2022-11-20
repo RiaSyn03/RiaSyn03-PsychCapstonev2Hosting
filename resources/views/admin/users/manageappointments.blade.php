@@ -34,8 +34,10 @@
      </header>        
      @include('partials.alerts')    
 <br><br><br><br><br><br><br><br>
-<div class="course-body"> 
-
+<div class="container">
+                    <div class="row justify-content-center">
+                        <div class="formcard">
+                            <div class="course-body">
       <table class="table table-striped" id="datatable">
    <thead>
    <div class="panel-body">
@@ -43,7 +45,7 @@
    <th colspan="6"><center><h2>List of Appointments</h2></center></th>
 </tr>
    <tr>  
-<td><center>ID</center></td>
+<td hidden><center>ID</center></td>
 <td><center>Date </center></td>
 <td><center>Time </center></td>
 <td><center>Status </center></td>
@@ -52,10 +54,11 @@
 </tr>
   </thead>
   <tbody id="dynamic-row">
+    
   @foreach($timescheds as $history)
 <tr>
   @csrf
-  <td>{{ $history->id }}</td>
+  <td hidden>{{ $history->id }}</td>
 <td>{{ date('d F, Y', strtotime($history->date)) }}</td>
 <td>{{ $history->time }}</td>
 <td>{{ $history->status }}</td>

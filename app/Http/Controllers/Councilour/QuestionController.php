@@ -16,7 +16,10 @@ class QuestionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {if(Auth::guest())
+        {
+            return redirect()->route('/');
+        }
         $questions = Question::all(); 
         $stressquestions = Question::where('question_type','stress')->orderBy('question_num', 'asc')->get();
         $personalityquestions = Question::where('question_type','personality')->orderBy('question_num', 'asc')->get(); 
@@ -26,6 +29,10 @@ class QuestionController extends Controller
     }
     public function questions()
     {
+        if(Auth::guest())
+        {
+            return redirect()->route('/');
+        }
         $questions = Question::all(); 
         $stressquestions = Question::where('question_type','stress')->orderBy('question_num', 'asc')->get();
         $personalityquestions = Question::where('question_type','personality')->orderBy('question_num', 'asc')->get(); 
@@ -53,7 +60,6 @@ class QuestionController extends Controller
         $question->question_type = $request->input('question_type');
         $question->save();
         
-
         return redirect()->route('questions')->with('success','Question Added');
     }
 
@@ -65,17 +71,7 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {       
-        $this->validate($request,[
-            'result_name' => 'required',
-          ]);
-
-        $result = new Result;
-        $result->user_id = $request->user()->id;
-        $result->result_name = $request->input('result_name');
-        $result->save();
-
-        // return view('admin.users.student.exam_result');
-        return redirect()->route('stress_exam')->with('success','Exam Added');
+        //
     }
 
     public function pstore(Request $request)
@@ -89,7 +85,6 @@ class QuestionController extends Controller
         $result->result_name = $request->input('result_name');
         $result->save();
 
-        // return view('admin.users.student.exam_result');
         return redirect()->route('personality_exam');
     }
 
@@ -104,7 +99,6 @@ class QuestionController extends Controller
         $result->result_name = $request->input('result_name');
         $result->save();
 
-        // return view('admin.users.student.exam_result');
         return redirect()->route('learner_exam');
     }
 
@@ -155,6 +149,10 @@ class QuestionController extends Controller
     
     public function personality(Request $request)
     {
+        if(Auth::guest())
+        {
+            return redirect()->route('/');
+        }
         $questioncount = Question::where('question_type','personality')->get()->count(); 
         $personality = Question::where('question_type','personality')->orderBy('question_num', 'asc')->get();
         return view('admin.users.student.personality_exam', compact('personality', 'questioncount'));
@@ -163,6 +161,10 @@ class QuestionController extends Controller
     }
     public function learner(Request $request)
     {
+        if(Auth::guest())
+        {
+            return redirect()->route('/');
+        }
         $questioncount = Question::where('question_type','learners')->get()->count(); 
         $learner = Question::where('question_type','learners')->orderBy('question_num', 'asc')->get();
         return view('admin.users.student.learner_exam', compact('learner', 'questioncount'));
@@ -171,6 +173,10 @@ class QuestionController extends Controller
 
     public function stress(Request $request)
     {
+        if(Auth::guest())
+        {
+            return redirect()->route('/');
+        }
         $questioncount = Question::where('question_type','stress')->get()->count(); 
         $stress = Question::where('question_type','stress')->orderBy('question_num', 'asc')->get();       
         return view('admin.users.student.stress_exam', compact('stress', 'questioncount'));
@@ -178,17 +184,14 @@ class QuestionController extends Controller
     }
     public function showexam()
     {
+        if(Auth::guest())
+        {
+            return redirect()->route('/');
+        }
         $id = auth()->user()->id;
         $myexams = Result::where('user_id',$id)->get();
         
         return view('admin.users.student.exams_history', compact('myexams'));
-    }
-    public function result(Request $request)
-    {
-       
-        $stress = Result::all();       
-        return view('admin.users.student.exam_result', compact('stress'));
-
     }
 }
 

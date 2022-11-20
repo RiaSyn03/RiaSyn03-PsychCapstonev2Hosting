@@ -23,7 +23,12 @@ class UserController extends Controller
         // ->join('users as user', 'approved.timeslot_id', '=', 'roles.id')
         // ->join('roles as role', 'approved.timeslot_id', '=', 'role.id')
         // ->select('time.id as time_id','time.user_idnum as user_idnum','time.user_fname as user_name', 'time.time as timeslot_time', 'time.date as timeslot_date', 'approved.councilour_name as councilour_name')
+
         // ->get()->toArray();
+        if(Auth::guest())
+        {
+            return redirect()->route('/');
+        }
 
         $roles = Role::all();
         $users = User::all();
@@ -59,12 +64,6 @@ class UserController extends Controller
         'password'=>bcrypt($request->password)
 
     ]);
-
-    // if ($request->has('role')){
-    //     $user->assignRole($request->role['name']);
-    // }
-    // $role = Role::select('id')->where('role_name', 'student')->first();
-    //     $user->roles()->attach($role);
         return redirect()->route('admin.users.index')->with('success','Student Added');
     }
 
@@ -92,18 +91,7 @@ class UserController extends Controller
             'year'=> $request->year,
             'email'=> $request->email,
             'password'=>bcrypt($request->password)
-            
-
-
         ]);
-
-        // if ($request->has('role')){
-        //     $user->assignRole($request->role['name']);
-        // }
-
-        // if ($request->has('permissions')){
-        //     $user->givePermissionTo(collect($request->permissions)->pluck('id')->toArray());
-        // }
         $role = Role::select('id')->where('role_name', 'counselor')->first();
         $user->roles()->attach($role);
         return redirect()->route('admin.users.index')->with('success','Counselor Added');

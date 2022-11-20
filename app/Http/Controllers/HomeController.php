@@ -7,6 +7,7 @@ use App\User;
 use App\Course;
 use App\Timeslot;
 use App\Http\Controllers\Controller;
+use DB;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        
+        $users = DB::table('users')
+            ->join('roles', 'users.id', '=', 'roles.role_id')
+            ->join('courses', 'users.id', '=', 'courses.course_id')
+            ->select('users.*', 'roles.role_name', 'courses.course_name')
+            ->get();
+
         $nousers = User::count();
         $appointments = Timeslot::count();
         $numcourses = Course::count();

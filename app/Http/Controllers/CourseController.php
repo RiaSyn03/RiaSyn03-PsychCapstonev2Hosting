@@ -6,6 +6,7 @@ use App\Course;
 use App\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -16,9 +17,12 @@ class CourseController extends Controller
      */
     public function index()
     {
+        if(Auth::guest())
+        {
+            return redirect()->route('/');
+        }
         $courses = Course::with(['department'])->get();;
         $depts = Department::all();
-        // return response()->json($course);
         return view('admin.users.course', compact('courses', 'depts'));
     }
 

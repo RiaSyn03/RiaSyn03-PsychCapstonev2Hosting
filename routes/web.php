@@ -4,63 +4,33 @@ use illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
         return view('welcome');
-    });
-
-Route::get('markAsRead', function(){
-    auth()->user()->unreadNotifications->markAsRead();
-    return redirect()->back();
-})->name('markRead');
+    })->name('/');
 
 //Student Views
-
-Route::get('/studentdash', function () {
-    return view('admin.users.student.studentdash');
-});
-
-Route::get('/stdntappointment', function () {
-    return view('admin.users.student.stdntappointment');
-});
-
-Route::get('/questionaire', function () {
-    return view('admin.users.student.questionaire');
-});
-
-Route::get('/stress_exam', function () {
-    return view('admin.users.student.stress_exam');
-});
-Route::get('/learner_exam', function () {
-    return view('admin.users.student.learner_exam');
-});
-Route::get('/personality_exam', function () {
-    return view('admin.users.student.personality_exam');
-});
-
 Route::get('/wellness', function () {
+    if(Auth::guest())
+        {
+            return redirect()->route('/');
+        }
     return view('admin.users.student.wellness');
 });
 
 Route::get('/category', function () {
+    if(Auth::guest())
+        {
+            return redirect()->route('/');
+        }
     return view('admin.users.student.category');
 });
 
 
 //Counselour Views
 
-Route::get('/councilourdash', function () {
-    return view('admin.users.councilour.councilourdash');
-});
-Route::get('/create', function () {
-    return view('admin.users.councilour.questions.create');
-});
 Route::get('/viewquestions', function () {
     return view('admin.users.councilour.questions.viewquestions');
 });
 Route::get('/editquestionaire', function () {
     return view('admin.users.councilour.questions.editquestion');
-});
-
-Route::get('/exams_history', function () {
-    return view('admin.users.councilour.exams_history');
 });
 
 Route::get('/updateschedule', function () {
@@ -89,14 +59,6 @@ Route::get('/department', function(){
 
 Route::get('/dash', function(){
     return view('admin.users.dash');
-});
-
-Route::get('/manageappointments', function(){
-    return view('admin.users.manageappointments');
-});
-
-Route::get('/updatequestion', function () {
-    return view('admin.users.updatequestion');
 });
 
 Route::post('/addcouncilor','Admin\UserController@makecounselour')->name('addcouncilor');
@@ -134,7 +96,6 @@ Route::put('/updatequestion-edit/{id}', 'Admin\QuestionController@update')->name
 Auth::routes();
 
 //Counselour//
-// Route::resource('/questions','Councilour\QuestionController', ['except' => ['show', 'edit', 'update']]);
 Route::get('/viewtime', 'Councilour\Appointmentlist@index')->name('viewtime');
 // Route::post('/viewtime-accept/{id}', 'Councilour\Appointmentlist@update')->name('viewtime-accept');
 Route::get('/change-status/{id}', 'Councilour\Appointmentlist@updatetime')->name('changestatus');
@@ -157,8 +118,6 @@ Route::post('/personality_exam', 'Councilour\QuestionController@pstore')->name('
 Route::get('/exams_history', 'Councilour\QuestionController@showexam')->name('exams_history');
 Route::get('/learner_exam', 'Councilour\QuestionController@learner')->name('learner_exam');
 Route::post('/learner_exam', 'Councilour\QuestionController@lstore')->name('learner_exam');
-Route::get('/exam_result', 'Councilour\QuestionController@result')->name('exam_result');
-Route::post('/exam_result', 'Councilour\QuestionController@store')->name('exam_result');
 Route::get('/admin/users/student/questionaire', 'StudentquestionaireController@index')->name('questionaire');
 Route::delete('/appointment-delete/{id}', 'Councilour\Appointmentlist@destroy');
 Route::delete('/completed-delete/{id}', 'Councilour\Appointmentlist@destroycompleted');

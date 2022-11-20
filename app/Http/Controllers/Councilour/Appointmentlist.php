@@ -15,12 +15,18 @@ class Appointmentlist extends Controller
 {
     public function index()
     {
+        if(Auth::guest())
+        {
+            return redirect()->route('/');
+        }
+
         $id = Auth()->user()->fname;
        $timescheds = Timeslot::where('status','pending')->get();
        $id = Auth()->user()->fname;
        $acceptedlist = Timeslot::where('counselor_name',$id)->where('status','accepted')->get();
        $reschedule = Timeslot::where('counselor_name',$id)->where('status','Re-Schedule')->get();
        $donelist = Timeslot::where('status','done')->where('counselor_name',$id)->get();
+       
         return view('admin.users.councilour.viewtime',compact('timescheds','donelist','acceptedlist','reschedule'));
     }
 
@@ -235,7 +241,11 @@ class Appointmentlist extends Controller
         }
 
         public function adminappointments()
-    {
+    {if(Auth::guest())
+        {
+            return redirect()->route('/');
+        }
+        
        $timescheds = Timeslot::all();
         return view('admin.users.manageappointments',compact('timescheds'));
     }

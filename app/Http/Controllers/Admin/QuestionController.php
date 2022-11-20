@@ -16,6 +16,11 @@ class QuestionController extends Controller
      */
     public function index()
     {
+        if(Auth::guest())
+        {
+            return redirect()->route('/');
+        }
+        
         $questions = Question::all(); 
         $stressquestions = Question::where('question_type','stress')->orderBy('question_num', 'asc')->get();
         $personalityquestions = Question::where('question_type','personality')->orderBy('question_num', 'asc')->get(); 
@@ -76,7 +81,11 @@ class QuestionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {if(Auth::guest())
+        {
+            return redirect()->route('/');
+        }
+        
         $getid = Question::findOrFail($id);
     
         return view('admin.users.updatequestion')->with('getid',$getid);
