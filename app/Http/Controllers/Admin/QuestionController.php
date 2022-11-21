@@ -81,7 +81,8 @@ class QuestionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {if(Auth::guest())
+    {
+        if(Auth::guest())
         {
             return redirect()->route('/');
         }

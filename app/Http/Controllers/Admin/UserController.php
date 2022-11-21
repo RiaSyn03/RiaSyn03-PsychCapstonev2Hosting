@@ -142,7 +142,7 @@ class UserController extends Controller
         $users->year = $request->input('year');
         $users->email = $request->input('email');
 
-        $users->save();
+        $users->update();
 
         return redirect('/user')->with('Profile Updated');
     }

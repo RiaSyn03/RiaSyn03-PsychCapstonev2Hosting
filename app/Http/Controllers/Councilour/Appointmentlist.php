@@ -21,11 +21,11 @@ class Appointmentlist extends Controller
         }
 
         $id = Auth()->user()->fname;
-       $timescheds = Timeslot::where('status','pending')->get();
+       $timescheds = Timeslot::where('status','pending')->orderBy('date', 'asc')->get();
        $id = Auth()->user()->fname;
-       $acceptedlist = Timeslot::where('counselor_name',$id)->where('status','accepted')->get();
-       $reschedule = Timeslot::where('counselor_name',$id)->where('status','Re-Schedule')->get();
-       $donelist = Timeslot::where('status','done')->where('counselor_name',$id)->get();
+       $acceptedlist = Timeslot::where('counselor_name',$id)->where('status','accepted')->orderBy('date', 'asc')->get();
+       $reschedule = Timeslot::where('counselor_name',$id)->where('status','Re-Schedule')->orderBy('date', 'asc')->get();
+       $donelist = Timeslot::where('status','done')->where('counselor_name',$id)->orderBy('date', 'asc')->get();
        
         return view('admin.users.councilour.viewtime',compact('timescheds','donelist','acceptedlist','reschedule'));
     }
@@ -76,9 +76,9 @@ class Appointmentlist extends Controller
     public function show()
     {
         $id = Auth()->user()->idnum;
-        $mylist = Timeslot::where('user_idnum',$id)->get();
-        $pending = Timeslot::where('user_idnum',$id)->where('status','pending')->get();
-        $donelist = Timeslot::where('user_idnum',$id)->where('status','done')->get();
+        $mylist = Timeslot::where('user_idnum',$id)->orderBy('date', 'asc')->get();
+        $pending = Timeslot::where('user_idnum',$id)->where('status','pending')->orderBy('date', 'asc')->get();
+        $donelist = Timeslot::where('user_idnum',$id)->where('status','done')->orderBy('date', 'asc')->get();
         return view('admin.users.student.appointment_history', compact('mylist','donelist','pending'));
     }
 

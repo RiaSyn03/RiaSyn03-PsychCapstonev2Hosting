@@ -59,6 +59,4 @@ class UsersTableSeeder extends Seeder
         $counselor->roles()->attach($counselorRole);
         $student->roles()->attach($studentRole);
     }
-
-
 }

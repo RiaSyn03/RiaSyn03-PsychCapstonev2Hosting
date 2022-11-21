@@ -78,10 +78,10 @@
   <a href="{{url ('change-status/'.$t->id) }}" class="btn btn-danger">Pending</a>
   @endif
 <br>
-  <button type="button" class="btn btn-primary" onclick="toggle()">Send Reschedule Note</button>
+  <button type="button" class="btn btn-info" onclick="toggle()">Send Reschedule Note</button>
   @if ($t->status='pending')
   <br>
-  <a href="{{url ('change-resched/'.$t->id) }}" class="btn btn-danger" onclick="return confirm('Please SEND RESCHEDULE NOTE first before doing this action. If DONE click OK')">For Re-Schedule&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></td>
+  <a href="{{url ('change-resched/'.$t->id) }}" class="btn btn-warning" onclick="return confirm('Please SEND RESCHEDULE NOTE first before doing this action. If DONE click OK')">For Re-Schedule&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></td>
   @endif
 @endforeach
   <!-- Decline Modal -->

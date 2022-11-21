@@ -46,18 +46,18 @@
                 <ul>
                     <li>
                         <div class="dropdown">
-                            <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+                            <a class="dropdown-toggle " id="dropdownMenuButton" data-toggle="dropdown" 
                                 aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->fname }} <span class="caret"></span>
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="{{ route('logout') }}" 
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    style="display: none;">
+                                    >
                                     @csrf
                                 </form>
                             </div>
@@ -92,7 +92,7 @@
                                             <th scope="col">Last Name</th>
                                             <th scope="col">First Name</th>
                                             <th scope="col">Email</th>
-                                            <th scope="col" >Course</th>
+                                            <th scope="col" hidden>Course</th>
                                             <th scope="col" hidden>Year</th>
                                             <th scope="col">Role</th>
                                             <th scope="col">Actions</th>
@@ -109,7 +109,7 @@
                                             <td>{{ $user->lname }}</td>
                                             <td>{{ $user->fname }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td >{{ $user->course_name}}</td>
+                                            <td hidden>{{ $user->course_name}}</td>
                                             <td hidden>{{ $user->year }}</td>
                                             <td>{{ $user->role_name }}</td>
                                             <td>
@@ -137,7 +137,7 @@
                             </div>
                             <form action="/user" method="POST" id="editForm">
                                 {{ csrf_field() }}
-                                {{ method_field('PATCH') }}
+                                {{ method_field('PUT') }}
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-8 col-sm-6">
@@ -400,7 +400,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             var table = $('#datatable').DataTable();
@@ -429,7 +428,7 @@
         });
     </script>
 
-<script>
+<!-- <script>
 $(document).ready(function(){
   $.ajaxSetup({
     headers: {
@@ -488,7 +487,7 @@ swalWithBootstrapButtons.fire({
 })
    });
 });
-</script>
+</script> -->
 
 </body>
 

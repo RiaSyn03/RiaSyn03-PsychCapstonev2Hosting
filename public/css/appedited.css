@@ -93,6 +93,12 @@ header ul li a.active
     color: #fff;
 
 }
+header .dropdown {
+  cursor: pointer;
+}
+header .dropdown a:hover{
+  background: #ff4584;
+}
 
 .imgBx img
 {

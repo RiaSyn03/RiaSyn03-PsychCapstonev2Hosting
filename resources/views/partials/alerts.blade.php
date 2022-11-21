@@ -1,8 +1,9 @@
 @if(session('success'))
-<div class="alert alert-success" role="alert">
+<div class="alert alert-success" role="alert" id="alert"><button type="button" class="close" data-dismiss="alert">x</button>
   {{ session('success') }}
 </div>
 @endif
+
 
 @if(session('warning'))
 <div class="alert alert-warning" role="alert">
@@ -23,3 +24,13 @@
 </div>
 </div>
 @endif
+
+<script type="text/javascript">
+  $("document").ready(function()
+  {
+    setTimeout(function()
+    {
+      $("div.alert").remove();
+    },3000);
+  });
+  </script>

@@ -203,7 +203,7 @@ class QuestionController extends Controller
             return redirect()->route('/');
         }
         $id = auth()->user()->id;
-        $myexams = Result::where('user_id',$id)->get();
+        $myexams = Result::where('user_id',$id)->orderBy('created_at', 'asc')->get();
         
         return view('admin.users.student.exams_history', compact('myexams'));
     }

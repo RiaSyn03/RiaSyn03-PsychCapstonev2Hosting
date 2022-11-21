@@ -7,6 +7,9 @@
       <h2 class="text-center">
         Update Question
       </h2>
+      <form action="/updatequestion-edit/{{$getid->id}}" method="POST" >
+      {{ csrf_field() }}
+      {{ method_field('PUT') }}
       <div class="row">
         <div class="col-md-12">
           <div class="input-group mt-4 mb-2">
