@@ -70,7 +70,7 @@
       </div>
     </div>
                 <br><br><br>
-                    <button type="submit" class="back-facebtn">Submit</button>
+                    <button type="submit" class="back-facebtn">Save to Exam History</button>
                     <br><br><br>
                     <a href="#" onclick="calculate()">close</a>
                    
@@ -87,7 +87,7 @@
       </div>
     </div>
                     <br><br><br>
-                    <button type="submit" class="back-facebtn">Submit</button>
+                    <button type="submit" class="back-facebtn">Save to Exam History</button>
                     <br><br><br>
                     <a href="#" onclick="calculate()">close</a>
                    
@@ -104,7 +104,7 @@
       </div>
     </div>
                     <br><br><br>
-                    <button type="submit" class="back-facebtn">Submit</button>
+                    <button type="submit" class="back-facebtn">Save to Exam History</button>
                     <br><br><br>
                     <a href="#" onclick="calculate()">close</a>
                     
@@ -121,7 +121,7 @@
       </div>
     </div>
                     <br><br><br>
-                    <button type="submit" class="back-facebtn">Submit</button>
+                    <button type="submit" class="back-facebtn">Save to Exam History</button>
                     <br><br><br>
                     <a href="#" onclick="calculate()">close</a>
                    
@@ -138,7 +138,7 @@
       </div>
     </div>
                     <br><br><br>
-                    <button type="submit" class="back-facebtn">Submit</button>
+                    <button type="submit" class="back-facebtn">Save to Exam History</button>
                     <br><br><br>
                     <a href="#" onclick="calculate()">close</a>
                    

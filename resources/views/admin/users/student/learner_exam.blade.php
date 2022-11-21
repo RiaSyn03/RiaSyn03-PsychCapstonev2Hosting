@@ -11,6 +11,7 @@
              <li><a href="{{ url('stress_exam') }}" >Stress Scale</a></li> 
          </ul>
      </header>
+     @include('partials.alerts')
      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
      <form method="POST" action="learner_exam" name="learnerquestion" id="learnerquestion">
      @csrf

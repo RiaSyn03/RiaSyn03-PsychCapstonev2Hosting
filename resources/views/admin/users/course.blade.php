@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         @media only screen and (max-width: 620px) {
-
             /* For mobile phones: */
             .menu,
             .main,
@@ -78,14 +77,22 @@
                     <div class="row justify-content-center">
                         <div class="formcard">
                             <div class="course-body">
-                                <table class="table table-striped">
+                                <table class="table table-striped" id="datatable">
+                                <button class="addcourseBx " type="button" data-bs-toggle="modal"
+                                    data-bs-target="#addcourseModal">
+                                    Add Course
+                                </button>
+                                <button class="adddepartmentBx " type="button" data-bs-toggle="modal"
+                                    data-bs-target="#adddepartmentModal">
+                                    Add Department
+                                </button>
                                     <thead>
                                         <div class="panel-body">
                                             <tr>
                                                 <th scope="col">#</th>
                                                 <th scope="col">Course</th>
                                                 <th scope="col">Department</th>
-                                                <th scope="col">Delete</th>
+                                                <th scope="col">Edit</th>
                                             </tr>
                                         </div>
                                     </thead>
@@ -96,29 +103,21 @@
                                                 <td>{{ $course->course_name }}</td>
                                                 <td>{{ $course->department->dept_name }}</td>
                                                 <td>
-                                                    <form action="{{ route('course.destroy', $course->id) }}"
-                                                        method="POST" class="float-left">
-                                                        {{-- {{ method_field('DELETE') }} --}}
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button type="submit" class="btn btn-danger btn-sm"
-                                                            onclick="return confirm('Are you sure you want to delete {{$course->course_name}}?')"><i
-                                                                class="fa fa-trash-o"></i></button>
-                                                    </form>
+                                                        <button class="btn btn-primary btn-sm edit">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <button class="addcourseBx " type="button" data-bs-toggle="modal"
-                                    data-bs-target="#addcourseModal">
-                                    Add Course
-                                </button>
+                               
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- ADD COURSE MODAL -->
             <div class="modal fade" id="addcourseModal" tabindex="-1" aria-labelledby="AddcourseModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-xl">
@@ -146,10 +145,92 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary" form="addaccount">Submit
                                         Course</button>
                                 </div>
                             </form>
+    </div>
+</div>
+</div>
+</div>
+
+                            <!-- END COURSE MODAL -->
+
+                            <!-- ADD DEPARTMENT MODAL -->
+            <div class="modal fade" id="adddepartmentModal" tabindex="-1" aria-labelledby="DepartmentModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="DepartmentModalLabel">Add Department</h5>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" id="adddept" action="{{ route('add-department') }}">
+                                @csrf
+                                    <div class="g-3 align-items-center">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Department Name</span>
+                                        <input type="text" id="dept_name" name="dept_name"
+                                            placeholder="Department Name" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary" form="adddept">Submit
+                                        Department</button>
+                                </div>
+                            </form>
+                            </div> 
+                            </div> 
+                            </div> 
+                            </div> 
+                           
+                            
+                            <!-- END DEPARTMENT MODAL -->
+
+                            <!-- EDIT MODAL -->
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="EditModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="EditModalLabel">Add Course</h5>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" id="editForm" action="/course">
+                            {{ csrf_field() }}
+                            {{ method_field('PUT') }}
+                                <div class="g-3 align-items-center">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Course Name</span>
+                                        <input type="text" id="course" name="course_name"
+                                             class="form-control" required>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <label class="input-group-text" for="dept_id">Department</label>
+                                        <select class="form-select" id="defaultdept" name="dept_id">
+                                            <option>Choose Department</option>
+                                            @foreach ($depts as $dept)
+                                                <option value="{{ $dept->id }}">{{ $dept->dept_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Submit
+                                        Course</button>
+                                </div>
+                            </form>
+    </div>
+</div>
+</div>
+</div>
+                            <!-- EDIT MODAL -->
         </section>
     </div>
 
@@ -167,7 +248,32 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var table = $('#datatable').DataTable();
+
+            table.on('click', '.edit', function() {
+                
+                $tr = $(this).closest('tr');
+                if ($($tr).hasClass('child')) {
+                    $tr = $tr.prev('.parent');
+                }
+
+                var data = table.row($tr).data();
+                console.log(table.row($tr));
+                console.log(data);
+
+                $('#course').val(data[1]);
+                $('#defaultdept').val(data[2]);
+                $('#editForm').attr('action', '/course/' + data[0]);
+                $('#editModal').modal('show');
+
+            });
+        });
+    </script>
 
 </body>
 

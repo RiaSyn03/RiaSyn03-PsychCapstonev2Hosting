@@ -12,6 +12,7 @@
          </ul>
      </header>
      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+     @include('partials.alerts')
      <form method="POST" action="personality_exam" name="personalityquestion" id="personalityquestion">
      @csrf
      @foreach ($personality as $question)

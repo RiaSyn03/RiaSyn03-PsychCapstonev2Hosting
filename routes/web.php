@@ -74,18 +74,12 @@ Auth::routes();
 
 // Admin //
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/account/activate/{token}', 'AccountController@activate');
 Route::get('/index', function(){
     return view('admin.users');
 }) ->middleware(['auth', 'auth.admin']);
-Route::get('/admin/users', 'LiveSearch@index');
-Route::post('/admin/users/index/action', 'LiveSearch@action')->name('admin.users.index.action');
-Route::post('/admin/users/student/stdntbook', 'BookingController@index')->name('admin.users.student.stdntbook');
 Route::namespace('Admin') ->prefix('admin')->middleware(['auth', 'auth.admin']) ->name('admin.')->group(function(){
 Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
-Route::get('/impersonate/user/{id}', 'ImpersonateController@index')->name('impersonate');
 });
-Route::get('/admin/impersonate/destroy', 'Admin\ImpersonateController@destroy')->name('admin.impersonate.destroy');
 Route::get('/questions', 'Admin\QuestionController@index')->name('questions');
 Route::post('/questions', 'Admin\QuestionController@create')->name('questions');
 Route::delete('/question-delete/{id}', 'Admin\QuestionController@destroy');
@@ -93,6 +87,8 @@ Route::get('/manageappointments', 'Councilour\Appointmentlist@adminappointments'
 Route::put('/manageappointments-update/{id}', 'Councilour\Appointmentlist@adminupdate')->name('manageappointments-update');
 Route::get('/updatequestion/{id}', 'Admin\QuestionController@edit')->name('updatequestion');
 Route::put('/updatequestion-edit/{id}', 'Admin\QuestionController@update')->name('updatequestion-edit');
+Route::post('/add-department', 'DepartmentController@create')->name('add-department');
+Route::delete('/user-delete/{id}', 'Admin\UserController@destroy');
 Auth::routes();
 
 //Counselour//
@@ -112,7 +108,7 @@ Route::put('/updateschedule-edit/{id}', 'Councilour\Appointmentlist@updateresche
 Route::post('/appointment_history', 'Councilour\Appointmentlist@store')->name('appointment_history');
 Route::get('/appointment_history', 'Councilour\Appointmentlist@show')->name('appointment_history');
 Route::get('/stress_exam', 'Councilour\QuestionController@stress')->name('stress_exam');
-Route::post('/stress_exam', 'Councilour\QuestionController@store')->name('stress_exam');
+Route::post('/stress_exam', 'Councilour\QuestionController@sstore')->name('stress_exam');
 Route::get('/personality_exam', 'Councilour\QuestionController@personality')->name('personality_exam');
 Route::post('/personality_exam', 'Councilour\QuestionController@pstore')->name('personality_exam');
 Route::get('/exams_history', 'Councilour\QuestionController@showexam')->name('exams_history');
@@ -121,6 +117,7 @@ Route::post('/learner_exam', 'Councilour\QuestionController@lstore')->name('lear
 Route::get('/admin/users/student/questionaire', 'StudentquestionaireController@index')->name('questionaire');
 Route::delete('/appointment-delete/{id}', 'Councilour\Appointmentlist@destroy');
 Route::delete('/completed-delete/{id}', 'Councilour\Appointmentlist@destroycompleted');
+Route::delete('/delete-history/{id}', 'Councilour\QuestionController@destroyhistory');
 
 
 

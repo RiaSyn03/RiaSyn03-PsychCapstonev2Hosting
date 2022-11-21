@@ -8,6 +8,7 @@ use App\User;
 use App\Role;
 use App\Course;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class UserController extends Controller
@@ -19,19 +20,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $appointments = DB::table('roles')
-        // ->join('users as user', 'approved.timeslot_id', '=', 'roles.id')
-        // ->join('roles as role', 'approved.timeslot_id', '=', 'role.id')
-        // ->select('time.id as time_id','time.user_idnum as user_idnum','time.user_fname as user_name', 'time.time as timeslot_time', 'time.date as timeslot_date', 'approved.councilour_name as councilour_name')
-
-        // ->get()->toArray();
         if(Auth::guest())
         {
             return redirect()->route('/');
         }
+        $users = DB::table('users')
+            ->join('roles', 'roles.id', '=', 'users.role_id')
+            ->join('courses', 'courses.id', '=', 'users.course_id')
+            ->select('users.*', 'roles.role_name', 'courses.course_name')
+            ->get();
 
         $roles = Role::all();
-        $users = User::all();
+        // $users = User::all();
         $courses = Course::all();
         $numusers = User::count();
         return view('admin.users.index', compact('users', 'numusers', 'courses', 'roles'));
@@ -45,7 +45,7 @@ class UserController extends Controller
         'fname'=>'required',
         'mname'=>'required',
         'lname'=>'required',
-        'course_id'=>'nullable',
+        'course_id'=>'required',
         'year'=>'required',
         'role_id'=>'required',
         'email'=>'required|email',
@@ -69,29 +69,30 @@ class UserController extends Controller
 
     public function makecounselour(Request $request)
         {
-        $request->validate([
-            'idnum'=>'required',
-            'fname'=>'required',
-            'mname'=>'required',
-            'lname'=>'required',
-            'course_id'=>'nullable',
-            'year'=>'required',
-            'role_id'=>'required',
-            'email'=>'required|email',
-            'password'=>'required',
-
-        ]);
-        $user = User::create([
-            'idnum'=> $request->idnum,
-            'fname'=> $request->fname,
-            'mname'=> $request->mname,
-            'lname'=> $request->lname,
-            'course_id'=> $request->course_id,
-            'role_id'=>$request->role_id,
-            'year'=> $request->year,
-            'email'=> $request->email,
-            'password'=>bcrypt($request->password)
-        ]);
+            $request->validate([
+                'idnum'=>'required',
+                'fname'=>'required',
+                'mname'=>'required',
+                'lname'=>'required',
+                'course_id'=>'required',
+                'year'=>'required',
+                'role_id'=>'required',
+                'email'=>'required|email',
+                'password'=>'required',
+        
+            ]);
+            $user = User::create([
+                'idnum'=> $request->idnum,
+                'fname'=> $request->fname,
+                'mname'=> $request->mname,
+                'lname'=> $request->lname,
+                'course_id'=> $request->course_id,
+                'year'=> $request->year,
+                'role_id'=>$request->role_id,
+                'email'=> $request->email,
+                'password'=>bcrypt($request->password)
+        
+            ]);
         $role = Role::select('id')->where('role_name', 'counselor')->first();
         $user->roles()->attach($role);
         return redirect()->route('admin.users.index')->with('success','Counselor Added');
@@ -127,7 +128,7 @@ class UserController extends Controller
             'fname'=>'required',
             'mname'=>'required',
             'lname'=>'required',
-            'course_id'=>'nullable',
+            'course_id'=>'required',
             'year'=>'required',
             'email'=>'required|email',
         ]);
@@ -153,18 +154,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        if(Auth::user()->id == $id){
-            return redirect()->route('admin.users.index')->with('warning', 'You are not allowed to delete yourself.');
-       }
-
-
-       $user = User::find($id);
-       if($user){
-           $user->roles()->detach();
-           $user->delete();
-           return redirect()->route('admin.users.index')->with('success', 'Users has been deleted');
-       }
-       return redirect()->route('admin.users.index')->with('warning', 'This user cannot be deleted');
-    }
+        $user_delete = User::findorFail($id);
+        $user_delete->delete();  
+        return response()->json(['status' => 'Delete Successful !']);
 }
-
+}

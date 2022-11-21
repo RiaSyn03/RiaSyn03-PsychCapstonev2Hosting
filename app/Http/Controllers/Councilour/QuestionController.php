@@ -74,6 +74,20 @@ class QuestionController extends Controller
         //
     }
 
+    public function sstore(Request $request)
+    {       
+        $this->validate($request,[
+            'result_name' => 'required',
+          ]);
+
+        $result = new Result;
+        $result->user_id = $request->user()->id;
+        $result->result_name = $request->input('result_name');
+        $result->save();
+
+        return redirect()->route('stress_exam')->with('success','Added to Exam History');
+    }
+
     public function pstore(Request $request)
     {       
         $this->validate($request,[
@@ -85,7 +99,7 @@ class QuestionController extends Controller
         $result->result_name = $request->input('result_name');
         $result->save();
 
-        return redirect()->route('personality_exam');
+        return redirect()->route('personality_exam')->with('success','Added to Exam History');
     }
 
     public function lstore(Request $request)
@@ -99,7 +113,7 @@ class QuestionController extends Controller
         $result->result_name = $request->input('result_name');
         $result->save();
 
-        return redirect()->route('learner_exam');
+        return redirect()->route('learner_exam')->with('success','Added to Exam History');
     }
 
     /**
@@ -192,6 +206,12 @@ class QuestionController extends Controller
         $myexams = Result::where('user_id',$id)->get();
         
         return view('admin.users.student.exams_history', compact('myexams'));
+    }
+    public function destroyhistory($id)
+    {
+        $delete_history = Result::findorFail($id);
+        $delete_history->delete();  
+        return response()->json(['status' => 'Delete Successful !']);
     }
 }
 

@@ -20,22 +20,24 @@ class UsersTableSeeder extends Seeder
 
         $admin = User::create([
             'role_id'=>'1',
+            'course_id'=>'4',
             'idnum' => '15100278',
             'fname' => 'John Gio',
             'mname' => 'Gayo',
             'lname' => 'Alfanta',
-            'year' => 'Employee',
+            'year' => 'Non-Student',
             'email' => 'johnalfanta20@gmail.com',
             'password' => bcrypt ('admin')
         ]);
 
         $counselor = User::create([
             'role_id'=>'2',
+            'course_id'=>'4',
             'idnum' => '15102502',
             'fname' => 'Katherine Mitz',
             'mname' => 'Cueva',
             'lname' => 'Lebrias',
-            'year' => 'Employee',
+            'year' => 'Non-Student',
             'email' => 'staceyjung69@gmail.com',
             'password' => bcrypt ('counselor')
 
@@ -43,6 +45,7 @@ class UsersTableSeeder extends Seeder
 
         $student = User::create([
             'role_id'=>'3',
+            'course_id'=>'1',
             'idnum' => '15105515',
             'fname' => 'Kyle Christian',
             'mname' => 'Misa',

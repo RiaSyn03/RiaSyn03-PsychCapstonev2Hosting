@@ -32,5 +32,9 @@ class CoursesTableSeeder extends Seeder
             'course_name' => 'Bachelor of Science in Civil Engineering(BS_CE)',
             'dept_id' => '3',
         ]);
+        DB::table('courses')->insert([
+            'course_name' => 'Non-Student',
+            'dept_id' => '1',
+        ]);
     }
 }

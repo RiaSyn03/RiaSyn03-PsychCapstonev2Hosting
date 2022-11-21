@@ -21,7 +21,12 @@ class CourseController extends Controller
         {
             return redirect()->route('/');
         }
-        $courses = Course::with(['department'])->get();;
+        // $courses = DB::table('courses')
+        // ->join('departments', 'departments.id', '=', 'courses.dept_id')
+        // ->select('courses.*', 'departments.dept_name')
+        // ->get();
+
+        $courses = Course::with(['department'])->get();
         $depts = Department::all();
         return view('admin.users.course', compact('courses', 'depts'));
     }
@@ -86,9 +91,21 @@ class CourseController extends Controller
      * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'course_name'=>'required',
+            'dept_id'=>'required',
+        ]);
+        
+        $courses = Course::find($id);
+
+        $courses->course_name = $request->input('course_name');
+        $courses->dept_id = $request->input('dept_id');
+
+        $courses->update();
+
+        return redirect('/course')->with('success', 'Course Updated');
     }
 
     /**
@@ -104,4 +121,6 @@ class CourseController extends Controller
 
         return redirect()->route('course.index')->with('message', 'This course has been deleted.');
     }
+
+    
 }

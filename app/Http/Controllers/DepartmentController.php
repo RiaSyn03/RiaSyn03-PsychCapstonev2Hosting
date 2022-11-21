@@ -33,7 +33,7 @@ class DepartmentController extends Controller
             'dept_name' => $request->dept_name,
         ]);
 
-        return redirect()->route('department.index')->with('message', 'Department has been saved!');
+        return redirect()->route('course.index')->with('success', 'Department has been saved!');
     }
 
     /**
