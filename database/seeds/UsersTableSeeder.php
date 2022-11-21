@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
 
         $admin = User::create([
             'role_id'=>'1',
-            'course_id'=>'4',
+            'course_id'=>'6',
             'idnum' => '15100278',
             'fname' => 'John Gio',
             'mname' => 'Gayo',
@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
 
         $counselor = User::create([
             'role_id'=>'2',
-            'course_id'=>'4',
+            'course_id'=>'6',
             'idnum' => '15102502',
             'fname' => 'Katherine Mitz',
             'mname' => 'Cueva',
