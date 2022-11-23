@@ -9,13 +9,18 @@
 <body> 
     </head>
     <body>
+    
         <div class="loginbody">
             <div class="imgBx">
+            
                 <img src="../img/mh2.jpg">
             </div>
+            
             <div class="contentBx">
+            
                 <div class="formBx">
-                   <h2>Pysch Care 2.0</h2>
+                    <center>@include('partials.alerts')</center>
+                   <h2>Psych Care 2.0</h2>
                    <h3>Login</h3>
                    <form method="POST" action="{{ route('login') }}">
                     @csrf

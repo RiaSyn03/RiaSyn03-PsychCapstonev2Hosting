@@ -17,21 +17,24 @@
      @csrf
 @foreach ($learner as $question)
 <div class="wrapper">
-  <div class="learnertitle">{{ $question->question_num }}. {{ $question->question}}</div>
+  <div class="learnertitle" id="{{$question->question_num}}">{{ $question->question_num }}. {{ $question->question}}</div>
   <div class="box">
-      <input type="radio" name="select{{ $question->question_num }}" id="radio1{{ $question->question_num }}" value="1">
+      <input type="radio" name="question{{ $question->question_num }}" id="radio1{{ $question->question_num }}" value="1">
       <label for="radio1{{ $question->question_num }}">
       Never applies to me
       </label>
-      <input type="radio" name="select{{ $question->question_num }}" id="radio2{{ $question->question_num }}" value="2" >
+      <input type="radio" name="question{{ $question->question_num }}" id="radio2{{ $question->question_num }}" value="2" >
       <label for="radio2{{ $question->question_num }}">
       Sometimes applies to me
       </label>
-      <input type="radio" name="select{{ $question->question_num }}" id="radio3{{ $question->question_num }}" value="3" >
+      <input type="radio" name="question{{ $question->question_num }}" id="radio3{{ $question->question_num }}" value="3" >
       <label for="radio3{{ $question->question_num }}">
       Often applies to me
       </label>
     </div>
+    </div>
+    <div class="container-top">
+      <a href="#" class="top"></a>
     </div>
     <br><br><br>
 @endforeach
@@ -84,26 +87,35 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script>function calculate(){
     var valid = false ;
-    var x = document.learnerquestion.select{{ $question->question_num }};
-
-    for (var i=0; i<x.length; i++){
-      if(x[i].checked){
+      let questions = ['question1', 'question2', 'question3', 'question4', 'question5', 'question6', 'question7', 'question8', 'question9', 'question10', 'question11', 'question12', 'question13', 'question14', 'question15', 'question16', 'question17', 'question18',, 'question19', 'question20', 'question21', 'question22', 'question23', 'question24', 'question25'];
+      var answeredQuestions = [];
+      questions.forEach( question => {
+        if (document.querySelector("input[name="+question+"]:checked")) {
+          var questionAnswer = document.querySelector("input[name="+question+"]:checked").value;
+          answeredQuestions.push(questionAnswer);
+        }
+      });
+      if (answeredQuestions.length < 25) {
+        alert ("Please answer all the questions");
+        return false;
+      } else {
+        console.log("All questions has been answered!");
         valid = true;
-        break;
       }
-    }
-    if(valid){
-$(":radio")
+      if(valid){
 
-    var total = 0;
-    let noquestions = document.getElementById('noquestions').value;
-    var maxscore = 3*noquestions;
-    
-    
-    $(":radio:checked").each(function(){
-        total += Number(this.value);
-    });
-    $("#total").text(total);
+        $(":radio")
+          var total = 0;
+          let noquestions = document.getElementById('noquestions').value;
+          var maxscore = 3*noquestions;
+          console.log(maxscore);
+
+          $(":radio:checked").each(function(){
+              total += Number(this.value);
+              console.log(total);
+
+          });
+          $("#total").text(total);
     
     
     var linguistic = maxscore*0.25;
@@ -136,13 +148,11 @@ $(":radio")
    
       $("#result_name").val("You are a visual learner");
     }
-  }
   else {
     alert ("Please answer all the questions");
     return false;
   }
-
-
+};
 };
 
   </script>

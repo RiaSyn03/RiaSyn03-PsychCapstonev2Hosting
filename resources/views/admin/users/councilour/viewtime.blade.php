@@ -73,7 +73,7 @@
 <td>
 </form>
 @if ($t->status='pending')
-  <a href="{{url ('change-status/'.$t->id) }}" class="btn btn-success" onclick="return confirm('Are you sure?')">Accept Appointment&nbsp&nbsp&nbsp</a>
+  <a href="{{url ('change-status/'.$t->id) }}" class="btn btn-success" onclick="return confirm('Are you sure?')">Accept Appointment&nbsp&nbsp&nbsp&nbsp</a>
   @else
   <a href="{{url ('change-status/'.$t->id) }}" class="btn btn-danger">Pending</a>
   @endif
@@ -81,7 +81,7 @@
   <button type="button" class="btn btn-info" onclick="toggle()">Send Reschedule Note</button>
   @if ($t->status='pending')
   <br>
-  <a href="{{url ('change-resched/'.$t->id) }}" class="btn btn-warning" onclick="return confirm('Please SEND RESCHEDULE NOTE first before doing this action. If DONE click OK')">For Re-Schedule&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></td>
+  <a href="{{url ('change-resched/'.$t->id) }}" class="btn btn-warning" onclick="return confirm('Please SEND RESCHEDULE NOTE first before doing this action. If DONE click OK')">For Re-Schedule&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></td>
   @endif
 @endforeach
   <!-- Decline Modal -->

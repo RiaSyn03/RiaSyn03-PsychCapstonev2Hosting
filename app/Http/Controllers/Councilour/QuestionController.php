@@ -16,10 +16,11 @@ class QuestionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {if(Auth::guest())
-        {
-            return redirect()->route('/');
-        }
+    {   
+        if(Auth()->check() && (auth()->user()->role_id != 2)){
+        Auth::logout();
+        return redirect()->route('login')->with('message', 'Your account is restricted');
+    }
         $questions = Question::all(); 
         $stressquestions = Question::where('question_type','stress')->orderBy('question_num', 'asc')->get();
         $personalityquestions = Question::where('question_type','personality')->orderBy('question_num', 'asc')->get(); 
@@ -29,9 +30,9 @@ class QuestionController extends Controller
     }
     public function questions()
     {
-        if(Auth::guest())
-        {
-            return redirect()->route('/');
+        if(Auth()->check() && (auth()->user()->role_id != 2)){
+            Auth::logout();
+            return redirect()->route('login')->with('message', 'Your account is restricted');
         }
         $questions = Question::all(); 
         $stressquestions = Question::where('question_type','stress')->orderBy('question_num', 'asc')->get();
@@ -163,9 +164,9 @@ class QuestionController extends Controller
     
     public function personality(Request $request)
     {
-        if(Auth::guest())
-        {
-            return redirect()->route('/');
+        if(Auth()->check() && (auth()->user()->role_id != 3)){
+            Auth::logout();
+            return redirect()->route('login')->with('message', 'Your account is restricted');
         }
         $questioncount = Question::where('question_type','personality')->get()->count(); 
         $personality = Question::where('question_type','personality')->orderBy('question_num', 'asc')->get();
@@ -175,9 +176,9 @@ class QuestionController extends Controller
     }
     public function learner(Request $request)
     {
-        if(Auth::guest())
-        {
-            return redirect()->route('/');
+        if(Auth()->check() && (auth()->user()->role_id != 3)){
+            Auth::logout();
+            return redirect()->route('login')->with('message', 'Your account is restricted');
         }
         $questioncount = Question::where('question_type','learners')->get()->count(); 
         $learner = Question::where('question_type','learners')->orderBy('question_num', 'asc')->get();
@@ -187,9 +188,9 @@ class QuestionController extends Controller
 
     public function stress(Request $request)
     {
-        if(Auth::guest())
-        {
-            return redirect()->route('/');
+        if(Auth()->check() && (auth()->user()->role_id != 3)){
+            Auth::logout();
+            return redirect()->route('login')->with('message', 'Your account is restricted');
         }
         $questioncount = Question::where('question_type','stress')->get()->count(); 
         $stress = Question::where('question_type','stress')->orderBy('question_num', 'asc')->get();       
@@ -198,9 +199,9 @@ class QuestionController extends Controller
     }
     public function showexam()
     {
-        if(Auth::guest())
-        {
-            return redirect()->route('/');
+        if(Auth()->check() && (auth()->user()->role_id != 3)){
+            Auth::logout();
+            return redirect()->route('login')->with('message', 'Your account is restricted');
         }
         $id = auth()->user()->id;
         $myexams = Result::where('user_id',$id)->orderBy('created_at', 'asc')->get();

@@ -8,27 +8,24 @@ Route::get('/', function () {
 
 //Student Views
 Route::get('/wellness', function () {
-    if(Auth::guest())
-        {
-            return redirect()->route('/');
-        }
+    if(Auth()->check() && (auth()->user()->role_id != 3)){
+        Auth::logout();
+        return redirect()->route('login')->with('message', 'Your account is restricted');
+    }
     return view('admin.users.student.wellness');
 });
 
 Route::get('/category', function () {
-    if(Auth::guest())
-        {
-            return redirect()->route('/');
-        }
+    if(Auth()->check() && (auth()->user()->role_id != 3)){
+        Auth::logout();
+        return redirect()->route('login')->with('message', 'Your account is restricted');
+    }
     return view('admin.users.student.category');
 });
 
 
 //Counselour Views
 
-Route::get('/viewquestions', function () {
-    return view('admin.users.councilour.questions.viewquestions');
-});
 Route::get('/editquestionaire', function () {
     return view('admin.users.councilour.questions.editquestion');
 });

@@ -15,9 +15,9 @@ class Appointmentlist extends Controller
 {
     public function index()
     {
-        if(Auth::guest())
-        {
-            return redirect()->route('/');
+        if(Auth()->check() && (auth()->user()->role_id != 2)){
+            Auth::logout();
+            return redirect()->route('login')->with('message', 'Your account is restricted');
         }
 
         $id = Auth()->user()->fname;
@@ -117,7 +117,7 @@ class Appointmentlist extends Controller
            }
            Timeslot::where('id',$id)->update(['status'=>$status]);
            Timeslot::where('id',$id)->update(['counselor_name'=>$counsel_name]);
-           return redirect()->back();
+           return redirect()->back()->with('success','Added to Accepted');
     }
     /**
      * Remove the specified resource from storage.
@@ -138,11 +138,6 @@ class Appointmentlist extends Controller
         return response()->json(['status' => 'Delete Successful !']);
     }
 
-    public function bookappoint()
-    {
-        return view('admin.users.councilour.stdntappointment');
-    }
-
     public function done($id)
     {
         $status = Timeslot::select('status')->where('id',$id)->first();
@@ -152,7 +147,7 @@ class Appointmentlist extends Controller
             $status='accepted';
            }
            Timeslot::where('id',$id)->update(['status'=>$status]);
-           return redirect()->back();
+           return redirect()->back()->with('success','Added to Done');
     }
 
     public function resched($id)
@@ -237,14 +232,15 @@ class Appointmentlist extends Controller
             $timeslots->status = $request->input('status');
             $timeslots->date = $request->input('date');
             $timeslots->update();
-            return redirect()->route('viewtime')->with('success','Date and Time Updated !');
+            return redirect()->route('viewtime')->with('success','Success ! Added to Accepted');
         }
 
         public function adminappointments()
-    {if(Auth::guest())
-        {
-            return redirect()->route('/');
-        }
+    {   
+        if(Auth()->check() && (auth()->user()->role_id != 1)){
+        Auth::logout();
+        return redirect()->route('login')->with('message', 'Your account is restricted');
+    }
         
        $timescheds = Timeslot::all();
         return view('admin.users.manageappointments',compact('timescheds'));

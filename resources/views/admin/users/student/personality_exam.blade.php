@@ -17,29 +17,32 @@
      @csrf
      @foreach ($personality as $question)
 <div class="wrapper">
-  <div class="personalitytitle">{{ $question->question_num }}. {{ $question->question}}</div>
+  <div class="personalitytitle" id="{{$question->question_num}}">{{ $question->question_num }}. {{ $question->question}}</div>
   <div class="box">
-      <input type="radio" name="select{{ $question->question_num }}" id="radio1{{ $question->question_num }}" value="0">
+      <input type="radio" name="question{{ $question->question_num }}" id="radio1{{ $question->question_num }}" value="0">
       <label for="radio1{{ $question->question_num }}">
       Strongly Disagree
       </label>
-      <input type="radio" name="select{{ $question->question_num }}" id="radio2{{ $question->question_num }}" value="1" >
+      <input type="radio" name="question{{ $question->question_num }}" id="radio2{{ $question->question_num }}" value="1" >
       <label for="radio2{{ $question->question_num }}">
       Disagree
       </label>
-      <input type="radio" name="select{{ $question->question_num }}" id="radio3{{ $question->question_num }}" value="2" >
+      <input type="radio" name="question{{ $question->question_num }}" id="radio3{{ $question->question_num }}" value="2" >
       <label for="radio3{{ $question->question_num }}">
       Neutral
       </label>
-      <input type="radio" name="select{{ $question->question_num }}" id="radio4{{ $question->question_num }}" value="3">
+      <input type="radio" name="question{{ $question->question_num }}" id="radio4{{ $question->question_num }}" value="3">
       <label for="radio4{{ $question->question_num }}">
       Agree
       </label>
-      <input type="radio" name="select{{ $question->question_num }}" id="radio5{{ $question->question_num }}" value="4">
+      <input type="radio" name="question{{ $question->question_num }}" id="radio5{{ $question->question_num }}" value="4">
       <label for="radio5{{ $question->question_num }}">
       Strongly Agree
       </label>
     </div>
+    </div>
+    <div class="container-top">
+      <a href="#" class="top"></a>
     </div>
     <br><br><br>
 @endforeach
@@ -98,26 +101,35 @@
   <script>
   function calculate(){
     var valid = false ;
-    var x = document.personalityquestion.select{{ $question->question_num }};
-
-    for (var i=0; i<x.length; i++){
-      if(x[i].checked){
+      let questions = ['question1', 'question2', 'question3', 'question4', 'question5', 'question6', 'question7', 'question8', 'question9', 'question10'];
+      var answeredQuestions = [];
+      questions.forEach( question => {
+        if (document.querySelector("input[name="+question+"]:checked")) {
+          var questionAnswer = document.querySelector("input[name="+question+"]:checked").value;
+          answeredQuestions.push(questionAnswer);
+        }
+      });
+      if (answeredQuestions.length < 10) {
+        alert ("Please answer all the questions");
+        return false;
+      } else {
+        console.log("All questions has been answered!");
         valid = true;
-        break;
       }
-    }
-    if(valid){
-$(":radio")
+      if(valid){
 
-    var total = 0;
-    let noquestions = document.getElementById('noquestions').value;
-    var maxscore = 3*noquestions;
-    
-    
-    $(":radio:checked").each(function(){
-        total += Number(this.value);
-    });
-    $("#total").text(total);
+        $(":radio")
+          var total = 0;
+          let noquestions = document.getElementById('noquestions').value;
+          var maxscore = 3*noquestions;
+          console.log(maxscore);
+
+          $(":radio:checked").each(function(){
+              total += Number(this.value);
+              console.log(total);
+
+          });
+          $("#total").text(total);
     
     
     var introvert = maxscore*0.25;
@@ -153,11 +165,11 @@ $(":radio")
    
       $("#result_name").val("You are an extrovert");
     }
-  }
   else {
     alert ("Please answer all the questions");
     return false;
   }
+};
 
 };
 

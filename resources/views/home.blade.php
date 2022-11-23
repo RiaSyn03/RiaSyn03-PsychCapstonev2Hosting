@@ -138,17 +138,17 @@
           
         </div>
         <div class="description">
-          <h4>PsychCare2.0</h4> <p>is about checking your mental health. mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make healthy choices. 1. Mental health is important at every stage of life, from childhood and adolescence through adulthood.Issues that are related to mental health needs attention and guidance as soon as possible. 
-                     Through this system you can seek guidance on our reliable counselors here inside the University.<br><a href="{{ url('appointment_history') }}"><button type="button" class="takebtn" >Appoint Now </button></a></p>
+          <h4>PsychCare2.0</h4> <p>is about checking your mental health. Mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make healthy choices. Mental health is important at every stage of life, from childhood and adolescence through adulthood. Issues that are related to mental health needs attention and guidance as soon as possible. 
+                     Through this system, you can seek guidance on our reliable counselors here in the University.<br><a href="{{ url('appointment_history') }}"><button type="button" class="takebtn" >Appoint Now </button></a></p>
           </div>
           <div class="description2">
-          <h4>Stress Scale</h4> <p>is to check your stress level from none to severe. Taking this test at least twice a week is good to avoid mental disorder. Stress can also affect to your personality and learning, taking stress scale first is recommended before taking the others </p>
+          <h4>Stress Scale</h4> <p>is to check your stress level from none to severe. Taking this test at least twice a week is good to avoid mental disorder. Stress can also affect your personality and learning, taking stress scale first is recommended before taking others. </p>
 </div>
 <div class="description3">
-          <h4>Learner</h4> <p>is to check what time of learners you are. Learners has a very important role to our life. We learn at work, school, books and other things we have interests everyday. So taking the test often will be a good help to you.  </p>
+          <h4>Learner</h4> <p>is to check what type of learners you are. Awareness of our learning styles play an important role towards academic succes. We learn at work, school, books and other things we have interests with everyday. So taking the test often will be a good help to you.  </p>
 </div>
 <div class="description4">
-          <h4>Personality</h4> <p>is to check what behavior you have. Are you comfortable together with friends? or have lots of people around you instead ? You can find out what type of person you are on this test. </p>
+          <h4>Personality</h4> <p>is to check what behavior you have. Are you comfortable being alone or are you more comfortable being surrounded by a lot of people instead ? You can find out what type of person you are on this test. </p>
 </div>
         
 </div>

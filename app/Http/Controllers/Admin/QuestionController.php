@@ -16,9 +16,9 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        if(Auth::guest())
-        {
-            return redirect()->route('/');
+        if(Auth()->check() && (auth()->user()->role_id != 1)){
+            Auth::logout();
+            return redirect()->route('login')->with('message', 'Your account is restricted');
         }
         
         $questions = Question::all(); 
@@ -82,9 +82,9 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        if(Auth::guest())
-        {
-            return redirect()->route('/');
+        if(Auth()->check() && (auth()->user()->role_id != 1)){
+            Auth::logout();
+            return redirect()->route('login')->with('message', 'Your account is restricted');
         }
         
         $getid = Question::findOrFail($id);

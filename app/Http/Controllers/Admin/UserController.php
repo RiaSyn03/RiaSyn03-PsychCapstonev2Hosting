@@ -20,9 +20,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        if(Auth::guest())
-        {
-            return redirect()->route('/');
+        if(Auth()->check() && (auth()->user()->role_id != 1)){
+            Auth::logout();
+            return redirect()->route('login')->with('message', 'Your account is restricted');
         }
         $users = DB::table('users')
             ->join('roles', 'roles.id', '=', 'users.role_id')
@@ -144,7 +144,7 @@ class UserController extends Controller
 
         $users->update();
 
-        return redirect('/user')->with('Profile Updated');
+        return redirect('/user')->with('success','Profile Updated');
     }
     /**
      * Remove the specified resource from storage.
@@ -154,8 +154,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if(Auth::user()->id == $id){
+            return redirect('/user')->with('warning', 'You are not allowed to delete yourself.');
+            }
         $user_delete = User::findorFail($id);
         $user_delete->delete();  
-        return response()->json(['status' => 'Delete Successful !']);
+        return redirect('/user')->with('success','User Deleted');
 }
 }
