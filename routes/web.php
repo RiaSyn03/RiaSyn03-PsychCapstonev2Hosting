@@ -93,13 +93,13 @@ Route::get('/viewtime', 'Councilour\Appointmentlist@index')->name('viewtime');
 // Route::post('/viewtime-accept/{id}', 'Councilour\Appointmentlist@update')->name('viewtime-accept');
 Route::get('/change-status/{id}', 'Councilour\Appointmentlist@updatetime')->name('changestatus');
 Route::get('/change-done/{id}', 'Councilour\Appointmentlist@done')->name('changedone');
-Route::get('/change-resched/{id}', 'Councilour\Appointmentlist@resched')->name('resched');
 Route::get('/viewquestions', 'Councilour\QuestionController@index')->name('viewquestions');
 Route::post('/viewquestions', 'Councilour\QuestionController@create')->name('viewquestions');
 Route::get('/myfinishappointments', 'Councilour\Appointmentlist@finishappointments')->name('myfinishappointments');
-Route::post('/viewtime-email', 'Councilour\Appointmentlist@sendmail')->name('viewtime-email');
 Route::get('/updateschedule/{id}', 'Councilour\Appointmentlist@getreschedid')->name('updateschedule');
 Route::put('/updateschedule-edit/{id}', 'Councilour\Appointmentlist@updateresched')->name('updateschedule-edit');
+Route::get('/reschedule/{id}', 'Councilour\Appointmentlist@reschedstatus')->name('reschedule');
+Route::put('/reschedule-status/{id}', 'Councilour\Appointmentlist@sendmail')->name('reschedule-status');
 
 //Student//
 Route::post('/appointment_history', 'Councilour\Appointmentlist@store')->name('appointment_history');

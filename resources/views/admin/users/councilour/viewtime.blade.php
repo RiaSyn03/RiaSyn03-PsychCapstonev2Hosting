@@ -73,16 +73,11 @@
 <td>
 </form>
 @if ($t->status='pending')
-  <a href="{{url ('change-status/'.$t->id) }}" class="btn btn-success" onclick="return confirm('Are you sure?')">Accept Appointment&nbsp&nbsp&nbsp&nbsp</a>
+  <a href="{{url ('change-status/'.$t->id) }}" class="btn btn-success" onclick="return confirm('Are you sure?')">Accept</a>
   @else
   <a href="{{url ('change-status/'.$t->id) }}" class="btn btn-danger">Pending</a>
   @endif
-<br>
-  <button type="button" class="btn btn-info" onclick="toggle()">Send Reschedule Note</button>
-  @if ($t->status='pending')
-  <br>
-  <a href="{{url ('change-resched/'.$t->id) }}" class="btn btn-warning" onclick="return confirm('Please SEND RESCHEDULE NOTE first before doing this action. If DONE click OK')">For Re-Schedule&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></td>
-  @endif
+  <a href="/reschedule/{{$t->id}}" class="btn btn-warning" onclick="return confirm('Are you sure?')">Reschedule</a>
 @endforeach
   <!-- Decline Modal -->
 <div class="p-2">
@@ -108,7 +103,6 @@
                                             <textarea row="5" cols="80" id="body" name="body" placeholder="Reason or Note for reschedule" class="form-control"></textarea>
                                         </div>
    </div>
-   
    <br><br><br>
    <center><button type="submit" class="submitbtn" name="sendmail">Submit</button></center>
  </form>

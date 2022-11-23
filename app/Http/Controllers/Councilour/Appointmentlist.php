@@ -164,7 +164,7 @@ class Appointmentlist extends Controller
            return redirect()->route('viewtime')->with('success', 'Successfully moved to Reschedule List !');
     }
 
-    function sendmail(){
+    function sendmail($id){
         $name = "PsychCare2.0 Team";  // Name of your website or yours
         $to = $_POST["email"];  // mail of reciever
         $subject = $_POST["subject"];
@@ -204,8 +204,17 @@ class Appointmentlist extends Controller
         $mail->addAddress($to); // enter email address whom you want to send
         $mail->Subject = ("$subject");
         $mail->Body = $body;
+
+        $status = Timeslot::select('status')->where('id',$id)->first();
+        
+        $status= 'Re-Schedule';
+        $counsel_name= Auth()->user()->fname;
+        Timeslot::where('id',$id)->update(['status'=>$status]);
+        Timeslot::where('id',$id)->update(['counselor_name'=>$counsel_name]);
+        
+
         if ($mail->send()) {
-            return redirect()->route('viewtime')->with('success', 'Email Sent !');
+            return redirect()->route('viewtime')->with('success', 'Email Sent ! Please check your reschedule list');
         } else {
             return redirect()->back()->withInput()->with('error', 'Check your Internet Connection');
         }
@@ -261,6 +270,13 @@ class Appointmentlist extends Controller
         $timeslots->update();
 
         return redirect()->back()->with('success', 'Update Success !');
+    }
+
+    public function reschedstatus($id)
+    {
+        $getid = Timeslot::findOrFail($id);
+    
+        return view('admin.users.councilour.reschedule')->with('getid',$getid);
     }
 }
 

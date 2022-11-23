@@ -18,7 +18,7 @@
 </head>
 <div class="wellnessbody">
 	<div class="wellness">
-<center><h2>Guidelines</h2></center>
+<center><h2>Wellness Guide</h2></center>
 </div>
 <div class="ui-card">
 <img src="{{ asset('img/people.jpg') }}">
