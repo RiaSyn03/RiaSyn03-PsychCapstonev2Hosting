@@ -46,12 +46,12 @@
                 <ul>
                     <li>
                         <div class="dropdown">
-                            <a class="dropdown-toggle " id="dropdownMenuButton" data-toggle="dropdown" 
+                            <a class="dropdown-toggle " id="dropdownMenuButton" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->fname }} <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="{{ route('logout') }}" 
+                                <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -100,10 +100,10 @@
                                     </div>
                                 </thead>
                                 <tbody id="dynamic-row">
-                                    
+
                                     @foreach ($users as $user)
                                         <tr>
-                                            
+
                                             <td hidden>{{ $user->id }}</td>
                                             <td>{{ $user->idnum }}</td>
                                             <td>{{ $user->lname }}</td>
@@ -111,7 +111,7 @@
                                             <td>{{ $user->email }}</td>
                                             <td hidden>{{ $user->course_name}}</td>
                                             <td hidden>{{ $user->year }}</td>
-                                            <td>{{ $user->role_name }}</td>
+                                            <td>{{ $user->role->role_name }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-primary btn-sm edit ml-2"><i
                                                         class="fa fa-edit"></i>
@@ -205,7 +205,7 @@
                 </div>
                 </form>
                 <!-- END OF EDIT MODAL -->
-                
+
                 <!-- ADD COUNSELOR MODAL -->
                 <div class="modal fade" id="addcounselorModal" tabindex="-1"
                     aria-labelledby="AddcounselorModalLabel" aria-hidden="true">
@@ -409,7 +409,7 @@
             var table = $('#datatable').DataTable();
 
             table.on('click', '.edit', function() {
-                
+
                 $tr = $(this).closest('tr');
                 if ($($tr).hasClass('child')) {
                     $tr = $tr.prev('.parent');

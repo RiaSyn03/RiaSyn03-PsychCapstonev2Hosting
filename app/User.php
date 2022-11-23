@@ -44,14 +44,14 @@ class User extends Authenticatable
         return $this->belongsTo('App\Course');
     }
 
-    public function roles(){
-        return $this->belongsToMany('App\Role');
+    public function role(){
+        return $this->belongsTo('App\Role');
     }
 
    public function hasAnyRoles($roles) {
-    return null !== $this->roles()->whereIn('role_name', $roles)->first();
+    return null !== $this->role()->whereIn('role_name', $roles)->first();
    }
    public function hasAnyRole($role) {
-    return null !== $this->roles()->where('role_name', $role)->first();
+    return null !== $this->role()->where('role_name', $role)->first();
    }
 }

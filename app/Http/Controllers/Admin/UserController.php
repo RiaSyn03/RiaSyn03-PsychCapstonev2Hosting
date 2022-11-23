@@ -24,14 +24,9 @@ class UserController extends Controller
             Auth::logout();
             return redirect()->route('login')->with('message', 'Your account is restricted');
         }
-        $users = DB::table('users')
-            ->join('roles', 'roles.id', '=', 'users.role_id')
-            ->join('courses', 'courses.id', '=', 'users.course_id')
-            ->select('users.*', 'roles.role_name', 'courses.course_name')
-            ->get();
 
         $roles = Role::all();
-        // $users = User::all();
+        $users = User::with(['role'])->get();
         $courses = Course::all();
         $numusers = User::count();
         return view('admin.users.index', compact('users', 'numusers', 'courses', 'roles'));
@@ -79,7 +74,7 @@ class UserController extends Controller
                 'role_id'=>'required',
                 'email'=>'required|email',
                 'password'=>'required',
-        
+
             ]);
             $user = User::create([
                 'idnum'=> $request->idnum,
@@ -91,7 +86,7 @@ class UserController extends Controller
                 'role_id'=>$request->role_id,
                 'email'=> $request->email,
                 'password'=>bcrypt($request->password)
-        
+
             ]);
         $role = Role::select('id')->where('role_name', 'counselor')->first();
         $user->roles()->attach($role);
@@ -158,7 +153,7 @@ class UserController extends Controller
             return redirect('/user')->with('warning', 'You are not allowed to delete yourself.');
             }
         $user_delete = User::findorFail($id);
-        $user_delete->delete();  
+        $user_delete->delete();
         return redirect('/user')->with('success','User Deleted');
 }
 }
