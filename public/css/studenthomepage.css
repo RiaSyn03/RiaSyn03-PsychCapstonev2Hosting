@@ -1,0 +1,215 @@
+.student-align{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.studentcontainer {
+  
+  position:absolute;
+  top:30%;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 10px 5px 20px #3caadc;
+  margin-bottom: 30px;
+  max-width: 1250px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  height: 1800px;
+  
+}
+.menu {
+  position: relative;
+  left: 45%;
+  bottom: -5%;
+}
+
+.studentcontainer h2
+{
+  color: #607d8b;
+  font-weight: 600;
+  font-size: 3.5em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-bottom: 4px solid #ff4584 ;
+  display: inline-block;
+  letter-spacing: 1px;
+  
+}
+.aboutus {
+  position: absolute;
+  bottom: 55%;
+  left: 40%;
+}
+.aboutus h1{
+    color: #607d8b;
+    font-weight: 600;
+    font-size: 3.5em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #ff4584 ;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+.description
+{
+  position: absolute;
+  bottom: 40%;
+  left: 10%;
+  margin-right: 10%;
+}
+
+.description2
+{
+  position: absolute;
+  bottom: 28%;
+  left: 10%;
+  margin-right: 10%;
+}
+.description3
+{
+  position: absolute;
+  bottom: 16%;
+  left: 10%;
+  margin-right: 10%;
+}
+.description4
+{
+  position: absolute;
+  bottom: 4%;
+  left: 10%;
+  margin-right: 10%;
+}
+.description h4
+{
+  color: #607d8b;
+    font-weight: 600;
+    font-size: 2.0em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+
+}
+.description2 h4
+{
+  color: #607d8b;
+  font-weight: 600;
+  font-size: 2.0em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+
+}
+.description3 h4
+{
+  color: #607d8b;
+  font-weight: 600;
+  font-size: 2.0em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+
+}
+.description4 h4
+{
+  color: #607d8b;
+  font-weight: 600;
+  font-size: 2.0em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+
+}
+.description p
+{
+  font-size: 18px;
+    display: inline;
+}
+.description2 p
+{
+  font-size: 18px;
+    display: inline;
+}
+.description3 p
+{
+  font-size: 18px;
+    display: inline;
+}
+.description4 p
+{
+  font-size: 18px;
+    display: inline;
+}
+
+/* for carousel */
+
+.swiper {
+    width:70%;
+    height: fit-content;
+    top:12%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+  }
+  .swiper-slide p{
+  color: #607d8b;
+    font-weight: 600;
+    font-size: 2.0em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: inline-block;
+    letter-spacing: 1px;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+  }
+  .takebtn {
+    width: 200px;
+    height: 40px;
+    background: #ff4584;
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 5px;
+  }
+  .takebtn:hover {
+    background: #f53677;
+  }
+  .takebtn h5 {
+    font-size: 20px;
+    color: #fff;
+  }
+  .takebtn a {
+    color: #ff4584;
+  }
+
+  @media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .studentcontainer {width: 8.33%;}
+    .studentcontainer {width: 16.66%;}
+    .studentcontainer {width: 25%;}
+    .studentcontainer {width: 33.33%;}
+    .studentcontainer {width: 41.66%;}
+    .studentcontainer {width: 50%;}
+    .studentcontainer {width: 58.33%;}
+    .studentcontainer {width: 66.66%;}
+    .studentcontainer {width: 75%;}
+    .studentcontainer {width: 83.33%;}
+    .studentcontainer {width: 91.66%;}
+    .studentcontainer {width: 100%;}
+  }
